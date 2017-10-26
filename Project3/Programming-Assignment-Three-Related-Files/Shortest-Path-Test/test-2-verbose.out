@@ -1,0 +1,13 @@
+Step 0
+Choose cell (0, 0) with accumulated length 1.
+Cell (1, 0) with accumulated length 2 is added into the queue.
+Cell (0, 1) with accumulated length 2 is added into the queue.
+Step 1
+Choose cell (0, 1) with accumulated length 2.
+Cell (1, 1) with accumulated length 3 is added into the queue.
+Cell (0, 2) with accumulated length 3 is the ending point.
+The shortest path from (0, 0) to (0, 2) is 3.
+Path:
+(0, 0)
+(0, 1)
+(0, 2)

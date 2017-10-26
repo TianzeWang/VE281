@@ -1,0 +1,36 @@
+Step 0
+Choose cell (0, 0) with accumulated length 5.
+Cell (1, 0) with accumulated length 6 is added into the queue.
+Cell (0, 1) with accumulated length 7 is added into the queue.
+Step 1
+Choose cell (1, 0) with accumulated length 6.
+Cell (2, 0) with accumulated length 8 is added into the queue.
+Cell (1, 1) with accumulated length 7 is added into the queue.
+Step 2
+Choose cell (0, 1) with accumulated length 7.
+Cell (0, 2) with accumulated length 14 is added into the queue.
+Step 3
+Choose cell (1, 1) with accumulated length 7.
+Cell (2, 1) with accumulated length 12 is added into the queue.
+Cell (1, 2) with accumulated length 8 is added into the queue.
+Step 4
+Choose cell (1, 2) with accumulated length 8.
+Cell (2, 2) with accumulated length 9 is added into the queue.
+Step 5
+Choose cell (2, 0) with accumulated length 8.
+Cell (3, 0) with accumulated length 11 is added into the queue.
+Step 6
+Choose cell (2, 2) with accumulated length 9.
+Cell (3, 2) with accumulated length 10 is added into the queue.
+Step 7
+Choose cell (3, 2) with accumulated length 10.
+Cell (3, 1) with accumulated length 16 is the ending point.
+The shortest path from (0, 0) to (3, 1) is 16.
+Path:
+(0, 0)
+(1, 0)
+(1, 1)
+(1, 2)
+(2, 2)
+(3, 2)
+(3, 1)
