@@ -23,12 +23,12 @@ struct Map {
     Map *Predecessor = nullptr;
 };
 
-class Priority_Queue : public vector<Map> {
+/*class Priority_Queue : public vector<Map> {
 public:
     virtual Map dequeueMin()=0;
 
     virtual Map enqueue(Map a)=0;
-};
+};*/
 
 /*int Priority_Queue::dequeueMin() {
     int i;
@@ -43,12 +43,12 @@ void Routing_Algorithm(Map **W, int start_x, int start_y, int end_x, int end_y, 
 void trace_back_path();
 
 void Routing_Algorithm(Map **W, int start_x, int start_y, int end_x, int end_y, int WIDTH, int HEIGHT) {
-    Priority_Queue PQ;
+    priority_queue PQ;
     W[start_x][start_y].path_cost = W[start_x][start_y].weight;
     W[start_x][start_y].is_reached = 1;
     PQ.enqueue(W[start_x][start_y]);
     while (!PQ.empty()) {
-        auto C = PQ.dequeueMin();
+        auto C = PQ.dequeue_min();
         Map *N;
         for (int i = 1; i < 5; i++) {
             if (i == 1 && C.P->width + 1 < WIDTH && C.is_reached != 1) {
