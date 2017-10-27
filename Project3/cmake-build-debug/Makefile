@@ -123,32 +123,32 @@ Project3/fast:
 	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/build
 .PHONY : Project3/fast
 
-main.o: main.cpp.o
+test_unsorted.o: test_unsorted.cpp.o
 
-.PHONY : main.o
+.PHONY : test_unsorted.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/main.cpp.o
-.PHONY : main.cpp.o
+test_unsorted.cpp.o:
+	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/test_unsorted.cpp.o
+.PHONY : test_unsorted.cpp.o
 
-main.i: main.cpp.i
+test_unsorted.i: test_unsorted.cpp.i
 
-.PHONY : main.i
+.PHONY : test_unsorted.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/main.cpp.i
-.PHONY : main.cpp.i
+test_unsorted.cpp.i:
+	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/test_unsorted.cpp.i
+.PHONY : test_unsorted.cpp.i
 
-main.s: main.cpp.s
+test_unsorted.s: test_unsorted.cpp.s
 
-.PHONY : main.s
+.PHONY : test_unsorted.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/main.cpp.s
-.PHONY : main.cpp.s
+test_unsorted.cpp.s:
+	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/test_unsorted.cpp.s
+.PHONY : test_unsorted.cpp.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Project3"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... test_unsorted.o"
+	@echo "... test_unsorted.i"
+	@echo "... test_unsorted.s"
 .PHONY : help
 
 

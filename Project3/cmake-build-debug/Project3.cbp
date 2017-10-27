@@ -88,10 +88,7 @@
 		<Unit filename="/Users/peter/Desktop/Peter/JI/VE281/Project3/fib_heap.h">
 			<Option target="Project3"/>
 		</Unit>
-		<Unit filename="/Users/peter/Desktop/Peter/JI/VE281/Project3/main.cpp">
-			<Option target="Project3"/>
-		</Unit>
-		<Unit filename="/Users/peter/Desktop/Peter/JI/VE281/Project3/priority_queue.h">
+		<Unit filename="/Users/peter/Desktop/Peter/JI/VE281/Project3/test_unsorted.cpp">
 			<Option target="Project3"/>
 		</Unit>
 		<Unit filename="/Users/peter/Desktop/Peter/JI/VE281/Project3/unsorted_heap.h">

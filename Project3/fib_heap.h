@@ -7,7 +7,7 @@
 
 // OVERVIEW: A specialized version of the 'heap' ADT implemented as a 
 //           Fibonacci heap.
-template<typename TYPE, typename COMP = std::less<TYPE> >
+template <typename TYPE, typename COMP = std::less<TYPE> >
 class fib_heap : public priority_queue<TYPE, COMP> {
 public:
     typedef unsigned size_type;
@@ -48,10 +48,51 @@ private:
 
 private:
     // Add any additional member functions or data you require here.
+    struct node {
+        TYPE key=TYPE();
+        node *parent=NULL;
+        node *child=NULL;
+        size_type degree=0;
+    };
     // You may want to define a strcut/class to represent nodes in the heap and a
     // pointer to the min node in the heap.
 
 };
+
+template <typename TYPE, typename COMP>
+fib_heap::fib_heap(COMP comp) {
+    compare = comp;
+
+}
+
+template <typename TYPE, typename COMP>
+void fib_heap::enqueue(const TYPE &val) {
+
+}
+
+template <typename TYPE, typename COMP>
+TYPE fib_heap::dequeue_min() {
+    return nullptr;
+}
+
+template <typename TYPE, typename COMP>
+const TYPE &fib_heap::get_min() const {
+    return <#initializer#>;
+}
+
+template <typename TYPE, typename COMP>
+fib_heap::size_type fib_heap::size() const {
+    return 0;
+}
+
+
+template <typename TYPE, typename COMP>
+bool fib_heap::empty() const {
+    return false;
+}
+
+
+
 
 // Add the definitions of the member functions here. Please refer to
 // binary_heap.h for the syntax.
