@@ -1,0 +1,9 @@
+PWD /Users/peter/Desktop/Peter/JI/VE281/Trial
+INPUT /usr/local/texlive/2016/texmf.cnf
+INPUT /usr/local/texlive/2016/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2016/texmf-var/web2c/xetex/xelatex.fmt
+INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/base/article.cls
+INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/base/article.cls
+OUTPUT article.log
+INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/base/size10.clo
+INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/base/size10.clo

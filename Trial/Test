@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset { %
+    language=C++,
+    backgroundcolor=\color{black!5}, % set backgroundcolor
+    basicstyle=\footnotesize,% basic font setting
+}
+
+\begin{document}
+Text before \dots
+\begin{lstlisting}
+for (int i=0; i<iterations;i++)
+{
+do something
+}
+\end{lstlisting}
+Text after it \dots
+\end{document}
