@@ -132,18 +132,26 @@ void fib_heap<TYPE, COMP>::consolidate() {
     auto n0 = n;
     double temp = log(n0) / log(1.618);
     size_of_A = static_cast<size_type>(floor(temp)) + 1;
-    std::list<node>::iterator it;
-    for(it=root_list.begin();it!=root_list.end();it++){
+    std::list<node> *A = new std::list<node>(size_of_A + 1);
+    for (int i = 0; i <= size_of_A; i++) {
+        A[i] = NULL;
+        std::list<node>::iterator it;
+        for (it = root_list.begin(); it != root_list.end(); it++) {
+            node x = *it;
+            int d= x.degree;
+            /*while (A[d] != ){
 
+            }*/
+        }
     }
-};
+}
 
 template <typename TYPE, typename COMP>
 void fib_heap<TYPE, COMP>::Fib_Heap_Link(node y, node x) {
-    auto *temp=&y;
+    auto *temp = &y;
     root_list.remove(y);
     x.children_list.push_back(*temp);
-    *temp->parent=x;
+    *temp->parent = x;
     x.degree++;
     //y.mark=false
 };
