@@ -57,38 +57,38 @@ include CMakeFiles/Project3.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Project3.dir/flags.make
 
-CMakeFiles/Project3.dir/test_unsorted.cpp.o: CMakeFiles/Project3.dir/flags.make
-CMakeFiles/Project3.dir/test_unsorted.cpp.o: ../test_unsorted.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Project3.dir/test_unsorted.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Project3.dir/test_unsorted.cpp.o -c /Users/peter/Desktop/Peter/JI/VE281/Project3/test_unsorted.cpp
+CMakeFiles/Project3.dir/test_heap.cpp.o: CMakeFiles/Project3.dir/flags.make
+CMakeFiles/Project3.dir/test_heap.cpp.o: ../test_heap.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Project3.dir/test_heap.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Project3.dir/test_heap.cpp.o -c /Users/peter/Desktop/Peter/JI/VE281/Project3/test_heap.cpp
 
-CMakeFiles/Project3.dir/test_unsorted.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Project3.dir/test_unsorted.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/peter/Desktop/Peter/JI/VE281/Project3/test_unsorted.cpp > CMakeFiles/Project3.dir/test_unsorted.cpp.i
+CMakeFiles/Project3.dir/test_heap.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Project3.dir/test_heap.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/peter/Desktop/Peter/JI/VE281/Project3/test_heap.cpp > CMakeFiles/Project3.dir/test_heap.cpp.i
 
-CMakeFiles/Project3.dir/test_unsorted.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Project3.dir/test_unsorted.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/peter/Desktop/Peter/JI/VE281/Project3/test_unsorted.cpp -o CMakeFiles/Project3.dir/test_unsorted.cpp.s
+CMakeFiles/Project3.dir/test_heap.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Project3.dir/test_heap.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/peter/Desktop/Peter/JI/VE281/Project3/test_heap.cpp -o CMakeFiles/Project3.dir/test_heap.cpp.s
 
-CMakeFiles/Project3.dir/test_unsorted.cpp.o.requires:
+CMakeFiles/Project3.dir/test_heap.cpp.o.requires:
 
-.PHONY : CMakeFiles/Project3.dir/test_unsorted.cpp.o.requires
+.PHONY : CMakeFiles/Project3.dir/test_heap.cpp.o.requires
 
-CMakeFiles/Project3.dir/test_unsorted.cpp.o.provides: CMakeFiles/Project3.dir/test_unsorted.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/test_unsorted.cpp.o.provides.build
-.PHONY : CMakeFiles/Project3.dir/test_unsorted.cpp.o.provides
+CMakeFiles/Project3.dir/test_heap.cpp.o.provides: CMakeFiles/Project3.dir/test_heap.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/test_heap.cpp.o.provides.build
+.PHONY : CMakeFiles/Project3.dir/test_heap.cpp.o.provides
 
-CMakeFiles/Project3.dir/test_unsorted.cpp.o.provides.build: CMakeFiles/Project3.dir/test_unsorted.cpp.o
+CMakeFiles/Project3.dir/test_heap.cpp.o.provides.build: CMakeFiles/Project3.dir/test_heap.cpp.o
 
 
 # Object files for target Project3
 Project3_OBJECTS = \
-"CMakeFiles/Project3.dir/test_unsorted.cpp.o"
+"CMakeFiles/Project3.dir/test_heap.cpp.o"
 
 # External object files for target Project3
 Project3_EXTERNAL_OBJECTS =
 
-Project3: CMakeFiles/Project3.dir/test_unsorted.cpp.o
+Project3: CMakeFiles/Project3.dir/test_heap.cpp.o
 Project3: CMakeFiles/Project3.dir/build.make
 Project3: CMakeFiles/Project3.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Project3"
@@ -99,7 +99,7 @@ CMakeFiles/Project3.dir/build: Project3
 
 .PHONY : CMakeFiles/Project3.dir/build
 
-CMakeFiles/Project3.dir/requires: CMakeFiles/Project3.dir/test_unsorted.cpp.o.requires
+CMakeFiles/Project3.dir/requires: CMakeFiles/Project3.dir/test_heap.cpp.o.requires
 
 .PHONY : CMakeFiles/Project3.dir/requires
 
