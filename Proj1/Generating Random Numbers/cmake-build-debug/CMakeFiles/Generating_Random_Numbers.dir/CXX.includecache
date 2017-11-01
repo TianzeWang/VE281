@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/peter/Desktop/Peter/JI/VE281/Project1_1/Generating Random Numbers/main.cpp
+iostream
+-
+fstream
+-
+sstream
+-
+string
+-
+cstdlib
+-
+climits
+-
+ctime
+-
+random
+-
+
