@@ -61,11 +61,13 @@ private:
 //        node *next = NULL;
         size_type degree = 0;
     };
-    size_type n;
+    size_type n = 0; // Number of elements
     node *min_node;
     std::list<node> root_list;
 
     virtual void consolidate();
+
+    virtual void Fib_Heap_Link(node y, node x);
 };
 
 template <typename TYPE, typename COMP>
@@ -115,20 +117,36 @@ const TYPE &fib_heap<TYPE, COMP>::get_min() const {
 
 template <typename TYPE, typename COMP>
 fib_heap<TYPE, COMP>::size_type fib_heap::size() const {
-    return 0;
+    return this->n;
 }
 
 
 template <typename TYPE, typename COMP>
 bool fib_heap<TYPE, COMP>::empty() const {
-    return false;
+    return this->size() == 0;
 }
 
 template <typename TYPE, typename COMP>
 void fib_heap<TYPE, COMP>::consolidate() {
+    size_type size_of_A;
+    auto n0 = n;
+    double temp = log(n0) / log(1.618);
+    size_of_A = static_cast<size_type>(floor(temp)) + 1;
+    std::list<node>::iterator it;
+    for(it=root_list.begin();it!=root_list.end();it++){
 
+    }
 };
 
+template <typename TYPE, typename COMP>
+void fib_heap<TYPE, COMP>::Fib_Heap_Link(node y, node x) {
+    auto *temp=&y;
+    root_list.remove(y);
+    x.children_list.push_back(*temp);
+    *temp->parent=x;
+    x.degree++;
+    //y.mark=false
+};
 
 // Add the definitions of the member functions here. Please refer to
 // binary_heap.h for the syntax.
