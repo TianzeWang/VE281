@@ -56,13 +56,12 @@ private:
 // Initial intention to implement it with a list later to find not so
 // intuitive as directly use pointers.
 
-//        node *child = NULL;
-//        node *prev = NULL;
-//        node *next = NULL;
         size_type degree = 0;
     };
     size_type n = 0; // Number of elements
-    node *min_node;
+//    node *min_node;
+    std::list<node>::iterator min_node;
+//    std::list<node> root_list;
     std::list<node> root_list;
 
     virtual void consolidate();
@@ -74,21 +73,21 @@ template <typename TYPE, typename COMP>
 fib_heap<TYPE, COMP>::fib_heap(COMP comp) {
     n = 0;
     compare = comp;
-    min_node = NULL;
+    min_node = root_list.end();
 }
 
 template <typename TYPE, typename COMP>
 void fib_heap<TYPE, COMP>::enqueue(const TYPE &val) {
     node *new_node = new node;
     new_node->key = val;
-    if (this->min_node == NULL) {
+    if (this->min_node == root_list.end()) {
         root_list.push_front(*new_node);
-        this->min_node = new_node;
+        *this->min_node = *new_node;
     }
     else {
         root_list.push_back(*new_node);
         if (new_node->key < min_node->key) {
-            this->min_node = new_node;
+            *this->min_node = *new_node;
         }
         this->n++;
     }
@@ -96,7 +95,7 @@ void fib_heap<TYPE, COMP>::enqueue(const TYPE &val) {
 
 template <typename TYPE, typename COMP>
 TYPE fib_heap<TYPE, COMP>::dequeue_min() {
-    node *z = this->min_node;
+    node *z = &(*this->min_node);
     if (z != NULL) {
         while (!z->children_list.empty()) {
             root_list.push_back(z->children_list.back());
@@ -104,7 +103,7 @@ TYPE fib_heap<TYPE, COMP>::dequeue_min() {
         }
         root_list.remove(*z);
         this->n--;
-        if (n == 0) this->min_node = NULL;
+        if (n == 0) this->min_node = root_list.end();
         else consolidate();
     }
     return z;
@@ -132,19 +131,54 @@ void fib_heap<TYPE, COMP>::consolidate() {
     auto n0 = n;
     double temp = log(n0) / log(1.618);
     size_of_A = static_cast<size_type>(floor(temp)) + 1;
-    std::list<node> *A = new std::list<node>(size_of_A + 1);
-    for (int i = 0; i <= size_of_A; i++) {
-        A[i] = NULL;
-        std::list<node>::iterator it;
-        for (it = root_list.begin(); it != root_list.end(); it++) {
-            node x = *it;
-            int d= x.degree;
-            /*while (A[d] != ){
-
-            }*/
+//    std::list<node> *A = new std::list<node>(size_of_A + 1);
+    typename std::list<node>::iterator A[size_of_A];
+    int i;
+    for (i = 0; i <= size_of_A; i++) {
+        A[i] = root_list.end();
+    }
+    std::list<node>::iterator it;
+    for (it = root_list.begin(); it != root_list.end(); it++) {
+        node x = *it;
+        node y;
+        int d = x.degree;
+//            std::list<node>::iterator A_it;
+//            A_it=A->begin()+d;
+        while (A[d] != root_list.end()) {
+            y.key = (A[d])->key;
+            y.degree = (A[d])->degree;
+            y.parent = (A[d])->parent;
+            y.children_list = (A[d])->children_list;
+            if (x.key = y.key) {
+                // swap
+                std::swap(x, y);
+                auto temp = it;
+                it = A[d];
+                A[d] = temp;
+            }
+            Fib_Heap_Link(y, x);
+            A[d] = root_list.end();
+            d++;
+        }
+        *A[d] = x;
+    }
+    this->min_node = root_list.end();
+    for (it = root_list.begin(); it != root_list.end(); it++) {
+        if (A[it] != root_list.end()) {
+            if (this->min_node == root_list.end()) {
+                root_list.push_back(*A[it]);
+                this->min_node = A[it];
+            }
+            else {
+                root_list.push_back(*A[it]);
+                if ((*A[it]).key < (*min_node).key) {
+                    this->min_node = A[it];
+                }
+            }
         }
     }
 }
+
 
 template <typename TYPE, typename COMP>
 void fib_heap<TYPE, COMP>::Fib_Heap_Link(node y, node x) {
