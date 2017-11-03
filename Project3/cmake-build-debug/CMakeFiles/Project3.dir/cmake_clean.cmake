@@ -1,9 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Project3.dir/test_heap.cpp.obj"
+  "CMakeFiles/Project3.dir/test_heap.cpp.o"
+  "CMakeFiles/Project3.dir/main.cpp.o"
   "Project3.pdb"
-  "Project3.exe"
-  "Project3.exe.manifest"
-  "libProject3.dll.a"
+  "Project3"
 )
 
 # Per-language clean rules from dependency scanning.

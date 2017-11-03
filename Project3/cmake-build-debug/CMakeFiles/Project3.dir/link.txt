@@ -1,3 +1,1 @@
-"E:\CLion 2017.1.2\bin\cmake\bin\cmake.exe" -E remove -f CMakeFiles\Project3.dir/objects.a
-E:\MinGw\bin\ar.exe cr CMakeFiles\Project3.dir/objects.a @CMakeFiles\Project3.dir\objects1.rsp
-E:\MinGw\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\Project3.dir/objects.a -Wl,--no-whole-archive  -o Project3.exe -Wl,--out-implib,libProject3.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Project3.dir\linklibs.rsp
+/Library/Developer/CommandLineTools/usr/bin/c++  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/Project3.dir/test_heap.cpp.o CMakeFiles/Project3.dir/main.cpp.o  -o Project3 

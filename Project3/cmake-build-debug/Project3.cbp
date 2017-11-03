@@ -8,93 +8,96 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug"/>
+				<Option working_dir="/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="E:/MinGw/bin/mingw32-make.exe -f &quot;F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="E:/MinGw/bin/mingw32-make.exe -f &quot;F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="E:/MinGw/bin/mingw32-make.exe -f &quot;F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="E:/MinGw/bin/mingw32-make.exe -f &quot;F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="Project3">
-				<Option output="F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug/Project3.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="e:\mingw\bin\../lib/gcc/mingw32/5.3.0/include/c++"/>
-					<Add directory="e:\mingw\bin\../lib/gcc/mingw32/5.3.0/include/c++/mingw32"/>
-					<Add directory="e:\mingw\bin\../lib/gcc/mingw32/5.3.0/include/c++/backward"/>
-					<Add directory="e:\mingw\bin\../lib/gcc/mingw32/5.3.0/include"/>
-					<Add directory="e:\mingw\bin\../lib/gcc/mingw32/5.3.0/../../../../include"/>
-					<Add directory="e:\mingw\bin\../lib/gcc/mingw32/5.3.0/include-fixed"/>
-					<Add directory="e:\mingw\bin\../lib/gcc/mingw32/5.3.0/../../../../mingw32/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="E:/MinGw/bin/mingw32-make.exe -f &quot;F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 Project3"/>
-					<CompileFile command="E:/MinGw/bin/mingw32-make.exe -f &quot;F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="E:/MinGw/bin/mingw32-make.exe -f &quot;F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="E:/MinGw/bin/mingw32-make.exe -f &quot;F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="Project3/fast">
-				<Option output="F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug/Project3.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="e:\mingw\bin\../lib/gcc/mingw32/5.3.0/include/c++"/>
-					<Add directory="e:\mingw\bin\../lib/gcc/mingw32/5.3.0/include/c++/mingw32"/>
-					<Add directory="e:\mingw\bin\../lib/gcc/mingw32/5.3.0/include/c++/backward"/>
-					<Add directory="e:\mingw\bin\../lib/gcc/mingw32/5.3.0/include"/>
-					<Add directory="e:\mingw\bin\../lib/gcc/mingw32/5.3.0/../../../../include"/>
-					<Add directory="e:\mingw\bin\../lib/gcc/mingw32/5.3.0/include-fixed"/>
-					<Add directory="e:\mingw\bin\../lib/gcc/mingw32/5.3.0/../../../../mingw32/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="E:/MinGw/bin/mingw32-make.exe -f &quot;F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 Project3/fast"/>
-					<CompileFile command="E:/MinGw/bin/mingw32-make.exe -f &quot;F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="E:/MinGw/bin/mingw32-make.exe -f &quot;F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="E:/MinGw/bin/mingw32-make.exe -f &quot;F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="E:/MinGw/bin/mingw32-make.exe -f &quot;F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="E:/MinGw/bin/mingw32-make.exe -f &quot;F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="E:/MinGw/bin/mingw32-make.exe -f &quot;F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="E:/MinGw/bin/mingw32-make.exe -f &quot;F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug"/>
+				<Option working_dir="/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="E:/MinGw/bin/mingw32-make.exe -f &quot;F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="E:/MinGw/bin/mingw32-make.exe -f &quot;F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="E:/MinGw/bin/mingw32-make.exe -f &quot;F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="E:/MinGw/bin/mingw32-make.exe -f &quot;F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Project3">
+				<Option output="/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/Project3" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 Project3"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Project3/fast">
+				<Option output="/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/Project3" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 Project3/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/binary_heap.h">
+		<Unit filename="/Users/peter/Desktop/Peter/JI/VE281/Project3/binary_heap.h">
 			<Option target="Project3"/>
 		</Unit>
-		<Unit filename="F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/fib_heap.h">
+		<Unit filename="/Users/peter/Desktop/Peter/JI/VE281/Project3/fib_heap.h">
 			<Option target="Project3"/>
 		</Unit>
-		<Unit filename="F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/test_heap.cpp">
+		<Unit filename="/Users/peter/Desktop/Peter/JI/VE281/Project3/main.cpp">
 			<Option target="Project3"/>
 		</Unit>
-		<Unit filename="F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/unsorted_heap.h">
+		<Unit filename="/Users/peter/Desktop/Peter/JI/VE281/Project3/test_heap.cpp">
 			<Option target="Project3"/>
 		</Unit>
-		<Unit filename="F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/CMakeLists.txt">
+		<Unit filename="/Users/peter/Desktop/Peter/JI/VE281/Project3/unsorted_heap.h">
+			<Option target="Project3"/>
+		</Unit>
+		<Unit filename="/Users/peter/Desktop/Peter/JI/VE281/Project3/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
