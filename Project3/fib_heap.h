@@ -52,15 +52,15 @@ private:
         TYPE key = TYPE();
         node *parent = NULL;
 
-        std::list<node> children_list = NULL;
+        std::list<node> children_list;
 // Initial intention to implement it with a list later to find not so
 // intuitive as directly use pointers.
 
-        size_type degree = 0;
+        unsigned int degree = 0;
     };
-    size_type n = 0; // Number of elements
+    unsigned int n = 0; // Number of elements
 //    node *min_node;
-    std::list<node>::iterator min_node;
+    typename std::list<node>::iterator min_node;
 //    std::list<node> root_list;
     std::list<node> root_list;
 
@@ -86,7 +86,7 @@ void fib_heap<TYPE, COMP>::enqueue(const TYPE &val) {
     }
     else {
         root_list.push_back(*new_node);
-        if (new_node->key < min_node->key) {
+        if (compare(new_node->key, min_node->key)) {
             *this->min_node = *new_node;
         }
         this->n++;
@@ -106,16 +106,16 @@ TYPE fib_heap<TYPE, COMP>::dequeue_min() {
         if (n == 0) this->min_node = root_list.end();
         else consolidate();
     }
-    return z;
+    return z->key;
 }
 
 template <typename TYPE, typename COMP>
 const TYPE &fib_heap<TYPE, COMP>::get_min() const {
-    return min_node;
+    return (*min_node).key;
 }
 
 template <typename TYPE, typename COMP>
-fib_heap<TYPE, COMP>::size_type fib_heap::size() const {
+unsigned int fib_heap<TYPE, COMP>::size() const {
     return this->n;
 }
 
@@ -137,7 +137,7 @@ void fib_heap<TYPE, COMP>::consolidate() {
     for (i = 0; i <= size_of_A; i++) {
         A[i] = root_list.end();
     }
-    std::list<node>::iterator it;
+    typename std::list<node>::iterator it;
     for (it = root_list.begin(); it != root_list.end(); it++) {
         node x = *it;
         node y;
@@ -149,7 +149,7 @@ void fib_heap<TYPE, COMP>::consolidate() {
             y.degree = (A[d])->degree;
             y.parent = (A[d])->parent;
             y.children_list = (A[d])->children_list;
-            if (x.key = y.key) {
+            if (x.key == y.key) {
                 // swap
                 std::swap(x, y);
                 auto temp = it;
@@ -171,7 +171,7 @@ void fib_heap<TYPE, COMP>::consolidate() {
             }
             else {
                 root_list.push_back(*A[it]);
-                if ((*A[it]).key < (*min_node).key) {
+                if (compare((*A[it]).key, (*min_node).key)) {
                     this->min_node = A[it];
                 }
             }
