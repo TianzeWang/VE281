@@ -189,6 +189,7 @@ int main(int argc, char *argv[]) {
                 cout << "Path:" << endl;
                 Map c = W[end_y][end_x];
                 nonverbose_print(&c);
+                return 0;
             }
             else {
                 PQ->enqueue(*N);
