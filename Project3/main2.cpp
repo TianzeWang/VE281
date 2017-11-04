@@ -21,8 +21,9 @@ struct Map {
 
     struct compare_t {
         bool operator()(Map a, Map b) const {
-            if (a.path_cost != b.path_cost) return a.path_cost < b.path_cost;
-            if (a.P.height != b.P.height) return a.P.height < b.P.height;
+            if (a.path_cost != b.path_cost) return a.path_cost > b.path_cost;
+            else if (a.P.height != b.P.height) return a.P.height < b.P.height;
+            else return a.P.width <= b.P.width;
         }
     };
 };
@@ -76,6 +77,11 @@ int main(int argc, char *argv[]) {
 
 //        break;// for debug only
 // }
+
+/*
+    Note that it's in the form of W[y][x]
+*/
+
     int width, height;
     cin >> width;
     cin >> height;
@@ -113,14 +119,14 @@ int main(int argc, char *argv[]) {
 // **********
 //
     int step = 0;
-    W[start_x][start_y].path_cost = W[start_x][start_y].weight;
-    W[start_x][start_y].is_reached = true;
-    PQ->enqueue(W[start_x][start_y]);
+    W[start_y][start_x].path_cost = W[start_y][start_x].weight;
+    W[start_y][start_x].is_reached = true;
+    PQ->enqueue(W[start_y][start_x]);
     while (!PQ->empty()) {
         auto C = PQ->dequeue_min();
         if (verbose) {
             cout << "Step " << step << endl;
-            cout << "Choose cell (" << C.P.width << ", " << C.P.height << ") with accumulated length " << C.path_cost;
+            cout << "Choose cell (" << C.P.width << ", " << C.P.height << ") with accumulated length " << C.path_cost << endl;
         }
         step++;
         Map *N;
@@ -132,6 +138,7 @@ int main(int argc, char *argv[]) {
                     N->is_reached = true;
                     N->Predecessor = &C;
                 }
+                else continue;
             }
             else if (i == 2 && C.P.height + 1 < height) {
                 N = &W[C.P.height + 1][C.P.width];
@@ -140,6 +147,7 @@ int main(int argc, char *argv[]) {
                     N->is_reached = true;
                     N->Predecessor = &C;
                 }
+                else continue;
             }
             else if (i == 3 && C.P.width - 1 >= 0) {
                 N = &W[C.P.height][C.P.width - 1];
@@ -148,6 +156,7 @@ int main(int argc, char *argv[]) {
                     N->is_reached = true;
                     N->Predecessor = &C;
                 }
+                else continue;
             }
             else if (i == 4 && C.P.height - 1 >= 0) {
                 N = &W[C.P.height - 1][C.P.width];
@@ -156,6 +165,7 @@ int main(int argc, char *argv[]) {
                     N->is_reached = true;
                     N->Predecessor = &C;
                 }
+                else continue;
             }
             else continue;
 
@@ -171,9 +181,9 @@ int main(int argc, char *argv[]) {
 
                 cout << "The shortest path from (" << start_x << ", " << start_y << ") to (" << end_x << ", " << end_y
                      << ") ";
-                cout << "is" << W[end_x][end_y].path_cost << "." << endl;
+                cout << "is" << W[end_y][end_x].path_cost << "." << endl;
                 cout << "Path:" << endl;
-                Map c = W[end_x][end_y];
+                Map c = W[end_y][end_x];
                 nonverbose_print(&c);
 
             }

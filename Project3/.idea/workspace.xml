@@ -12,7 +12,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2aa7a1fd-0e45-471a-9d2b-39d3216b53a0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main2.cpp" afterPath="$PROJECT_DIR$/main2.cpp" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -50,12 +49,12 @@
       <file leaf-file-name="main2.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main2.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="85" column="33" lean-forward="true" selection-start-line="85" selection-start-column="33" selection-end-line="85" selection-end-column="33" />
+            <state relative-caret-position="200">
+              <caret line="185" column="38" lean-forward="false" selection-start-line="185" selection-start-column="38" selection-end-line="185" selection-end-column="38" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
                 <element signature="e#92#116#0" expanded="true" />
-                <element signature="e#5706#5881#0" expanded="false" />
+                <element signature="e#5941#6116#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -101,8 +100,8 @@
       <file leaf-file-name="unsorted_heap.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/unsorted_heap.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="63" column="24" lean-forward="false" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
+            <state relative-caret-position="309">
+              <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
               <folding>
                 <element signature="e#49#69#0" expanded="true" />
                 <element signature="e#319#368#0" expanded="true" />
@@ -265,7 +264,7 @@
       <workItem from="1509528294757" duration="404000" />
       <workItem from="1509544764705" duration="7777000" />
       <workItem from="1509598562585" duration="8638000" />
-      <workItem from="1509706571714" duration="19522000" />
+      <workItem from="1509706571714" duration="21284000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1509545878611</created>
@@ -292,7 +291,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65799000" />
+    <option name="totallyTimeSpent" value="67561000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -399,45 +398,27 @@
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/unsorted_heap.h</url>
-          <line>69</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main2.cpp</url>
-          <line>171</line>
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main2.cpp</url>
-          <line>179</line>
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main2.cpp</url>
-          <line>117</line>
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main2.cpp</url>
-          <line>96</line>
+          <line>102</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main2.cpp</url>
-          <line>51</line>
-          <option name="timeStamp" value="46" />
+          <line>125</line>
+          <option name="timeStamp" value="50" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="47" />
+      <option name="time" value="51" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
         <watch expression="W[0][0]" language="ObjectiveC" />
         <watch expression="W[0][3]" language="ObjectiveC" />
+        <watch expression="W[3][2]" language="ObjectiveC" />
+        <watch expression="W[2][3]" language="ObjectiveC" />
       </configuration>
     </watches-manager>
   </component>
@@ -767,20 +748,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/unsorted_heap.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="63" column="24" lean-forward="false" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
-          <folding>
-            <element signature="e#49#69#0" expanded="true" />
-            <element signature="e#319#368#0" expanded="true" />
-            <element signature="e#1990#2020#0" expanded="true" />
-            <element signature="e#2375#2405#0" expanded="true" />
-            <element signature="e#2700#2730#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/list">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
@@ -880,14 +847,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/unsorted_heap.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+          <folding>
+            <element signature="e#49#69#0" expanded="true" />
+            <element signature="e#319#368#0" expanded="true" />
+            <element signature="e#1990#2020#0" expanded="true" />
+            <element signature="e#2375#2405#0" expanded="true" />
+            <element signature="e#2700#2730#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main2.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="85" column="33" lean-forward="true" selection-start-line="85" selection-start-column="33" selection-end-line="85" selection-end-column="33" />
+        <state relative-caret-position="200">
+          <caret line="185" column="38" lean-forward="false" selection-start-line="185" selection-start-column="38" selection-end-line="185" selection-end-column="38" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
             <element signature="e#92#116#0" expanded="true" />
-            <element signature="e#5706#5881#0" expanded="false" />
+            <element signature="e#5941#6116#0" expanded="false" />
           </folding>
         </state>
       </provider>
