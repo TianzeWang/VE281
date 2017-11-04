@@ -34,6 +34,7 @@ void nonverbose_print(Map *a) {
     if (a->Predecessor != NULL) {
         nonverbose_print(a->Predecessor);
     }
+
     cout << "(" << a->P.width << ", " << a->P.height << ")" << endl;
 }
 
@@ -123,10 +124,11 @@ int main(int argc, char *argv[]) {
     W[start_y][start_x].is_reached = true;
     PQ->enqueue(W[start_y][start_x]);
     while (!PQ->empty()) {
-        auto C = PQ->dequeue_min();
+        Map C = PQ->dequeue_min();
         if (verbose) {
             cout << "Step " << step << endl;
-            cout << "Choose cell (" << C.P.width << ", " << C.P.height << ") with accumulated length " << C.path_cost << endl;
+            cout << "Choose cell (" << C.P.width << ", " << C.P.height << ") with accumulated length " << C.path_cost
+                 << endl;
         }
         step++;
         Map *N;
@@ -136,7 +138,7 @@ int main(int argc, char *argv[]) {
                 if (N->is_reached != 1) {
                     N->path_cost = C.path_cost + N->weight;
                     N->is_reached = true;
-                    N->Predecessor = &C;
+                    N->Predecessor = &W[C.P.height][C.P.width];
                 }
                 else continue;
             }
@@ -145,7 +147,8 @@ int main(int argc, char *argv[]) {
                 if (N->is_reached != 1) {
                     N->path_cost = C.path_cost + N->weight;
                     N->is_reached = true;
-                    N->Predecessor = &C;
+//                    N->Predecessor = &C;
+                    N->Predecessor = &W[C.P.height][C.P.width];
                 }
                 else continue;
             }
@@ -154,7 +157,7 @@ int main(int argc, char *argv[]) {
                 if (N->is_reached != 1) {
                     N->path_cost = C.path_cost + N->weight;
                     N->is_reached = true;
-                    N->Predecessor = &C;
+                    N->Predecessor = &W[C.P.height][C.P.width];
                 }
                 else continue;
             }
@@ -163,7 +166,7 @@ int main(int argc, char *argv[]) {
                 if (N->is_reached != 1) {
                     N->path_cost = C.path_cost + N->weight;
                     N->is_reached = true;
-                    N->Predecessor = &C;
+                    N->Predecessor = &W[C.P.height][C.P.width];
                 }
                 else continue;
             }
@@ -178,14 +181,14 @@ int main(int argc, char *argv[]) {
                 //**************
                 //**************
                 //**************
-
+                cout << "Cell (" << end_x << ", " << end_y << ") with accumulated length " << W[end_y][end_x].path_cost
+                     << " is the ending point." << endl;
                 cout << "The shortest path from (" << start_x << ", " << start_y << ") to (" << end_x << ", " << end_y
                      << ") ";
-                cout << "is" << W[end_y][end_x].path_cost << "." << endl;
+                cout << "is " << W[end_y][end_x].path_cost << "." << endl;
                 cout << "Path:" << endl;
                 Map c = W[end_y][end_x];
                 nonverbose_print(&c);
-
             }
             else {
                 PQ->enqueue(*N);
@@ -203,6 +206,7 @@ int main(int argc, char *argv[]) {
            }
            cout << endl;
        }*/
+    return 0;
 }
 
 
