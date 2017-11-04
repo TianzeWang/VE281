@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
         static struct option long_option[] = {{"implementation", required_argument, NULL, 'i'},
                                               {"verbose",        no_argument,       NULL, 'v'},
                                               {0, 0, 0,                                   0}};
-        auto c = getopt_long(argc, argv, "iv:", long_option, NULL);
+        auto c = getopt_long(argc, argv, "vi:", long_option, NULL);
         if (c == -1) break;
 
 //        switch (c) {
@@ -72,37 +72,38 @@ int main(int argc, char *argv[]) {
         else if (c == 'i') {
             implementation = optarg;
         }
+    }
 
 //        break;// for debug only
 // }
-        int width, height;
-        cin >> width;
-        cin >> height;
-        int start_x, start_y, end_x, end_y;
-        cin >> start_x >> start_y;
-        cin >> end_x >> end_y;
-        int i;
-        auto **W = new Map *[height];
-        for (i = 0; i < height; i++) {
-            W[i] = new Map[width];
+    int width, height;
+    cin >> width;
+    cin >> height;
+    int start_x, start_y, end_x, end_y;
+    cin >> start_x >> start_y;
+    cin >> end_x >> end_y;
+    int i;
+    auto **W = new Map *[height];
+    for (i = 0; i < height; i++) {
+        W[i] = new Map[width];
+    }
+    for (i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+            cin >> W[i][j].weight;
+            W[i][j].P.height = i;
+            W[i][j].P.width = j;
         }
-        for (i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                cin >> W[i][j].weight;
-                W[i][j].P.height = i;
-                W[i][j].P.width = j;
-            }
-        }
-        priority_queue<Map, Map::compare_t> *PQ;
-        if (implementation == "BINARY") {
-            PQ = new binary_heap<Map, Map::compare_t>();
-        }
-        else if (implementation == "UNSORTED") {
-            PQ = new unsorted_heap<Map, Map::compare_t>();
-        }
-        else if (implementation == "FIBONACCI") {
+    }
+    priority_queue<Map, Map::compare_t> *PQ;
+    if (implementation == "BINARY") {
+        PQ = new binary_heap<Map, Map::compare_t>();
+    }
+    else if (implementation == "UNSORTED") {
+        PQ = new unsorted_heap<Map, Map::compare_t>();
+    }
+    else if (implementation == "FIBONACCI") {
 //            PQ = new fib_heap<Map, Map::compare_t>();
-        }
+    }
 
 // Here begins to Rounting Algorithm
 // **********
@@ -111,88 +112,87 @@ int main(int argc, char *argv[]) {
 // **********
 // **********
 //
-        int step = 0;
-        W[start_x][start_y].path_cost = W[start_x][start_y].weight;
-        W[start_x][start_y].is_reached = true;
-        PQ->enqueue(W[start_x][start_y]);
-        while (!PQ->empty()) {
-            auto C = PQ->dequeue_min();
-            if (verbose) {
-                cout << "Step " << step << endl;
-                cout << "Choose cell (" << C.P.width << ", " << C.P.height << ") with accumulated length "
-                     << C.path_cost;
+    int step = 0;
+    W[start_x][start_y].path_cost = W[start_x][start_y].weight;
+    W[start_x][start_y].is_reached = true;
+    PQ->enqueue(W[start_x][start_y]);
+    while (!PQ->empty()) {
+        auto C = PQ->dequeue_min();
+        if (verbose) {
+            cout << "Step " << step << endl;
+            cout << "Choose cell (" << C.P.width << ", " << C.P.height << ") with accumulated length " << C.path_cost;
+        }
+        step++;
+        Map *N;
+        for (int i = 1; i < 5; i++) {
+            if (i == 1 && C.P.width + 1 < width) {
+                N = &W[C.P.height][C.P.width + 1];
+                if (N->is_reached != 1) {
+                    N->path_cost = C.path_cost + N->weight;
+                    N->is_reached = true;
+                    N->Predecessor = &C;
+                }
             }
-            step++;
-            Map *N;
-            for (int i = 1; i < 5; i++) {
-                if (i == 1 && C.P.width + 1 < width) {
-                    N = &W[C.P.height][C.P.width + 1];
-                    if (N->is_reached != 1) {
-                        N->path_cost = C.path_cost + N->weight;
-                        N->is_reached = true;
-                        N->Predecessor = &C;
-                    }
+            else if (i == 2 && C.P.height + 1 < height) {
+                N = &W[C.P.height + 1][C.P.width];
+                if (N->is_reached != 1) {
+                    N->path_cost = C.path_cost + N->weight;
+                    N->is_reached = true;
+                    N->Predecessor = &C;
                 }
-                else if (i == 2 && C.P.height + 1 < height) {
-                    N = &W[C.P.height + 1][C.P.width];
-                    if (N->is_reached != 1) {
-                        N->path_cost = C.path_cost + N->weight;
-                        N->is_reached = true;
-                        N->Predecessor = &C;
-                    }
+            }
+            else if (i == 3 && C.P.width - 1 >= 0) {
+                N = &W[C.P.height][C.P.width - 1];
+                if (N->is_reached != 1) {
+                    N->path_cost = C.path_cost + N->weight;
+                    N->is_reached = true;
+                    N->Predecessor = &C;
                 }
-                else if (i == 3 && C.P.width - 1 >= 0) {
-                    N = &W[C.P.height][C.P.width - 1];
-                    if (N->is_reached != 1) {
-                        N->path_cost = C.path_cost + N->weight;
-                        N->is_reached = true;
-                        N->Predecessor = &C;
-                    }
+            }
+            else if (i == 4 && C.P.height - 1 >= 0) {
+                N = &W[C.P.height - 1][C.P.width];
+                if (N->is_reached != 1) {
+                    N->path_cost = C.path_cost + N->weight;
+                    N->is_reached = true;
+                    N->Predecessor = &C;
                 }
-                else if (i == 4 && C.P.height - 1 >= 0) {
-                    N = &W[C.P.height - 1][C.P.width];
-                    if (N->is_reached != 1) {
-                        N->path_cost = C.path_cost + N->weight;
-                        N->is_reached = true;
-                        N->Predecessor = &C;
-                    }
-                }
-                else continue;
+            }
+            else continue;
 
-                if (N->P.width == end_x && N->P.height == end_y) {
+            if (N->P.width == end_x && N->P.height == end_y) {
 
-                    //Here Begins the function of Trace back
-                    //**************
-                    //**************
-                    //**************
-                    //**************
-                    //**************
-                    //**************
+                //Here Begins the function of Trace back
+                //**************
+                //**************
+                //**************
+                //**************
+                //**************
+                //**************
 
-                    cout << "The shortest path from (" << start_x << ", " << start_y << ") to (" << end_x << ", "
-                         << end_y << ") ";
-                    cout << "is" << W[end_x][end_y].path_cost << "." << endl;
-                    cout << "Path:" << endl;
-                    Map c = W[end_x][end_y];
-                    nonverbose_print(&c);
+                cout << "The shortest path from (" << start_x << ", " << start_y << ") to (" << end_x << ", " << end_y
+                     << ") ";
+                cout << "is" << W[end_x][end_y].path_cost << "." << endl;
+                cout << "Path:" << endl;
+                Map c = W[end_x][end_y];
+                nonverbose_print(&c);
 
-                }
-                else {
-                    PQ->enqueue(*N);
-                    if (verbose) {
-                        cout << "Cell (" << N->P.width << ", " << N->P.height << ") with accumulated length "
-                             << N->path_cost << " is added into the queue." << endl;
-                    }
+            }
+            else {
+                PQ->enqueue(*N);
+                if (verbose) {
+                    cout << "Cell (" << N->P.width << ", " << N->P.height << ") with accumulated length "
+                         << N->path_cost << " is added into the queue." << endl;
                 }
             }
         }
-//For debug
-        /*   for (i = 0; i < height; i++) {
-               for (int j = 0; j < width; j++) {
-                   cout << W[i][j].weight << " ";
-               }
-               cout << endl;
-           }*/
     }
+//For debug
+    /*   for (i = 0; i < height; i++) {
+           for (int j = 0; j < width; j++) {
+               cout << W[i][j].weight << " ";
+           }
+           cout << endl;
+       }*/
 }
+
 
