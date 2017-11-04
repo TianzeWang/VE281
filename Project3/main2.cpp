@@ -169,17 +169,13 @@ int main(int argc, char *argv[]) {
                     //**************
                     //**************
 
-                    if (!verbose) {
-                        cout << "The shortest path from (" << start_x << ", " << start_y << ") to (" << end_x << ", "
-                             << end_y << ") ";
-                        cout << "is" << W[end_x][end_y].path_cost << "." << endl;
-                        cout << "Path:" << endl;
-                        Map c = W[end_x][end_y];
-                        nonverbose_print(&c);
-                    }
-                    else {
+                    cout << "The shortest path from (" << start_x << ", " << start_y << ") to (" << end_x << ", "
+                         << end_y << ") ";
+                    cout << "is" << W[end_x][end_y].path_cost << "." << endl;
+                    cout << "Path:" << endl;
+                    Map c = W[end_x][end_y];
+                    nonverbose_print(&c);
 
-                    }
                 }
                 else {
                     PQ->enqueue(*N);
