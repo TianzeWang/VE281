@@ -12,25 +12,21 @@ algorithm
 priority_queue.h
 /Users/peter/Desktop/Peter/JI/VE281/Project3/priority_queue.h
 
-/Users/peter/Desktop/Peter/JI/VE281/Project3/fib_heap2.h
+/Users/peter/Desktop/Peter/JI/VE281/Project3/fib_heap.h
 algorithm
--
-cmath
--
-list
 -
 priority_queue.h
 /Users/peter/Desktop/Peter/JI/VE281/Project3/priority_queue.h
 
-/Users/peter/Desktop/Peter/JI/VE281/Project3/main2.cpp
+/Users/peter/Desktop/Peter/JI/VE281/Project3/main.cpp
 iostream
 -
 priority_queue.h
 /Users/peter/Desktop/Peter/JI/VE281/Project3/priority_queue.h
 getopt.h
 -
-fib_heap2.h
-/Users/peter/Desktop/Peter/JI/VE281/Project3/fib_heap2.h
+fib_heap.h
+/Users/peter/Desktop/Peter/JI/VE281/Project3/fib_heap.h
 binary_heap.h
 /Users/peter/Desktop/Peter/JI/VE281/Project3/binary_heap.h
 unsorted_heap.h

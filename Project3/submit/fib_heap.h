@@ -4,10 +4,10 @@
 #include <algorithm>
 #include "priority_queue.h"
 
-// OVERVIEW: A specialized version of the 'heap' ADT implemented as a fib
+// OVERVIEW: A specialized version of the 'heap' ADT implemented as a binary
 //           heap.
 template <typename TYPE, typename COMP = std::less<TYPE> >
-class fib_heap : public priority_queue<TYPE, COMP> {
+class binary_heap : public priority_queue<TYPE, COMP> {
 public:
     typedef unsigned size_type;
 
@@ -15,7 +15,7 @@ public:
     //          See test_heap.cpp for more details on functor.
     // MODIFIES: this
     // RUNTIME: O(1)
-    fib_heap(COMP comp = COMP());
+    binary_heap(COMP comp = COMP());
 
     // EFFECTS: Add a new element to the heap.
     // MODIFIES: this
@@ -58,21 +58,21 @@ private:
 };
 
 template <typename TYPE, typename COMP>
-fib_heap<TYPE, COMP>::fib_heap(COMP comp) {
+binary_heap<TYPE, COMP>::binary_heap(COMP comp) {
     compare = comp;
     // Fill in the remaining lines if you need.
     data.push_back(TYPE());
 }
 
 template <typename TYPE, typename COMP>
-void fib_heap<TYPE, COMP>::enqueue(const TYPE &val) {
+void binary_heap<TYPE, COMP>::enqueue(const TYPE &val) {
     // Fill in the body.
     data.push_back(val);
     this->sort();
 }
 
 template <typename TYPE, typename COMP>
-TYPE fib_heap<TYPE, COMP>::dequeue_min() {
+TYPE binary_heap<TYPE, COMP>::dequeue_min() {
     // Fill in the body.
     std::swap(data[1], data[data.size() - 1]);
     auto temp = data[data.size() - 1];
@@ -82,26 +82,26 @@ TYPE fib_heap<TYPE, COMP>::dequeue_min() {
 }
 
 template <typename TYPE, typename COMP>
-const TYPE &fib_heap<TYPE, COMP>::get_min() const {
+const TYPE &binary_heap<TYPE, COMP>::get_min() const {
     // Fill in the body.
     return data[1];
 }
 
 template <typename TYPE, typename COMP>
-bool fib_heap<TYPE, COMP>::empty() const {
+bool binary_heap<TYPE, COMP>::empty() const {
     // Fill in the body.
     return this->size() == 0;
 }
 
 template <typename TYPE, typename COMP>
-unsigned fib_heap<TYPE, COMP>::size() const {
+unsigned binary_heap<TYPE, COMP>::size() const {
     // Fill in the body.
     auto val = data.size() - 1;
     return static_cast<unsigned int>(val);
 }
 
 template <typename TYPE, typename COMP>
-void fib_heap<TYPE, COMP>::sort() {
+void binary_heap<TYPE, COMP>::sort() {
     size_type temp = (data.size() - 1) / 2;
     for (size_type i = temp; i >= 1; i--) {
         auto j = i;

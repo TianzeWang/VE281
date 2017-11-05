@@ -1,7 +1,7 @@
 #include <iostream>
 #include "priority_queue.h"
 #include <getopt.h>
-#include "fib_heap.h"
+#include "fib_heap2.h"
 #include "binary_heap.h"
 #include "unsorted_heap.h"
 
@@ -21,9 +21,9 @@ struct Map {
 
     struct compare_t {
         bool operator()(Map a, Map b) const {
-            if (a.path_cost != b.path_cost) return a.path_cost < b.path_cost;
-            else if (a.P.width != b.P.width) return a.P.width < b.P.width;
-            else return a.P.height < b.P.height;
+            if (a.path_cost != b.path_cost) return a.path_cost > b.path_cost;
+            else if (a.P.height != b.P.height) return a.P.height > b.P.height;
+            else return a.P.width > b.P.width;
         }
     };
 };
@@ -127,7 +127,7 @@ int main(int argc, char *argv[]) {
         Map C = PQ->dequeue_min();
         if (verbose) {
             cout << "Step " << step << endl;
-            cout << "Choose cell (" << C.P.width << ", " << C.P.height << ") with accumulated length " << C.path_cost << "."
+            cout << "Choose cell (" << C.P.width << ", " << C.P.height << ") with accumulated length " << C.path_cost
                  << endl;
         }
         step++;

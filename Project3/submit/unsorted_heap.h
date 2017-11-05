@@ -70,7 +70,7 @@ TYPE unsorted_heap<TYPE, COMP>::dequeue_min() {
     auto temp = data[1];
     auto a = 0;
     for (size_type i = 1; i <= data.size() - 1; i++) {
-        if (compare(data[i], temp)) {
+        if (!compare(data[i], temp)) {
             temp = data[i];
             a = i;
         }
@@ -85,7 +85,7 @@ const TYPE &unsorted_heap<TYPE, COMP>::get_min() const {
     // Fill in the body.
     auto temp = data[1];
     for (size_type i = 1; i <= data.size() - 1; i++) {
-        if (compare(data[i], temp)) {
+        if (!compare(data[i], temp)) {
             temp = data[i];
         }
     }
