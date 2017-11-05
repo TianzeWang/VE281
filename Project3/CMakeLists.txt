@@ -3,5 +3,5 @@ project(Project3)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES binary_heap.h unsorted_heap.h fib_heap.h main2.cpp)
-add_executable(Project3 ${SOURCE_FILES} main2.cpp)
+set(SOURCE_FILES test_heap.cpp fib_heap2.h)
+add_executable(Project3 ${SOURCE_FILES})

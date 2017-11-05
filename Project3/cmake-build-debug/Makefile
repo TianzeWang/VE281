@@ -123,32 +123,32 @@ Project3/fast:
 	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/build
 .PHONY : Project3/fast
 
-main2.o: main2.cpp.o
+test_heap.o: test_heap.cpp.o
 
-.PHONY : main2.o
+.PHONY : test_heap.o
 
 # target to build an object file
-main2.cpp.o:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/main2.cpp.o
-.PHONY : main2.cpp.o
+test_heap.cpp.o:
+	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/test_heap.cpp.o
+.PHONY : test_heap.cpp.o
 
-main2.i: main2.cpp.i
+test_heap.i: test_heap.cpp.i
 
-.PHONY : main2.i
+.PHONY : test_heap.i
 
 # target to preprocess a source file
-main2.cpp.i:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/main2.cpp.i
-.PHONY : main2.cpp.i
+test_heap.cpp.i:
+	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/test_heap.cpp.i
+.PHONY : test_heap.cpp.i
 
-main2.s: main2.cpp.s
+test_heap.s: test_heap.cpp.s
 
-.PHONY : main2.s
+.PHONY : test_heap.s
 
 # target to generate assembly for a file
-main2.cpp.s:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/main2.cpp.s
-.PHONY : main2.cpp.s
+test_heap.cpp.s:
+	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/test_heap.cpp.s
+.PHONY : test_heap.cpp.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Project3"
-	@echo "... main2.o"
-	@echo "... main2.i"
-	@echo "... main2.s"
+	@echo "... test_heap.o"
+	@echo "... test_heap.i"
+	@echo "... test_heap.s"
 .PHONY : help
 
 

@@ -1,7 +1,7 @@
 #include <iostream>
 #include "priority_queue.h"
 #include <getopt.h>
-//#include "fib_heap.h"
+#include "fib_heap2.h"
 #include "binary_heap.h"
 #include "unsorted_heap.h"
 
@@ -22,8 +22,8 @@ struct Map {
     struct compare_t {
         bool operator()(Map a, Map b) const {
             if (a.path_cost != b.path_cost) return a.path_cost > b.path_cost;
-            else if (a.P.height != b.P.height) return a.P.height < b.P.height;
-            else return a.P.width <= b.P.width;
+            else if (a.P.height != b.P.height) return a.P.height > b.P.height;
+            else return a.P.width > b.P.width;
         }
     };
 };
@@ -109,7 +109,7 @@ int main(int argc, char *argv[]) {
         PQ = new unsorted_heap<Map, Map::compare_t>();
     }
     else if (implementation == "FIBONACCI") {
-//            PQ = new fib_heap<Map, Map::compare_t>();
+        PQ = new fib_heap<Map, Map::compare_t>();
     }
 
 // Here begins to Rounting Algorithm
