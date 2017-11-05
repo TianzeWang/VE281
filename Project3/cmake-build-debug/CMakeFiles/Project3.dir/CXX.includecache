@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+/Users/peter/Desktop/Peter/JI/VE281/Project3/binary_heap.h
+algorithm
+-
+priority_queue.h
+/Users/peter/Desktop/Peter/JI/VE281/Project3/priority_queue.h
+
 /Users/peter/Desktop/Peter/JI/VE281/Project3/fib_heap2.h
 algorithm
 -
@@ -16,17 +22,29 @@ list
 priority_queue.h
 /Users/peter/Desktop/Peter/JI/VE281/Project3/priority_queue.h
 
+/Users/peter/Desktop/Peter/JI/VE281/Project3/main2.cpp
+iostream
+-
+priority_queue.h
+/Users/peter/Desktop/Peter/JI/VE281/Project3/priority_queue.h
+getopt.h
+-
+fib_heap2.h
+/Users/peter/Desktop/Peter/JI/VE281/Project3/fib_heap2.h
+binary_heap.h
+/Users/peter/Desktop/Peter/JI/VE281/Project3/binary_heap.h
+unsorted_heap.h
+/Users/peter/Desktop/Peter/JI/VE281/Project3/unsorted_heap.h
+
 /Users/peter/Desktop/Peter/JI/VE281/Project3/priority_queue.h
 functional
 -
 vector
 -
 
-/Users/peter/Desktop/Peter/JI/VE281/Project3/test_heap.cpp
-iostream
+/Users/peter/Desktop/Peter/JI/VE281/Project3/unsorted_heap.h
+algorithm
 -
 priority_queue.h
 /Users/peter/Desktop/Peter/JI/VE281/Project3/priority_queue.h
-fib_heap2.h
-/Users/peter/Desktop/Peter/JI/VE281/Project3/fib_heap2.h
 

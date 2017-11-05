@@ -2,16 +2,12 @@
 #define FIB_HEAP_H
 
 #include <algorithm>
-#include <cmath>
-#include <list>
 #include "priority_queue.h"
 
-using namespace std;
-
-// OVERVIEW: A specialized version of the 'heap' ADT implemented as a 
-//           Fibonacci heap.
+// OVERVIEW: A specialized version of the 'heap' ADT implemented as a binary
+//           heap.
 template <typename TYPE, typename COMP = std::less<TYPE> >
-class fib_heap : public priority_queue<TYPE, COMP> {
+class binary_heap : public priority_queue<TYPE, COMP> {
 public:
     typedef unsigned size_type;
 
@@ -19,17 +15,17 @@ public:
     //          See test_heap.cpp for more details on functor.
     // MODIFIES: this
     // RUNTIME: O(1)
-    fib_heap(COMP comp = COMP());
+    binary_heap(COMP comp = COMP());
 
     // EFFECTS: Add a new element to the heap.
     // MODIFIES: this
-    // RUNTIME: O(1)
+    // RUNTIME: O(log(n))
     virtual void enqueue(const TYPE &val);
 
     // EFFECTS: Remove and return the smallest element from the heap.
     // REQUIRES: The heap is not empty.
     // MODIFIES: this
-    // RUNTIME: Amortized O(log(n))
+    // RUNTIME: O(log(n))
     virtual TYPE dequeue_min();
 
     // EFFECTS: Return the smallest element of the heap.
@@ -45,154 +41,91 @@ public:
     // RUNTIME: O(1)
     virtual bool empty() const;
 
+
 private:
+    // Note: This vector *must* be used in your heap implementation.
+    std::vector<TYPE> data;
     // Note: compare is a functor object
     COMP compare;
-
 private:
-    struct node {
-        TYPE key = TYPE();
-        node *parent = NULL;
+    // Add any additional member functions or data you require here.
 
-        std::list<node> children_list;
-// Initial intention to implement it with a list later to find not so
-// intuitive as directly use pointers.
-
-        unsigned int degree = 0;
-    };
-    unsigned int n = 0; // Number of elements
-//    node *min_node;
-    typename std::list<node>::iterator min_node;
-//    std::list<node> root_list;
-    std::list<node> root_list;
-
-    virtual void consolidate();
-
-    virtual void Fib_Heap_Link(node y, node x);
+    // EFFECTS: Sort the heap according to the specified COMP
+    // REQUIRES: The heap is not empty.
+    // MODIFIES: this
+    // RUNTIME: O(n)
+    virtual void sort();
 };
 
 template <typename TYPE, typename COMP>
-fib_heap<TYPE, COMP>::fib_heap(COMP comp) {
-    n = 0;
+binary_heap<TYPE, COMP>::binary_heap(COMP comp) {
     compare = comp;
-    min_node = root_list.end();
+    // Fill in the remaining lines if you need.
+    data.push_back(TYPE());
 }
 
 template <typename TYPE, typename COMP>
-void fib_heap<TYPE, COMP>::enqueue(const TYPE &val) {
-    node *new_node = new node;
-    new_node->key = val;
-    if (this->min_node == root_list.end()) {
-        root_list.push_front(*new_node);
-        *this->min_node = *new_node;
-    }
-    else {
-        root_list.push_back(*new_node);
-        if (compare(new_node->key, min_node->key)) {
-            *this->min_node = *new_node;
-        }
-        this->n++;
-    }
+void binary_heap<TYPE, COMP>::enqueue(const TYPE &val) {
+    // Fill in the body.
+    data.push_back(val);
+    this->sort();
 }
 
 template <typename TYPE, typename COMP>
-TYPE fib_heap<TYPE, COMP>::dequeue_min() {
-    node *z = &(*this->min_node);
-    if (z != NULL) {
-        while (!z->children_list.empty()) {
-            root_list.push_back(z->children_list.back());
-            z->children_list.pop_back();
-        }
-        root_list.remove(*z);
-        this->n--;
-        if (n == 0) this->min_node = root_list.end();
-        else consolidate();
-    }
-    return z->key;
+TYPE binary_heap<TYPE, COMP>::dequeue_min() {
+    // Fill in the body.
+    std::swap(data[1], data[data.size() - 1]);
+    auto temp = data[data.size() - 1];
+    data.pop_back();
+    this->sort();
+    return temp;
 }
 
 template <typename TYPE, typename COMP>
-const TYPE &fib_heap<TYPE, COMP>::get_min() const {
-    return (*min_node).key;
+const TYPE &binary_heap<TYPE, COMP>::get_min() const {
+    // Fill in the body.
+    return data[1];
 }
 
 template <typename TYPE, typename COMP>
-unsigned int fib_heap<TYPE, COMP>::size() const {
-    return this->n;
-}
-
-
-template <typename TYPE, typename COMP>
-bool fib_heap<TYPE, COMP>::empty() const {
+bool binary_heap<TYPE, COMP>::empty() const {
+    // Fill in the body.
     return this->size() == 0;
 }
 
 template <typename TYPE, typename COMP>
-void fib_heap<TYPE, COMP>::consolidate() {
-    size_type size_of_A;
-    auto n0 = n;
-    double temp = log(n0) / log(1.618);
-    size_of_A = static_cast<size_type>(floor(temp)) + 1;
-//    std::list<node> *A = new std::list<node>(size_of_A + 1);
-    typename std::list<node>::iterator A[size_of_A];
-    int i;
-    for (i = 0; i <= size_of_A; i++) {
-        A[i] = root_list.end();
-    }
-    typename std::list<node>::iterator it;
-    for (it = root_list.begin(); it != root_list.end(); it++) {
-        node x = *it;
-        node y;
-        int d = x.degree;
-//            std::list<node>::iterator A_it;
-//            A_it=A->begin()+d;
-        while (A[d] != root_list.end()) {
-            y.key = (A[d])->key;
-            y.degree = (A[d])->degree;
-            y.parent = (A[d])->parent;
-            y.children_list = (A[d])->children_list;
-            if (compare(x.key,y.key)) {
-                // swap
-                std::swap(x, y);
-                auto temp = it;
-                it = A[d];
-                A[d] = temp;
-            }
-            Fib_Heap_Link(y, x);
-            A[d] = root_list.end();
-            d++;
-        }
-        *A[d] = x;
-    }
-    this->min_node = root_list.end();
-    for (it = root_list.begin(); it != root_list.end(); it++) {
-        if (A[it] != root_list.end()) {
-            if (this->min_node == root_list.end()) {
-                root_list.push_back(*A[it]);
-                this->min_node = A[it];
+unsigned binary_heap<TYPE, COMP>::size() const {
+    // Fill in the body.
+    auto val = data.size() - 1;
+    return static_cast<unsigned int>(val);
+}
+
+template <typename TYPE, typename COMP>
+void binary_heap<TYPE, COMP>::sort() {
+    size_type temp = (data.size() - 1) / 2;
+    for (size_type i = temp; i >= 1; i--) {
+        auto j = i;
+        while (2 * j <= data.size() - 1) {
+            if (2 * j + 1 > data.size() - 1) {
+                if (!compare(data[j], data[2 * j])) {
+                    std::swap(data[j], data[2 * j]);
+                    j = 2 * j;
+                }
+                else break;
             }
             else {
-                root_list.push_back(*A[it]);
-                if (compare((*A[it]).key, (*min_node).key)) {
-                    this->min_node = A[it];
+                if (!compare(data[j], data[2 * j]) && compare(data[2 * j], data[2 * j + 1])) {
+                    std::swap(data[j], data[2 * j]);
+                    j = 2 * j;
                 }
+                else if (!compare(data[j], data[2 * j + 1]) && compare(data[2 * j + 1], data[2 * j])) {
+                    std::swap(data[j], data[2 * j + 1]);
+                    j = 2 * j + 1;
+                }
+                else break;
             }
         }
     }
 }
-
-
-template <typename TYPE, typename COMP>
-void fib_heap<TYPE, COMP>::Fib_Heap_Link(node y, node x) {
-    auto *temp = &y;
-    root_list.remove(y);
-    x.children_list.push_back(*temp);
-    *temp->parent = x;
-    x.degree++;
-    //y.mark=false
-};
-
-// Add the definitions of the member functions here. Please refer to
-// binary_heap.h for the syntax.
 
 #endif //FIB_HEAP_H
