@@ -127,8 +127,8 @@ int main(int argc, char *argv[]) {
         Map C = PQ->dequeue_min();
         if (verbose) {
             cout << "Step " << step << endl;
-            cout << "Choose cell (" << C.P.width << ", " << C.P.height << ") with accumulated length " << C.path_cost << "."
-                 << endl;
+            cout << "Choose cell (" << C.P.width << ", " << C.P.height << ") with accumulated length " << C.path_cost
+                 << "." << endl;
         }
         step++;
         Map *N;
@@ -181,8 +181,10 @@ int main(int argc, char *argv[]) {
                 //**************
                 //**************
                 //**************
-                cout << "Cell (" << end_x << ", " << end_y << ") with accumulated length " << W[end_y][end_x].path_cost
-                     << " is the ending point." << endl;
+                if (verbose) {
+                    cout << "Cell (" << end_x << ", " << end_y << ") with accumulated length "
+                         << W[end_y][end_x].path_cost << " is the ending point." << endl;
+                }
                 cout << "The shortest path from (" << start_x << ", " << start_y << ") to (" << end_x << ", " << end_y
                      << ") ";
                 cout << "is " << W[end_y][end_x].path_cost << "." << endl;
