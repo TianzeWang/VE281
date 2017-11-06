@@ -61,7 +61,7 @@ unsorted_heap<TYPE, COMP>::unsorted_heap(COMP comp) {
 template <typename TYPE, typename COMP>
 void unsorted_heap<TYPE, COMP>::enqueue(const TYPE &val) {
     // Fill in the body.
-    data.push_back(val);
+    data.push_back(std::move(val));
 }
 
 template <typename TYPE, typename COMP>

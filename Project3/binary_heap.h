@@ -55,6 +55,10 @@ private:
     // MODIFIES: this
     // RUNTIME: O(n)
     virtual void sort();
+
+    virtual void down();
+
+    virtual void up();
 };
 
 template <typename TYPE, typename COMP>
@@ -67,17 +71,20 @@ binary_heap<TYPE, COMP>::binary_heap(COMP comp) {
 template <typename TYPE, typename COMP>
 void binary_heap<TYPE, COMP>::enqueue(const TYPE &val) {
     // Fill in the body.
-    data.push_back(val);
-    this->sort();
+    data.push_back(std::move(val));
+//    this->sort();
+    up();
 }
 
 template <typename TYPE, typename COMP>
 TYPE binary_heap<TYPE, COMP>::dequeue_min() {
     // Fill in the body.
+//    this->sort();
     std::swap(data[1], data[data.size() - 1]);
     auto temp = data[data.size() - 1];
     data.pop_back();
-    this->sort();
+//    this->sort();
+    this->down();
     return temp;
 }
 
@@ -125,6 +132,45 @@ void binary_heap<TYPE, COMP>::sort() {
                 else break;
             }
         }
+    }
+}
+
+
+template <typename TYPE, typename COMP>
+void binary_heap<TYPE, COMP>::down() {
+    size_type temp = this->size();
+    auto j = 1;
+    while (2 * j <= data.size() - 1) {
+        if (2 * j + 1 > data.size() - 1) {
+            if (!compare(data[j], data[2 * j])) {
+                std::swap(data[j], data[2 * j]);
+                j = 2 * j;
+            }
+            else break;
+        }
+        else {
+            if (!compare(data[j], data[2 * j]) && compare(data[2 * j], data[2 * j + 1])) {
+                std::swap(data[j], data[2 * j]);
+                j = 2 * j;
+            }
+            else if (!compare(data[j], data[2 * j + 1]) && compare(data[2 * j + 1], data[2 * j])) {
+                std::swap(data[j], data[2 * j + 1]);
+                j = 2 * j + 1;
+            }
+            else break;
+        }
+    }
+}
+
+template <typename TYPE, typename COMP>
+void binary_heap<TYPE, COMP>::up() {
+    auto j = size();
+    while (j > 1) {
+        if (compare(data[j], data[j / 2])) {
+            std::swap(data[j], data[j / 2]);
+            j = j / 2;
+        }
+        else break;
     }
 }
 

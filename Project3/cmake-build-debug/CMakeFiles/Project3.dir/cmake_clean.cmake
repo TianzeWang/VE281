@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Project3.dir/main.cpp.o"
+  "CMakeFiles/Project3.dir/Generat_Grid.cpp.o"
+  "CMakeFiles/Project3.dir/CoutTime.cpp.o"
   "Project3.pdb"
   "Project3"
 )

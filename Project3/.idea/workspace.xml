@@ -12,13 +12,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2aa7a1fd-0e45-471a-9d2b-39d3216b53a0" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CoutTime.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Generat_Grid.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Project3.dir/main.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Project3.dir/main.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Project3.dir/test_heap.cpp.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Project3.dir/test_heap.cpp.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/Project3" afterPath="$PROJECT_DIR$/cmake-build-debug/Project3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main" afterPath="$PROJECT_DIR$/main" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/submit.tar.gz" afterPath="$PROJECT_DIR$/submit.tar.gz" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.cpp" afterPath="$PROJECT_DIR$/main.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_heap.cpp" afterPath="$PROJECT_DIR$/test_heap.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/binary_heap.h" afterPath="$PROJECT_DIR$/binary_heap.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Project3.dir/CXX.includecache" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Project3.dir/CXX.includecache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Project3.dir/DependInfo.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Project3.dir/DependInfo.cmake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Project3.dir/build.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Project3.dir/build.make" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Project3.dir/cmake_clean.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Project3.dir/cmake_clean.cmake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Project3.dir/depend.internal" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Project3.dir/depend.internal" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Project3.dir/depend.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Project3.dir/depend.make" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Project3.dir/link.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Project3.dir/link.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Project3.dir/progress.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Project3.dir/progress.make" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/Project3.cbp" afterPath="$PROJECT_DIR$/cmake-build-debug/Project3.cbp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fib_heap.h" afterPath="$PROJECT_DIR$/fib_heap.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/unsorted_heap.h" afterPath="$PROJECT_DIR$/unsorted_heap.h" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,17 +50,17 @@
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="6" column="40" lean-forward="false" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
+              <caret line="6" column="13" lean-forward="true" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main.cpp">
+      <file leaf-file-name="CoutTime.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CoutTime.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="19" column="28" lean-forward="true" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
+            <state relative-caret-position="3689">
+              <caret line="217" column="40" lean-forward="false" selection-start-line="217" selection-start-column="40" selection-end-line="217" selection-end-column="40" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -52,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main3.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main3.cpp">
+      <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+            <state relative-caret-position="192">
+              <caret line="93" column="34" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="215" selection-end-column="0" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -67,7 +83,7 @@
       <file leaf-file-name="test_heap.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_heap.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
+            <state relative-caret-position="39">
               <caret line="19" column="73" lean-forward="false" selection-start-line="19" selection-start-column="73" selection-end-line="19" selection-end-column="73" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -76,20 +92,52 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="test_heap.out" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Programming-Assignment-Three-Related-Files/Priority-Queue-Test/test_heap.out">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_heap.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Programming-Assignment-Three-Related-Files/Priority-Queue-Test/test_heap.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-237">
+              <caret line="28" column="5" lean-forward="false" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="fib_heap.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fib_heap.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="750">
-              <caret line="112" column="17" lean-forward="false" selection-start-line="112" selection-start-column="17" selection-end-line="112" selection-end-column="17" />
+            <state relative-caret-position="800">
+              <caret line="85" column="11" lean-forward="false" selection-start-line="85" selection-start-column="11" selection-end-line="85" selection-end-column="11" />
               <folding>
                 <element signature="e#39#59#0" expanded="true" />
                 <element signature="e#191#240#0" expanded="true" />
-                <element signature="e#1689#1719#0" expanded="true" />
-                <element signature="e#1872#1902#0" expanded="true" />
-                <element signature="e#2290#2320#0" expanded="true" />
-                <element signature="e#2571#2601#0" expanded="true" />
-                <element signature="e#2760#2790#0" expanded="true" />
+                <element signature="e#1739#1769#0" expanded="true" />
+                <element signature="e#1933#1963#0" expanded="true" />
+                <element signature="e#2408#2438#0" expanded="true" />
+                <element signature="e#2689#2719#0" expanded="true" />
+                <element signature="e#2878#2908#0" expanded="true" />
+                <element signature="e#3841#3871#0" expanded="true" />
+                <element signature="e#4661#4691#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Generat_Grid.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Generat_Grid.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="431">
+              <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -111,43 +159,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_unsorted.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_unsorted.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="867">
-              <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="unsorted_heap.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/unsorted_heap.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1479">
-              <caret line="87" column="19" lean-forward="false" selection-start-line="87" selection-start-column="12" selection-end-line="87" selection-end-column="19" />
+            <state relative-caret-position="1632">
+              <caret line="96" column="47" lean-forward="false" selection-start-line="96" selection-start-column="47" selection-end-line="96" selection-end-column="47" />
               <folding>
                 <element signature="e#49#69#0" expanded="true" />
                 <element signature="e#319#368#0" expanded="true" />
-                <element signature="e#1990#2020#0" expanded="true" />
-                <element signature="e#2374#2404#0" expanded="true" />
-                <element signature="e#2698#2728#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="binary_heap.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/binary_heap.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="76" lean-forward="false" selection-start-line="13" selection-start-column="76" selection-end-line="13" selection-end-column="76" />
-              <folding>
-                <element signature="e#1704#1734#0" expanded="true" />
-                <element signature="e#1893#1923#0" expanded="true" />
-                <element signature="e#2317#2347#0" expanded="true" />
-                <element signature="e#2604#2634#0" expanded="true" />
-                <element signature="e#2796#2826#0" expanded="true" />
+                <element signature="e#2001#2031#0" expanded="true" />
+                <element signature="e#2385#2415#0" expanded="true" />
+                <element signature="e#2709#2739#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -163,6 +185,8 @@
       <find>remove</find>
       <find>binary</find>
       <find>compare</find>
+      <find>push_back</find>
+      <find>push_b</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -175,12 +199,15 @@
         <option value="$PROJECT_DIR$/test_unsorted.cpp" />
         <option value="$PROJECT_DIR$/main2.cpp" />
         <option value="$PROJECT_DIR$/fib_heap2.h" />
+        <option value="$PROJECT_DIR$/test_heap.cpp" />
+        <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/Makefile" />
+        <option value="$PROJECT_DIR$/unsorted_heap.h" />
         <option value="$PROJECT_DIR$/binary_heap.h" />
         <option value="$PROJECT_DIR$/fib_heap.h" />
-        <option value="$PROJECT_DIR$/unsorted_heap.h" />
-        <option value="$PROJECT_DIR$/test_heap.cpp" />
+        <option value="$PROJECT_DIR$/Generat_Grid.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/CoutTime.cpp" />
       </list>
     </option>
   </component>
@@ -192,9 +219,8 @@
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="810" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -223,6 +249,12 @@
               <item name="Project3" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
               <item name="Project3" type="462c0819:PsiDirectoryNode" />
               <item name="Programming-Assignment-Three-Related-Files" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project3" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="Project3" type="462c0819:PsiDirectoryNode" />
+              <item name="Programming-Assignment-Three-Related-Files" type="462c0819:PsiDirectoryNode" />
+              <item name="Priority-Queue-Test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -260,7 +292,7 @@
     <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
       <envs />
     </configuration>
-    <configuration name="Project3" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="--verbose -i UNSORTED" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project3" TARGET_NAME="Project3" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Project3" RUN_TARGET_NAME="Project3">
+    <configuration name="Project3" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="--verbose -i BINARY" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project3" TARGET_NAME="Project3" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Project3" RUN_TARGET_NAME="Project3">
       <envs />
     </configuration>
     <list size="2">
@@ -293,7 +325,8 @@
       <workItem from="1509876305540" duration="20000" />
       <workItem from="1509876505322" duration="232000" />
       <workItem from="1509876833824" duration="1021000" />
-      <workItem from="1509878169274" duration="2046000" />
+      <workItem from="1509878169274" duration="2873000" />
+      <workItem from="1509884019218" duration="3112000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1509545878611</created>
@@ -320,7 +353,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85590000" />
+    <option name="totallyTimeSpent" value="89529000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -335,17 +368,17 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18168813" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18383405" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32527205" sideWeight="0.49713877" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28295043" sideWeight="0.49713877" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27932286" sideWeight="0.5071531" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32769045" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28295043" sideWeight="0.49713877" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27932286" sideWeight="0.5071531" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32769045" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32769045" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1668682" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1668682" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27932286" sideWeight="0.49284694" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -355,27 +388,6 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32867134" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2841596" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30576715" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27025586" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39903265" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -451,11 +463,16 @@
           <line>53</line>
           <option name="timeStamp" value="87" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.cpp</url>
+          <line>103</line>
+          <option name="timeStamp" value="90" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="90" />
+      <option name="time" value="91" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
@@ -465,80 +482,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test_heap.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="46" column="27" lean-forward="true" selection-start-line="46" selection-start-column="27" selection-end-line="46" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_unsorted.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/unsorted_heap.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1598">
-          <caret line="94" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
-          <folding>
-            <element signature="e#49#69#0" expanded="true" />
-            <element signature="e#319#368#0" expanded="true" />
-            <element signature="e#1990#2020#0" expanded="true" />
-            <element signature="e#2374#2404#0" expanded="true" />
-            <element signature="e#2698#2728#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/binary_heap.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2142">
-          <caret line="126" column="9" lean-forward="false" selection-start-line="126" selection-start-column="9" selection-end-line="126" selection-end-column="9" />
-          <folding>
-            <element signature="e#1704#1734#0" expanded="true" />
-            <element signature="e#1893#1923#0" expanded="true" />
-            <element signature="e#2317#2347#0" expanded="true" />
-            <element signature="e#2604#2634#0" expanded="true" />
-            <element signature="e#2796#2826#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1921">
-          <caret line="113" column="39" lean-forward="false" selection-start-line="113" selection-start-column="39" selection-end-line="113" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1921">
-          <caret line="113" column="39" lean-forward="true" selection-start-line="113" selection-start-column="39" selection-end-line="113" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fib_heap.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -553,9 +496,9 @@
           <folding>
             <element signature="e#49#69#0" expanded="true" />
             <element signature="e#319#368#0" expanded="true" />
-            <element signature="e#1990#2020#0" expanded="true" />
-            <element signature="e#2374#2404#0" expanded="true" />
-            <element signature="e#2698#2728#0" expanded="true" />
+            <element signature="e#2001#2031#0" expanded="true" />
+            <element signature="e#2385#2415#0" expanded="true" />
+            <element signature="e#2709#2739#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -592,9 +535,9 @@
           <folding>
             <element signature="e#49#69#0" expanded="true" />
             <element signature="e#319#368#0" expanded="true" />
-            <element signature="e#1990#2020#0" expanded="true" />
-            <element signature="e#2374#2404#0" expanded="true" />
-            <element signature="e#2698#2728#0" expanded="true" />
+            <element signature="e#2001#2031#0" expanded="true" />
+            <element signature="e#2385#2415#0" expanded="true" />
+            <element signature="e#2709#2739#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -604,11 +547,13 @@
         <state relative-caret-position="901">
           <caret line="53" column="22" lean-forward="false" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
           <folding>
-            <element signature="e#1704#1734#0" expanded="true" />
-            <element signature="e#1893#1923#0" expanded="true" />
-            <element signature="e#2317#2347#0" expanded="true" />
-            <element signature="e#2604#2634#0" expanded="true" />
-            <element signature="e#2796#2826#0" expanded="true" />
+            <element signature="e#1754#1784#0" expanded="false" />
+            <element signature="e#1943#1973#0" expanded="false" />
+            <element signature="e#2430#2460#0" expanded="false" />
+            <element signature="e#2717#2747#0" expanded="false" />
+            <element signature="e#2909#2939#0" expanded="false" />
+            <element signature="e#3876#3906#0" expanded="false" />
+            <element signature="e#4699#4729#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -643,11 +588,13 @@
         <state relative-caret-position="1088">
           <caret line="64" column="25" lean-forward="false" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
           <folding>
-            <element signature="e#1704#1734#0" expanded="true" />
-            <element signature="e#1893#1923#0" expanded="true" />
-            <element signature="e#2317#2347#0" expanded="true" />
-            <element signature="e#2604#2634#0" expanded="true" />
-            <element signature="e#2796#2826#0" expanded="true" />
+            <element signature="e#1754#1784#0" expanded="false" />
+            <element signature="e#1943#1973#0" expanded="false" />
+            <element signature="e#2430#2460#0" expanded="false" />
+            <element signature="e#2717#2747#0" expanded="false" />
+            <element signature="e#2909#2939#0" expanded="false" />
+            <element signature="e#3876#3906#0" expanded="false" />
+            <element signature="e#4699#4729#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -659,9 +606,9 @@
           <folding>
             <element signature="e#49#69#0" expanded="true" />
             <element signature="e#319#368#0" expanded="true" />
-            <element signature="e#1990#2020#0" expanded="true" />
-            <element signature="e#2374#2404#0" expanded="true" />
-            <element signature="e#2698#2728#0" expanded="true" />
+            <element signature="e#2001#2031#0" expanded="true" />
+            <element signature="e#2385#2415#0" expanded="true" />
+            <element signature="e#2709#2739#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -714,11 +661,13 @@
           <folding>
             <element signature="e#39#59#0" expanded="true" />
             <element signature="e#191#240#0" expanded="true" />
-            <element signature="e#1689#1719#0" expanded="true" />
-            <element signature="e#1872#1902#0" expanded="true" />
-            <element signature="e#2290#2320#0" expanded="true" />
-            <element signature="e#2571#2601#0" expanded="true" />
-            <element signature="e#2760#2790#0" expanded="true" />
+            <element signature="e#1739#1769#0" expanded="true" />
+            <element signature="e#1933#1963#0" expanded="true" />
+            <element signature="e#2408#2438#0" expanded="true" />
+            <element signature="e#2689#2719#0" expanded="true" />
+            <element signature="e#2878#2908#0" expanded="true" />
+            <element signature="e#3841#3871#0" expanded="true" />
+            <element signature="e#4661#4691#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -792,6 +741,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test-3v.out">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testoutcp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="21" lean-forward="false" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/binary_heap.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="60" selection-end-column="22" />
+          <folding>
+            <element signature="e#1754#1784#0" expanded="false" />
+            <element signature="e#1943#1973#0" expanded="false" />
+            <element signature="e#2430#2460#0" expanded="false" />
+            <element signature="e#2717#2747#0" expanded="false" />
+            <element signature="e#2909#2939#0" expanded="false" />
+            <element signature="e#3876#3906#0" expanded="false" />
+            <element signature="e#4699#4729#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/unsorted_heap.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1632">
+          <caret line="96" column="47" lean-forward="false" selection-start-line="96" selection-start-column="47" selection-end-line="96" selection-end-column="47" />
+          <folding>
+            <element signature="e#49#69#0" expanded="true" />
+            <element signature="e#319#368#0" expanded="true" />
+            <element signature="e#2001#2031#0" expanded="true" />
+            <element signature="e#2385#2415#0" expanded="true" />
+            <element signature="e#2709#2739#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/fib_heap2.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2873">
@@ -807,62 +807,70 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/unsorted_heap.h">
+    <entry file="file://$PROJECT_DIR$/test_heap.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1479">
-          <caret line="87" column="19" lean-forward="false" selection-start-line="87" selection-start-column="12" selection-end-line="87" selection-end-column="19" />
+        <state relative-caret-position="39">
+          <caret line="19" column="73" lean-forward="false" selection-start-line="19" selection-start-column="73" selection-end-line="19" selection-end-column="73" />
           <folding>
-            <element signature="e#49#69#0" expanded="true" />
-            <element signature="e#319#368#0" expanded="true" />
-            <element signature="e#1990#2020#0" expanded="true" />
-            <element signature="e#2374#2404#0" expanded="true" />
-            <element signature="e#2698#2728#0" expanded="true" />
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/binary_heap.h">
+    <entry file="file://$PROJECT_DIR$/Programming-Assignment-Three-Related-Files/Priority-Queue-Test/test_heap.out">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="76" lean-forward="false" selection-start-line="13" selection-start-column="76" selection-end-line="13" selection-end-column="76" />
-          <folding>
-            <element signature="e#1704#1734#0" expanded="true" />
-            <element signature="e#1893#1923#0" expanded="true" />
-            <element signature="e#2317#2347#0" expanded="true" />
-            <element signature="e#2604#2634#0" expanded="true" />
-            <element signature="e#2796#2826#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Programming-Assignment-Three-Related-Files/Priority-Queue-Test/test_heap.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
+        <state relative-caret-position="-237">
           <caret line="28" column="5" lean-forward="false" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="15" column="17" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/fib_heap.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="112" column="17" lean-forward="false" selection-start-line="112" selection-start-column="17" selection-end-line="112" selection-end-column="17" />
+        <state relative-caret-position="800">
+          <caret line="85" column="11" lean-forward="false" selection-start-line="85" selection-start-column="11" selection-end-line="85" selection-end-column="11" />
           <folding>
             <element signature="e#39#59#0" expanded="true" />
             <element signature="e#191#240#0" expanded="true" />
-            <element signature="e#1689#1719#0" expanded="true" />
-            <element signature="e#1872#1902#0" expanded="true" />
-            <element signature="e#2290#2320#0" expanded="true" />
-            <element signature="e#2571#2601#0" expanded="true" />
-            <element signature="e#2760#2790#0" expanded="true" />
+            <element signature="e#1739#1769#0" expanded="true" />
+            <element signature="e#1933#1963#0" expanded="true" />
+            <element signature="e#2408#2438#0" expanded="true" />
+            <element signature="e#2689#2719#0" expanded="true" />
+            <element signature="e#2878#2908#0" expanded="true" />
+            <element signature="e#3841#3871#0" expanded="true" />
+            <element signature="e#4661#4691#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_heap.cpp">
+    <entry file="file://$PROJECT_DIR$/Generat_Grid.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="73" lean-forward="false" selection-start-line="19" selection-start-column="73" selection-end-line="19" selection-end-column="73" />
+        <state relative-caret-position="431">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="93" column="34" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="215" selection-end-column="0" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
@@ -872,15 +880,15 @@
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="6" column="40" lean-forward="false" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
+          <caret line="6" column="13" lean-forward="true" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
+    <entry file="file://$PROJECT_DIR$/CoutTime.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="19" column="28" lean-forward="true" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
+        <state relative-caret-position="3689">
+          <caret line="217" column="40" lean-forward="false" selection-start-line="217" selection-start-column="40" selection-end-line="217" selection-end-column="40" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>

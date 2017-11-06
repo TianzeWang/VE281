@@ -123,32 +123,59 @@ Project3/fast:
 	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/build
 .PHONY : Project3/fast
 
-main.o: main.cpp.o
+CoutTime.o: CoutTime.cpp.o
 
-.PHONY : main.o
+.PHONY : CoutTime.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/main.cpp.o
-.PHONY : main.cpp.o
+CoutTime.cpp.o:
+	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/CoutTime.cpp.o
+.PHONY : CoutTime.cpp.o
 
-main.i: main.cpp.i
+CoutTime.i: CoutTime.cpp.i
 
-.PHONY : main.i
+.PHONY : CoutTime.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/main.cpp.i
-.PHONY : main.cpp.i
+CoutTime.cpp.i:
+	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/CoutTime.cpp.i
+.PHONY : CoutTime.cpp.i
 
-main.s: main.cpp.s
+CoutTime.s: CoutTime.cpp.s
 
-.PHONY : main.s
+.PHONY : CoutTime.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/main.cpp.s
-.PHONY : main.cpp.s
+CoutTime.cpp.s:
+	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/CoutTime.cpp.s
+.PHONY : CoutTime.cpp.s
+
+Generat_Grid.o: Generat_Grid.cpp.o
+
+.PHONY : Generat_Grid.o
+
+# target to build an object file
+Generat_Grid.cpp.o:
+	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/Generat_Grid.cpp.o
+.PHONY : Generat_Grid.cpp.o
+
+Generat_Grid.i: Generat_Grid.cpp.i
+
+.PHONY : Generat_Grid.i
+
+# target to preprocess a source file
+Generat_Grid.cpp.i:
+	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/Generat_Grid.cpp.i
+.PHONY : Generat_Grid.cpp.i
+
+Generat_Grid.s: Generat_Grid.cpp.s
+
+.PHONY : Generat_Grid.s
+
+# target to generate assembly for a file
+Generat_Grid.cpp.s:
+	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/Generat_Grid.cpp.s
+.PHONY : Generat_Grid.cpp.s
 
 # Help Target
 help:
@@ -159,9 +186,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Project3"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... CoutTime.o"
+	@echo "... CoutTime.i"
+	@echo "... CoutTime.s"
+	@echo "... Generat_Grid.o"
+	@echo "... Generat_Grid.i"
+	@echo "... Generat_Grid.s"
 .PHONY : help
 
 
