@@ -123,59 +123,32 @@ Project3/fast:
 	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/build
 .PHONY : Project3/fast
 
-CoutTime.o: CoutTime.cpp.o
+test_heap.o: test_heap.cpp.o
 
-.PHONY : CoutTime.o
-
-# target to build an object file
-CoutTime.cpp.o:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/CoutTime.cpp.o
-.PHONY : CoutTime.cpp.o
-
-CoutTime.i: CoutTime.cpp.i
-
-.PHONY : CoutTime.i
-
-# target to preprocess a source file
-CoutTime.cpp.i:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/CoutTime.cpp.i
-.PHONY : CoutTime.cpp.i
-
-CoutTime.s: CoutTime.cpp.s
-
-.PHONY : CoutTime.s
-
-# target to generate assembly for a file
-CoutTime.cpp.s:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/CoutTime.cpp.s
-.PHONY : CoutTime.cpp.s
-
-Generat_Grid.o: Generat_Grid.cpp.o
-
-.PHONY : Generat_Grid.o
+.PHONY : test_heap.o
 
 # target to build an object file
-Generat_Grid.cpp.o:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/Generat_Grid.cpp.o
-.PHONY : Generat_Grid.cpp.o
+test_heap.cpp.o:
+	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/test_heap.cpp.o
+.PHONY : test_heap.cpp.o
 
-Generat_Grid.i: Generat_Grid.cpp.i
+test_heap.i: test_heap.cpp.i
 
-.PHONY : Generat_Grid.i
+.PHONY : test_heap.i
 
 # target to preprocess a source file
-Generat_Grid.cpp.i:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/Generat_Grid.cpp.i
-.PHONY : Generat_Grid.cpp.i
+test_heap.cpp.i:
+	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/test_heap.cpp.i
+.PHONY : test_heap.cpp.i
 
-Generat_Grid.s: Generat_Grid.cpp.s
+test_heap.s: test_heap.cpp.s
 
-.PHONY : Generat_Grid.s
+.PHONY : test_heap.s
 
 # target to generate assembly for a file
-Generat_Grid.cpp.s:
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/Generat_Grid.cpp.s
-.PHONY : Generat_Grid.cpp.s
+test_heap.cpp.s:
+	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/test_heap.cpp.s
+.PHONY : test_heap.cpp.s
 
 # Help Target
 help:
@@ -186,12 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Project3"
-	@echo "... CoutTime.o"
-	@echo "... CoutTime.i"
-	@echo "... CoutTime.s"
-	@echo "... Generat_Grid.o"
-	@echo "... Generat_Grid.i"
-	@echo "... Generat_Grid.s"
+	@echo "... test_heap.o"
+	@echo "... test_heap.i"
+	@echo "... test_heap.s"
 .PHONY : help
 
 

@@ -36,7 +36,7 @@ void nonverbose_print(Map *a) {
         nonverbose_print(a->Predecessor);
     }
 
-    cout << "(" << a->P.width << ", " << a->P.height << ")" << endl;
+//    cout << "(" << a->P.width << ", " << a->P.height << ")" << endl;
 }
 
 
@@ -195,6 +195,9 @@ int main(int argc, char *argv[]) {
                 cout << "Path:" << endl;*/
                 Map c = W[end_y][end_x];
                 nonverbose_print(&c);
+                end = clock();
+                double dur = (double)(end - begin);
+                cout << dur/ CLOCKS_PER_SEC << endl;
                 return 0;
             }
             else {
@@ -214,7 +217,7 @@ int main(int argc, char *argv[]) {
            cout << endl;
        }*/
     end = clock();
-    auto dur = (double)(end - begin);
+    double dur = (double)(end - begin);
     cout << dur/ CLOCKS_PER_SEC << endl;
     return 0;
 }

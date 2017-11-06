@@ -82,10 +82,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/peter/Desktop/Peter/JI/VE281/Project3/CoutTime.cpp">
-			<Option target="Project3"/>
-		</Unit>
-		<Unit filename="/Users/peter/Desktop/Peter/JI/VE281/Project3/Generat_Grid.cpp">
+		<Unit filename="/Users/peter/Desktop/Peter/JI/VE281/Project3/test_heap.cpp">
 			<Option target="Project3"/>
 		</Unit>
 		<Unit filename="/Users/peter/Desktop/Peter/JI/VE281/Project3/CMakeLists.txt">

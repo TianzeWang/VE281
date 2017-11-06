@@ -57,67 +57,41 @@ include CMakeFiles/Project3.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Project3.dir/flags.make
 
-CMakeFiles/Project3.dir/Generat_Grid.cpp.o: CMakeFiles/Project3.dir/flags.make
-CMakeFiles/Project3.dir/Generat_Grid.cpp.o: ../Generat_Grid.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Project3.dir/Generat_Grid.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Project3.dir/Generat_Grid.cpp.o -c /Users/peter/Desktop/Peter/JI/VE281/Project3/Generat_Grid.cpp
+CMakeFiles/Project3.dir/test_heap.cpp.o: CMakeFiles/Project3.dir/flags.make
+CMakeFiles/Project3.dir/test_heap.cpp.o: ../test_heap.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Project3.dir/test_heap.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Project3.dir/test_heap.cpp.o -c /Users/peter/Desktop/Peter/JI/VE281/Project3/test_heap.cpp
 
-CMakeFiles/Project3.dir/Generat_Grid.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Project3.dir/Generat_Grid.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/peter/Desktop/Peter/JI/VE281/Project3/Generat_Grid.cpp > CMakeFiles/Project3.dir/Generat_Grid.cpp.i
+CMakeFiles/Project3.dir/test_heap.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Project3.dir/test_heap.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/peter/Desktop/Peter/JI/VE281/Project3/test_heap.cpp > CMakeFiles/Project3.dir/test_heap.cpp.i
 
-CMakeFiles/Project3.dir/Generat_Grid.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Project3.dir/Generat_Grid.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/peter/Desktop/Peter/JI/VE281/Project3/Generat_Grid.cpp -o CMakeFiles/Project3.dir/Generat_Grid.cpp.s
+CMakeFiles/Project3.dir/test_heap.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Project3.dir/test_heap.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/peter/Desktop/Peter/JI/VE281/Project3/test_heap.cpp -o CMakeFiles/Project3.dir/test_heap.cpp.s
 
-CMakeFiles/Project3.dir/Generat_Grid.cpp.o.requires:
+CMakeFiles/Project3.dir/test_heap.cpp.o.requires:
 
-.PHONY : CMakeFiles/Project3.dir/Generat_Grid.cpp.o.requires
+.PHONY : CMakeFiles/Project3.dir/test_heap.cpp.o.requires
 
-CMakeFiles/Project3.dir/Generat_Grid.cpp.o.provides: CMakeFiles/Project3.dir/Generat_Grid.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/Generat_Grid.cpp.o.provides.build
-.PHONY : CMakeFiles/Project3.dir/Generat_Grid.cpp.o.provides
+CMakeFiles/Project3.dir/test_heap.cpp.o.provides: CMakeFiles/Project3.dir/test_heap.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/test_heap.cpp.o.provides.build
+.PHONY : CMakeFiles/Project3.dir/test_heap.cpp.o.provides
 
-CMakeFiles/Project3.dir/Generat_Grid.cpp.o.provides.build: CMakeFiles/Project3.dir/Generat_Grid.cpp.o
-
-
-CMakeFiles/Project3.dir/CoutTime.cpp.o: CMakeFiles/Project3.dir/flags.make
-CMakeFiles/Project3.dir/CoutTime.cpp.o: ../CoutTime.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Project3.dir/CoutTime.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Project3.dir/CoutTime.cpp.o -c /Users/peter/Desktop/Peter/JI/VE281/Project3/CoutTime.cpp
-
-CMakeFiles/Project3.dir/CoutTime.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Project3.dir/CoutTime.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/peter/Desktop/Peter/JI/VE281/Project3/CoutTime.cpp > CMakeFiles/Project3.dir/CoutTime.cpp.i
-
-CMakeFiles/Project3.dir/CoutTime.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Project3.dir/CoutTime.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/peter/Desktop/Peter/JI/VE281/Project3/CoutTime.cpp -o CMakeFiles/Project3.dir/CoutTime.cpp.s
-
-CMakeFiles/Project3.dir/CoutTime.cpp.o.requires:
-
-.PHONY : CMakeFiles/Project3.dir/CoutTime.cpp.o.requires
-
-CMakeFiles/Project3.dir/CoutTime.cpp.o.provides: CMakeFiles/Project3.dir/CoutTime.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Project3.dir/build.make CMakeFiles/Project3.dir/CoutTime.cpp.o.provides.build
-.PHONY : CMakeFiles/Project3.dir/CoutTime.cpp.o.provides
-
-CMakeFiles/Project3.dir/CoutTime.cpp.o.provides.build: CMakeFiles/Project3.dir/CoutTime.cpp.o
+CMakeFiles/Project3.dir/test_heap.cpp.o.provides.build: CMakeFiles/Project3.dir/test_heap.cpp.o
 
 
 # Object files for target Project3
 Project3_OBJECTS = \
-"CMakeFiles/Project3.dir/Generat_Grid.cpp.o" \
-"CMakeFiles/Project3.dir/CoutTime.cpp.o"
+"CMakeFiles/Project3.dir/test_heap.cpp.o"
 
 # External object files for target Project3
 Project3_EXTERNAL_OBJECTS =
 
-Project3: CMakeFiles/Project3.dir/Generat_Grid.cpp.o
-Project3: CMakeFiles/Project3.dir/CoutTime.cpp.o
+Project3: CMakeFiles/Project3.dir/test_heap.cpp.o
 Project3: CMakeFiles/Project3.dir/build.make
 Project3: CMakeFiles/Project3.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Project3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/peter/Desktop/Peter/JI/VE281/Project3/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Project3"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Project3.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -125,8 +99,7 @@ CMakeFiles/Project3.dir/build: Project3
 
 .PHONY : CMakeFiles/Project3.dir/build
 
-CMakeFiles/Project3.dir/requires: CMakeFiles/Project3.dir/Generat_Grid.cpp.o.requires
-CMakeFiles/Project3.dir/requires: CMakeFiles/Project3.dir/CoutTime.cpp.o.requires
+CMakeFiles/Project3.dir/requires: CMakeFiles/Project3.dir/test_heap.cpp.o.requires
 
 .PHONY : CMakeFiles/Project3.dir/requires
 
