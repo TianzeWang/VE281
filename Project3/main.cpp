@@ -90,7 +90,7 @@ int main(int argc, char *argv[]) {
     cin >> start_x >> start_y;
     cin >> end_x >> end_y;
     int i;
-    auto **W = new Map *[height];
+    Map **W = new Map *[height];
     for (i = 0; i < height; i++) {
         W[i] = new Map[width];
     }
