@@ -82,10 +82,14 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+<<<<<<< HEAD
 		<Unit filename="F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/fib_heap2.h">
 			<Option target="Project3"/>
 		</Unit>
 		<Unit filename="F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/test_heap.cpp">
+=======
+		<Unit filename="/Users/peter/Desktop/Peter/JI/VE281/Project3/main.cpp">
+>>>>>>> master
 			<Option target="Project3"/>
 		</Unit>
 		<Unit filename="F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project3/CMakeLists.txt">
