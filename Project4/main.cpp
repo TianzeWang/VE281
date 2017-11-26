@@ -72,9 +72,9 @@ struct Equity {
 
 struct Big_Order {
     string EQUITY_SYMBOL;
-    multiset<order, compare_buy_order> Buy;
-    multiset<order, compare_sell_order> Sell;
-    multiset<int> Price_dealt;
+    set<order, compare_buy_order> Buy;
+    set<order, compare_sell_order> Sell;
+    set<int> Price_dealt;
 };
 
 struct compare_big_order {
@@ -86,12 +86,6 @@ struct compare_big_order {
         return a.EQUITY_SYMBOL < b.EQUITY_SYMBOL;
     }
 };
-
-void midpoint();
-
-void median();
-
-void Deal_With_Expired_Order();
 
 
 int main(int argc, char *argv[]) {
@@ -131,18 +125,26 @@ int main(int argc, char *argv[]) {
     int quantity;
     int duration;
     char note;// used to indicate # and $
-    multiset<order, compare_buy_order> Buy;
-    multiset<order, compare_sell_order> Sell;
+    set<order, compare_buy_order> Buy;
+//    map<string, Big_Order> OrderAll_;
+    set<order, compare_sell_order> Sell;
 //    multiset<order, std::less>::iterator Buy_iter, Sell_iter;
 //    multiset<order, order_compare> OrderALL;
 //    multiset<order, order_compare>::iterator it;
-    multiset<Big_Order, compare_big_order> OrderAll;
-    multiset<Big_Order, compare_big_order>::iterator it;
-    multiset<order, compare_buy_order>::iterator BuyIt;
-    multiset<order, compare_sell_order>::iterator SellIt;
+    set<Big_Order, compare_big_order> OrderAll;
+    set<Big_Order, compare_big_order>::iterator it;
+    set<Big_Order, compare_big_order> * AllPtr;
+    set<order, compare_buy_order>::iterator BuyIt;
+    set<order, compare_sell_order>::iterator SellIt;
+    set<order, compare_buy_order> * BuyPtr;
+    set<order, compare_sell_order> * SellPtr;
 
     char c;
-
+    // Market info:
+    int Commission_Earnings = 0;
+    int Money_Transferred = 0;
+    int Number_of_Completed_Trades = 0;
+    int Number_of_share = 0;
     // Read
     while ((cin >> timestamp).get(c)) {
         if (c == '\n') break;
@@ -166,8 +168,6 @@ int main(int argc, char *argv[]) {
         id++;
 
         // Sell and Buy and match
-        midpoint();
-        median();
 
         current_timestamp = timestamp;
 
@@ -190,16 +190,28 @@ int main(int argc, char *argv[]) {
         */
 
         //Erase from OrderAll
+
+
         for (it = OrderAll.begin(); it != OrderAll.end(); it++) {
-            for (SellIt = (it->Sell).begin(); SellIt != (it->Sell).end(); SellIt++) {
+            SellPtr = const_cast<set<order, compare_sell_order> *> (&(it->Sell));
+            BuyPtr = const_cast<set<order, compare_buy_order> *> (&(it->Buy));
+            for (SellIt = SellPtr->begin(); SellIt != SellPtr->end(); ) {
                 if (SellIt->DURATION != -1 && SellIt->DURATION + SellIt->TIMESTAMP <= current_timestamp) {
-                    it->Sell.erase(SellIt);
+                    SellIt=SellPtr->erase(SellIt);
                 }
+                else{
+                    ++SellIt;
+                }
+
             }
-            for (BuyIt = (it->Buy).begin(); BuyIt != (it->Sell).end(); BuyIt++) {
+            for (BuyIt = BuyPtr->begin(); BuyIt != BuyPtr->end();) {
                 if (BuyIt->DURATION != -1 && BuyIt->DURATION + BuyIt->TIMESTAMP <= current_timestamp) {
-                    it->Buy.erase(BuyIt);
+                    BuyIt = BuyPtr->erase(BuyIt);
                 }
+                else {
+                    ++BuyIt;
+                }
+
             }
         }
 
@@ -226,18 +238,41 @@ int main(int argc, char *argv[]) {
                             // Case A.1, Sell's QUAN >= Buy's QUAN, which is always the final case.
                             if (SellIt->QUANTITY >= Read_temp.QUANTITY && Read_temp.PRICE > SellIt->PRICE) {
                                 SellIt->QUANTITY -= Read_temp.QUANTITY;
-                                Read_temp.QUANTITY = 0;
-                                Read_temp.isdone = true;
+
                                 if (SellIt->QUANTITY == 0) {
                                     SellIt->isdone = 1;
                                 }
                                 it->Price_dealt.insert(Read_temp.PRICE);
+                                // Output numbers
+                                Number_of_share += quantity;
+                                Money_Transferred += Read_temp.PRICE * quantity;
+                                Commission_Earnings += 2 * Read_temp.PRICE * quantity / 100;
+                                Number_of_Completed_Trades += 1;
+
+                                // Verbose Output
+                                if (verbose) {
+                                    cout << client_name << " purchased " << quantity << " shares of " << equity_symbol;
+                                    cout << " from " << SellIt->CLIENT_NAME << " for " << price << "/share";
+                                }
+
+                                Read_temp.QUANTITY = 0;
+                                Read_temp.isdone = true;
                             }
                             // Case A.2, Sell's QUAN < Buy's QUAN, will recursive to Case A.1 or to Case A.3
-                            if (SellIt->QUANTITY <= Read_temp.QUANTITY && Read_temp.PRICE > SellIt->PRICE) {
+                            if (SellIt->QUANTITY < Read_temp.QUANTITY && Read_temp.PRICE > SellIt->PRICE) {
                                 SellIt->QUANTITY = 0;
                                 SellIt->isdone = 1;
                                 Read_temp.QUANTITY -= SellIt->QUANTITY;
+                                // Output numbers
+                                Number_of_share += SellIt->QUANTITY;
+                                Money_Transferred += Read_temp.PRICE * SellIt->QUANTITY;
+                                Commission_Earnings += 2 * Read_temp.PRICE * SellIt->QUANTITY / 100;
+                                if (verbose) {
+                                    cout << client_name << " purchased " << SellIt->QUANTITY << " shares of "
+                                         << equity_symbol;
+                                    cout << " from " << SellIt->CLIENT_NAME << " for " << price << "/share";
+                                }
+                                quantity -= SellIt->QUANTITY;
                             }
                         }
                     }
@@ -253,6 +288,17 @@ int main(int argc, char *argv[]) {
                         else if (!BuyIt->isdone) {
                             if (BuyIt->QUANTITY >= Read_temp.QUANTITY && Read_temp.PRICE < BuyIt->PRICE) {
                                 BuyIt->QUANTITY -= Read_temp.QUANTITY;
+                                // Output numbers
+                                Number_of_share += quantity;
+                                Money_Transferred += Read_temp.PRICE * quantity;
+                                Commission_Earnings += 2 * Read_temp.PRICE * quantity / 100;
+                                Number_of_Completed_Trades += 1;
+
+                                // Verbose Output, what if one purchase is separated into 2 parts?
+                                if (verbose) {
+                                    cout << client_name << " purchased " << quantity << " shares of " << equity_symbol;
+                                    cout << " from " << BuyIt->CLIENT_NAME << " for " << price << "/share";
+                                }
                                 Read_temp.QUANTITY = 0;
                                 Read_temp.isdone = true;
                                 if (BuyIt->QUANTITY == 0) {
@@ -261,10 +307,20 @@ int main(int argc, char *argv[]) {
                                 it->Price_dealt.insert(Read_temp.PRICE);
                             }
                             // Case B.2
-                            if (BuyIt->QUANTITY <= Read_temp.QUANTITY && Read_temp.PRICE < BuyIt->PRICE) {
+                            if (BuyIt->QUANTITY < Read_temp.QUANTITY && Read_temp.PRICE < BuyIt->PRICE) {
                                 BuyIt->QUANTITY = 0;
                                 BuyIt->isdone = 0;
                                 Read_temp.QUANTITY -= BuyIt->QUANTITY;
+                                // Output numbers
+                                Number_of_share += BuyIt->QUANTITY;
+                                Money_Transferred += Read_temp.PRICE * BuyIt->QUANTITY;
+                                Commission_Earnings += 2 * Read_temp.PRICE * BuyIt->QUANTITY / 100;
+                                if (verbose) {
+                                    cout << client_name << " purchased " << BuyIt->QUANTITY << " shares of "
+                                         << equity_symbol;
+                                    cout << " from " << BuyIt->CLIENT_NAME << " for " << price << "/share";
+                                }
+                                quantity -= BuyIt->QUANTITY;
                             }
                         }
                     }
@@ -294,8 +350,10 @@ int main(int argc, char *argv[]) {
 
     // At the end of day, output
     cout << "---End of Day---" << endl;
-    cout << "Commission Earnings: " << endl;
-    cout << "Total Amount of Money Transferred: " << endl;
+    cout << "Commission Earnings: " << Commission_Earnings << endl;
+    cout << "Total Amount of Money Transferred: " << Money_Transferred << endl;
+    cout << "Number of Completed Trades: " << Number_of_Completed_Trades << endl;
+    cout << "Number of Shares Traded: " << Number_of_share << endl;
 }
 
 //void Add_to_Sell (order Temp, )

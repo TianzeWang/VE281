@@ -6,9 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/Users/peter/Desktop/Peter/JI/VE281/Project4/test.cpp
+/Users/peter/Desktop/Peter/JI/VE281/Project4/main.cpp
+iostream
+-
+queue
+-
+getopt.h
+-
 set
 -
-iostream
+map
 -
 

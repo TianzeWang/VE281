@@ -260,7 +260,7 @@ int main(int argc, char ** argv) {
     int DURATION = 0;
     char temp = '0';
 
-    // trading statistics
+    // trading statisticsx
     int matchPrice = 0;
     int singleSideComission = 0;
     int aggregateCommission = 0;
