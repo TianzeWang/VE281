@@ -1,0 +1,48 @@
+\documentclass{beamer}
+ \setbeamercovered{transparent}
+\usepackage{listings}
+
+\begin{document}
+
+% Using typewriter font: \ttfamily inside \lstset
+\begin{frame}[fragile]
+\frametitle{Inserting source code}
+\lstset{language=C++,
+                basicstyle=\ttfamily,
+                keywordstyle=\color{blue}\ttfamily,
+                stringstyle=\color{red}\ttfamily,
+                commentstyle=\color{green}\ttfamily,
+                morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+    #include<stdio.h>
+    #include<iostream>
+    // A comment
+    int main(void)
+    {
+    printf("Hello World\n");
+    return 0;
+    }
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Inserting source code without setting typewriter}
+\lstset{language=C++,
+                keywordstyle=\color{blue},
+                stringstyle=\color{red},
+                commentstyle=\color{green},
+                morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+    #include<stdio.h>
+    #include<iostream>
+    // A comment
+    int main(void)
+    {
+    printf("Hello World\n");
+    return 0;
+    }
+\end{lstlisting}
+\end{frame}
+\end{document} 

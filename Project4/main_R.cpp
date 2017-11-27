@@ -72,17 +72,17 @@ struct Equity {
 
 struct Big_Order {
     string EQUITY_SYMBOL;
-    set<order, compare_buy_order> Buy;
-    set<order, compare_sell_order> Sell;
+    map<string, order, compare_buy_order> Buy;
+    map<string, order, compare_sell_order> Sell;
     set<int> Price_dealt;
 };
 
 struct compare_big_order {
-    bool operator()(Big_Order &a, Big_Order &b) {
+    bool operator()(order &a, order &b) {
         return a.EQUITY_SYMBOL < b.EQUITY_SYMBOL;
     }
 
-    bool operator()(const Big_Order &a, const Big_Order &b) {
+    bool operator()(const order &a, const order &b) {
         return a.EQUITY_SYMBOL < b.EQUITY_SYMBOL;
     }
 };
@@ -125,22 +125,20 @@ int main(int argc, char *argv[]) {
     int quantity;
     int duration;
     char note;// used to indicate # and $
-    set<order, compare_buy_order> Buy;
-    set<order, compare_sell_order> Sell;
+    map<string, order, compare_buy_order> Buy;
+//    map<string, Big_Order> OrderAll_;
+    map<string, order, compare_sell_order> Sell;
 //    multiset<order, std::less>::iterator Buy_iter, Sell_iter;
 //    multiset<order, order_compare> OrderALL;
 //    multiset<order, order_compare>::iterator it;
-    set<Big_Order, compare_big_order> OrderAll;
-    set<Big_Order, compare_big_order> Order_in;
-    set<Big_Order, compare_big_order>::iterator it, it2;
-    Big_Order *AllPtr;
-    set<order, compare_buy_order>::iterator BuyIt;
-    set<order, compare_sell_order>::iterator SellIt;
-    set<order, compare_buy_order> *BuyPtr;
-    set<order, compare_sell_order> *SellPtr;
-    set<int>::iterator Medianitr;
-    order *SellOrderPtr;
-    order *BuyOrderPtr;
+    map<string, Big_Order, compare_big_order> OrderAll;
+    map<string, Big_Order, compare_big_order>::iterator it;
+    map<string, Big_Order, compare_big_order> * AllPtr;
+    map<string, order, compare_buy_order>::iterator BuyIt;
+    map<string, order, compare_sell_order>::iterator SellIt;
+    map<string, order, compare_buy_order> * BuyPtr;
+    map<string, order, compare_sell_order> * SellPtr;
+    order * OrderPtr;
     char c;
     // Market info:
     int Commission_Earnings = 0;
@@ -168,69 +166,8 @@ int main(int argc, char *argv[]) {
             Buy.insert(Read_temp);
         }
         id++;
-        for (it = OrderAll.begin(); it != OrderAll.end(); it++) {
-            AllPtr = const_cast<Big_Order *> (&(*it));
-            SellPtr = const_cast<set<order, compare_sell_order> *> (&(it->Sell));
-            BuyPtr = const_cast<set<order, compare_buy_order> *> (&(it->Buy));
-
-//            for (SellIt = SellPtr->begin(); SellIt != SellPtr->end();) {
-//                if (SellIt->DURATION != -1 && SellIt->DURATION + SellIt->TIMESTAMP <= current_timestamp) {
-//                    SellIt = SellPtr->erase(SellIt);
-//                }
-//                else {
-//                    ++SellIt;
-//                }
-//
-//            }
-//            for (BuyIt = BuyPtr->begin(); BuyIt != BuyPtr->end();) {
-//                if (BuyIt->DURATION != -1 && BuyIt->DURATION + BuyIt->TIMESTAMP <= current_timestamp) {
-//                    BuyIt = BuyPtr->erase(BuyIt);
-//                }
-//                else {
-//                    ++BuyIt;
-//                }
-//
-//            }
-        }
 
         // Sell and Buy and match
-
-        //Output Median and Midpoint
-        if (timestamp != current_timestamp) {
-            if (median) {
-                int median_num;
-                for (it = OrderAll.begin(); it != OrderAll.end(); it++) {
-                    Medianitr = it->Price_dealt.begin();
-                    if ((it->Price_dealt).size() % 2 == 0) {
-                        for (int i = 0; i < (it->Price_dealt).size() % 2; i++) {
-                            ++Medianitr;
-                        }
-                        median_num = ((*Medianitr) + (*(--Medianitr))) / 2;
-                    }
-                    else {
-                        median_num = *Medianitr;
-                    }
-                    cout << "Median match price of " << it->EQUITY_SYMBOL << " at time " << current_timestamp << " is "
-                         << median_num << endl;
-                }
-
-            }
-
-            if (midpoint) {
-                int midpoint_num;
-                for (it = OrderAll.begin(); it != OrderAll.end(); it++) {
-                    if (it->Buy.empty() || it->Sell.empty()) {
-                        cout << "Midpoint of " << it->EQUITY_SYMBOL << " at time " << current_timestamp
-                             << " is undefined" << endl;
-                    }
-                    else {
-                        midpoint_num = ((*(it->Buy).begin()).PRICE + (*(it->Sell).begin()).PRICE) / 2;
-                        cout << "Midpoint of " << it->EQUITY_SYMBOL << " at time " << current_timestamp << " is "
-                             << midpoint_num << endl;
-                    }
-                }
-            }
-        }
 
         current_timestamp = timestamp;
 
@@ -256,17 +193,13 @@ int main(int argc, char *argv[]) {
 
 
         for (it = OrderAll.begin(); it != OrderAll.end(); it++) {
-            AllPtr = const_cast<Big_Order *> (&(*it));
-            SellPtr = const_cast<set<order, compare_sell_order> *> (&(it->Sell));
-            BuyPtr = const_cast<set<order, compare_buy_order> *> (&(it->Buy));
-            for (SellIt = SellPtr->begin(); SellIt != SellPtr->end();) {
+            for (SellIt = (it->first).begin(); SellIt != SellPtr->end(); ) {
                 if (SellIt->DURATION != -1 && SellIt->DURATION + SellIt->TIMESTAMP <= current_timestamp) {
-                    SellIt = SellPtr->erase(SellIt);
+                    SellIt=SellPtr->erase(SellIt);
                 }
-                else {
+                else{
                     ++SellIt;
                 }
-
             }
             for (BuyIt = BuyPtr->begin(); BuyIt != BuyPtr->end();) {
                 if (BuyIt->DURATION != -1 && BuyIt->DURATION + BuyIt->TIMESTAMP <= current_timestamp) {
@@ -279,19 +212,18 @@ int main(int argc, char *argv[]) {
             }
         }
 
+
+
         // Match the order:
         //  Logics: 1. Deal with Buy order
         //          2. Check whether the orders in Sell can be matched with buy (!isdone)
         //          3. Divide into two cases: all bought/ partial bought
         //          4. If all bought, two cases: once or several times
         //          5. If partial, add the remaining part to the order book.
-        bool fonud_equity = 0;
         for (it = OrderAll.begin(); it != OrderAll.end(); it++) {
-            AllPtr = const_cast<Big_Order *> (&(*it));
             SellPtr = const_cast<set<order, compare_sell_order> *> (&(it->Sell));
             BuyPtr = const_cast<set<order, compare_buy_order> *> (&(it->Buy));
             if (it->EQUITY_SYMBOL == equity_symbol) { // Match and Dealt
-                fonud_equity = 1;
                 // Match and Dealt the order. already excluded the expired items deletion before.
 
                 // Case A: Buy order comes
@@ -301,34 +233,37 @@ int main(int argc, char *argv[]) {
 
                 if (Read_temp.buy_or_sell == BUY) {
                     for (SellIt = SellPtr->begin(); SellIt != SellPtr->end(); SellIt++) {
-                        SellOrderPtr = const_cast<order *> (&(*SellIt));
+                        //OrderPtr = const_cast<order *>
                         // Then judge in loog, for Sell QUAN < Buy QUAN, should stop as long as the temp is done
                         if (Read_temp.isdone) break;
                         else if (!SellIt->isdone) {
                             // Case A.1, Sell's QUAN >= Buy's QUAN, which is always the final case.
                             if (SellIt->QUANTITY >= Read_temp.QUANTITY && Read_temp.PRICE > SellIt->PRICE) {
-                                SellOrderPtr->QUANTITY -= Read_temp.QUANTITY;
+                                SellIt->QUANTITY -= Read_temp.QUANTITY;
+
                                 if (SellIt->QUANTITY == 0) {
-                                    SellOrderPtr->isdone = true;
+                                    SellIt->isdone = 1;
                                 }
-                                AllPtr->Price_dealt.insert(Read_temp.PRICE);
+                                it->Price_dealt.insert(Read_temp.PRICE);
                                 // Output numbers
                                 Number_of_share += quantity;
                                 Money_Transferred += Read_temp.PRICE * quantity;
                                 Commission_Earnings += 2 * Read_temp.PRICE * quantity / 100;
                                 Number_of_Completed_Trades += 1;
+
                                 // Verbose Output
                                 if (verbose) {
                                     cout << client_name << " purchased " << quantity << " shares of " << equity_symbol;
                                     cout << " from " << SellIt->CLIENT_NAME << " for " << price << "/share";
                                 }
+
                                 Read_temp.QUANTITY = 0;
                                 Read_temp.isdone = true;
                             }
                             // Case A.2, Sell's QUAN < Buy's QUAN, will recursive to Case A.1 or to Case A.3
                             if (SellIt->QUANTITY < Read_temp.QUANTITY && Read_temp.PRICE > SellIt->PRICE) {
-                                SellOrderPtr->QUANTITY = 0;
-                                SellOrderPtr->isdone = 1;
+                                SellIt->QUANTITY = 0;
+                                SellIt->isdone = 1;
                                 Read_temp.QUANTITY -= SellIt->QUANTITY;
                                 // Output numbers
                                 Number_of_share += SellIt->QUANTITY;
@@ -345,17 +280,16 @@ int main(int argc, char *argv[]) {
                     }
                     // Case A.3
                     if (!Read_temp.isdone && Read_temp.DURATION != 0) {
-                        AllPtr->Buy.insert(Read_temp);
+                        it->Buy.insert(Read_temp);
                     }
                 }
                     //Case B: Sell Order Comes
                 else {
                     for (BuyIt = (it->Buy).begin(); BuyIt != (it->Buy).end(); BuyIt++) {
-                        BuyOrderPtr = const_cast<order *> (&(*BuyIt));
                         if (Read_temp.isdone) break;
                         else if (!BuyIt->isdone) {
                             if (BuyIt->QUANTITY >= Read_temp.QUANTITY && Read_temp.PRICE < BuyIt->PRICE) {
-                                BuyOrderPtr->QUANTITY -= Read_temp.QUANTITY;
+                                BuyIt->QUANTITY -= Read_temp.QUANTITY;
                                 // Output numbers
                                 Number_of_share += quantity;
                                 Money_Transferred += Read_temp.PRICE * quantity;
@@ -370,14 +304,14 @@ int main(int argc, char *argv[]) {
                                 Read_temp.QUANTITY = 0;
                                 Read_temp.isdone = true;
                                 if (BuyIt->QUANTITY == 0) {
-                                    BuyOrderPtr->isdone = 1;
+                                    BuyIt->isdone = 1;
                                 }
-                                AllPtr->Price_dealt.insert(Read_temp.PRICE);
+                                it->Price_dealt.insert(Read_temp.PRICE);
                             }
                             // Case B.2
                             if (BuyIt->QUANTITY < Read_temp.QUANTITY && Read_temp.PRICE < BuyIt->PRICE) {
-                                BuyOrderPtr->QUANTITY = 0;
-                                BuyOrderPtr->isdone = 0;
+                                BuyIt->QUANTITY = 0;
+                                BuyIt->isdone = 0;
                                 Read_temp.QUANTITY -= BuyIt->QUANTITY;
                                 // Output numbers
                                 Number_of_share += BuyIt->QUANTITY;
@@ -393,37 +327,25 @@ int main(int argc, char *argv[]) {
                         }
                     }
                     if (!Read_temp.isdone && Read_temp.DURATION != 0) {
-                        AllPtr->Sell.insert(Read_temp);
+                        it->Sell.insert(Read_temp);
                     }
                 }
                 // Case C: Reamins some undealt orders, should be put back
 
             }
-            // Remain another case that dealts without
+                // Remain another case that dealts without
 
-//            else { // Not found and create
-//                Big_Order bigorderTemp;
-//                if (buy_or_sell1 == "BUY") {
-//                    bigorderTemp.Buy.insert(Read_temp);
-//                }
-//                else {
-//                    bigorderTemp.Sell.insert(Read_temp);
-//                }
-//                bigorderTemp.EQUITY_SYMBOL = Read_temp.EQUITY_SYMBOL;
-//                OrderAll.insert(bigorderTemp);
-//            }
-        }
-
-        if (!fonud_equity) {
-            Big_Order bigorderTemp;
-            if (buy_or_sell1 == "BUY") {
-                bigorderTemp.Buy.insert(Read_temp);
+            else { // Not found and create
+                Big_Order bigorderTemp;
+                if (buy_or_sell1 == "BUY") {
+                    bigorderTemp.Buy.insert(Read_temp);
+                }
+                else {
+                    bigorderTemp.Sell.insert(Read_temp);
+                }
+                bigorderTemp.EQUITY_SYMBOL = Read_temp.EQUITY_SYMBOL;
+                OrderAll.insert(bigorderTemp);
             }
-            else {
-                bigorderTemp.Sell.insert(Read_temp);
-            }
-            bigorderTemp.EQUITY_SYMBOL = Read_temp.EQUITY_SYMBOL;
-            OrderAll.insert(bigorderTemp);
         }
 
     }
