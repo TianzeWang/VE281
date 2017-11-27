@@ -14,7 +14,7 @@ using namespace std;
 
 // OVERVIEW: A specialized version of the 'heap' ADT implemented as a
 //           Fibonacci heap.
-template <typename TYPE, typename COMP = std::less<TYPE> >
+template<typename TYPE, typename COMP = std::less<TYPE> >
 class fib_heap : public priority_queue<TYPE, COMP> {
 public:
     typedef unsigned size_type;
@@ -55,13 +55,13 @@ private:
 
 private:
     struct node {
-        TYPE key = TYPE();
-        node *parent = NULL;
+        TYPE key;
+//        node *parent = NULL;
         std::list<node> children_list;
 // Initial intention to implement it with a list later to find not so
 // intuitive as directly use pointers.
 
-        unsigned int degree = 0;
+        int degree = 0;
     };
     unsigned int n = 0; // Number of elements
 //    node *min_node;
@@ -75,27 +75,29 @@ private:
 };
 
 
-template <typename TYPE, typename COMP>
+template<typename TYPE, typename COMP>
 fib_heap<TYPE, COMP>::fib_heap(COMP comp) {
     n = 0;
     compare = comp;
     min_node = root_list.end();
 }
 
-template <typename TYPE, typename COMP>
+template<typename TYPE, typename COMP>
 void fib_heap<TYPE, COMP>::enqueue(const TYPE &val) {
     node new_node;
     new_node.key = val;
-    if (root_list.empty()) {
+    new_node.degree = 0;
+//    if (root_list.empty()) {
+//        root_list.push_back(new_node);
+//        min_node = root_list.end();
+//        min_node--;
+//    }
+    if (root_list.size() == 1) {
         root_list.push_back(new_node);
-        typename std::list<node>::iterator x;
-        min_node = root_list.end();
-        min_node--;
-    }
-    else {
+        min_node = root_list.begin();
+    } else {
         root_list.push_back(new_node);
         if (compare(new_node.key, min_node->key)) {
-            typename std::list<node>::iterator x;
             min_node = root_list.end();
             min_node--;
         }
@@ -104,55 +106,55 @@ void fib_heap<TYPE, COMP>::enqueue(const TYPE &val) {
 }
 
 
-template <typename TYPE, typename COMP>
+template<typename TYPE, typename COMP>
 const TYPE &fib_heap<TYPE, COMP>::get_min() const {
     return (*min_node).key;
 }
 
-template <typename TYPE, typename COMP>
+template<typename TYPE, typename COMP>
 unsigned int fib_heap<TYPE, COMP>::size() const {
     return this->n;
 }
 
-template <typename TYPE, typename COMP>
+template<typename TYPE, typename COMP>
 bool fib_heap<TYPE, COMP>::empty() const {
-    return this->size() == 0;
+    return this->n == 0;
 }
 
-template <typename TYPE, typename COMP>
+template<typename TYPE, typename COMP>
 TYPE fib_heap<TYPE, COMP>::dequeue_min() {
 //    auto a = *(root_list.begin()++);
 //    auto b = *(root_list.end()--);
-    typename std::list<node>::iterator z = this->min_node;
+//    typename std::list<node>::iterator z = this->min_node;
+    auto z = *(min_node);
 //    cout << (*z).key << endl;
-    if (z != root_list.end()) {
-//        typename std::list<node>::iterator x;
-//        for (x = (*z).children_list.begin(); x != (*z).children_list.end(); x++) {
-//            root_list.push_back(*x);
+    if (min_node != root_list.end()) {
+        typename std::list<node>::iterator x;
+        for (x = (z).children_list.begin(); x != (z).children_list.end();) {
+            root_list.push_back(*x);
 //            (*x).parent = NULL;
-//            (*z).children_list.erase(x);
-//        }
-        root_list.splice(min_node, (*z).children_list);
+            x = (z).children_list.erase(x);
+        }
+//        root_list.splice(min_node, (z).children_list);
         min_node = root_list.erase(min_node);
         n--;
         if (n == 0) {
             this->min_node = root_list.end();
-        }
-        else {
+        } else {
 //            auto s = z++;
 //            this->min_node = s;
             consolidate();
         }
     }
-    return (*z).key;
+    return (z).key;
 }
 
-template <typename TYPE, typename COMP>
+template<typename TYPE, typename COMP>
 void fib_heap<TYPE, COMP>::Fib_Heap_Link(typename std::list<node>::iterator y, typename std::list<node>::iterator x) {
     auto *temp1 = &y;
     typename std::list<node>::iterator temp;
 //    *temp = y;
-    (*y).parent = &(*x);
+//    (*y).parent = &(*x);
     (*x).children_list.push_back(*y);
     y = root_list.erase(y);
     (*x).degree++;
@@ -160,51 +162,59 @@ void fib_heap<TYPE, COMP>::Fib_Heap_Link(typename std::list<node>::iterator y, t
 }
 
 
-template <typename TYPE, typename COMP>
+template<typename TYPE, typename COMP>
 void fib_heap<TYPE, COMP>::consolidate() {
     int size_of_A;
     auto n0 = n;
     double temp = log(n0) / log(1.618);
-    size_of_A = static_cast<int>(floor(temp) + 1);
+    size_of_A = static_cast<int>(temp + 1);
     typename std::list<node>::iterator A[size_of_A];
     int i;
-    for (i = 0; i <= size_of_A; i++) {
+    for (i = 0; i < size_of_A; i++) {
         A[i] = root_list.end();
     }
 
-    typename std::list<node>::iterator it;
-    for (it = root_list.begin(); it != root_list.end(); it++) {
-        typename std::list<node>::iterator x = it;
-        auto d = (*x).degree;
+    typename std::list<node>::iterator it = root_list.begin();
+    while (it != root_list.end()) {
+//        typename std::list<node>::iterator &x = it;
+//        int d = (*x).degree;
+        auto d = (*it).degree;
+//        for (it = root_list.begin(); it != root_list.end(); it++) {
         while (A[d] != root_list.end()) {
             typename std::list<node>::iterator y = A[d];
-            if (compare((*x).key, (*y).key)) {
+            if (compare((*it).key, (*y).key)) {
                 //exchange
-                root_list.insert(x, *y);
-                root_list.insert(y, *x);
+                root_list.insert(it, *y);
+                root_list.insert(y, *it);
                 y = root_list.erase(y);
-                x = root_list.erase(x);
+                it = root_list.erase(it);
                 y--;
-                x--;
+                it--;
 
-                Fib_Heap_Link(x, y);
-            }
-            else {
-                Fib_Heap_Link(y, x);
+//                Fib_Heap_Link(x, y);
+//                (*y).parent = &(*x);
+                (*it).children_list.push_back((*y));
+                y = root_list.erase(y);
+                (*it).degree++;
+            } else {
+//                (*y).parent = &(*x);
+                (*it).children_list.push_back((*y));
+                y = root_list.erase(y);
+                (*it).degree++;
             }
             A[d] = root_list.end();
             d++;
         }
-        A[d] = x;
+        A[d] = it;
+        it++;
     }
     this->min_node = root_list.end();
-    for (i = 0; i <= size_of_A; i++) {
+    for (i = 0; i < size_of_A; i++) {
         if (A[i] != root_list.end()) {
             if (min_node == root_list.end()) {
 //                root_list.push_back(*A[i]);
                 min_node = A[i];
-            }
-            else {
+            } else {
                 if (compare((*min_node).key, (*A[i]).key)) {
                     min_node = A[i];
                 }
