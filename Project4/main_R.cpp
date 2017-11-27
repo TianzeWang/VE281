@@ -1,6 +1,7 @@
 #include <iostream>
 #include <queue>
 #include <getopt.h>
+#include <sstream>
 #include <set>
 #include <map>
 
@@ -188,10 +189,17 @@ int main(int argc, char *argv[]) {
     int Number_of_Completed_Trades = 0;
     int Number_of_share = 0;
     // Read
+    stringstream ss;
     while (!cin.eof()) {
-        if (c == '\n') break;
+//        if (c == '\n') break;
+//    while ((cin >> timestamp)) {
+        string str1;
+        getline(cin,str1);
+        if (str1.empty()) break;
+        ss.clear();
+        ss.str(str1);
         order Read_temp;
-        cin >> timestamp >> client_name >> buy_or_sell1 >> equity_symbol >> note >> price >> note >> quantity >> duration;
+        ss >> timestamp >> client_name >> buy_or_sell1 >> equity_symbol >> note >> price >> note >> quantity >> duration;
         Read_temp.id = id;
         Read_temp.TIMESTAMP = timestamp;
         Read_temp.CLIENT_NAME = client_name;

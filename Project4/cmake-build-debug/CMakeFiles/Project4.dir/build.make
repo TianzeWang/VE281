@@ -57,38 +57,38 @@ include CMakeFiles/Project4.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Project4.dir/flags.make
 
-CMakeFiles/Project4.dir/main_R.cpp.o: CMakeFiles/Project4.dir/flags.make
-CMakeFiles/Project4.dir/main_R.cpp.o: ../main_R.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/peter/Desktop/Peter/JI/VE281/Project4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Project4.dir/main_R.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Project4.dir/main_R.cpp.o -c /Users/peter/Desktop/Peter/JI/VE281/Project4/main_R.cpp
+CMakeFiles/Project4.dir/main2.cpp.o: CMakeFiles/Project4.dir/flags.make
+CMakeFiles/Project4.dir/main2.cpp.o: ../main2.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/peter/Desktop/Peter/JI/VE281/Project4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Project4.dir/main2.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Project4.dir/main2.cpp.o -c /Users/peter/Desktop/Peter/JI/VE281/Project4/main2.cpp
 
-CMakeFiles/Project4.dir/main_R.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Project4.dir/main_R.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/peter/Desktop/Peter/JI/VE281/Project4/main_R.cpp > CMakeFiles/Project4.dir/main_R.cpp.i
+CMakeFiles/Project4.dir/main2.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Project4.dir/main2.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/peter/Desktop/Peter/JI/VE281/Project4/main2.cpp > CMakeFiles/Project4.dir/main2.cpp.i
 
-CMakeFiles/Project4.dir/main_R.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Project4.dir/main_R.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/peter/Desktop/Peter/JI/VE281/Project4/main_R.cpp -o CMakeFiles/Project4.dir/main_R.cpp.s
+CMakeFiles/Project4.dir/main2.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Project4.dir/main2.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/peter/Desktop/Peter/JI/VE281/Project4/main2.cpp -o CMakeFiles/Project4.dir/main2.cpp.s
 
-CMakeFiles/Project4.dir/main_R.cpp.o.requires:
+CMakeFiles/Project4.dir/main2.cpp.o.requires:
 
-.PHONY : CMakeFiles/Project4.dir/main_R.cpp.o.requires
+.PHONY : CMakeFiles/Project4.dir/main2.cpp.o.requires
 
-CMakeFiles/Project4.dir/main_R.cpp.o.provides: CMakeFiles/Project4.dir/main_R.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Project4.dir/build.make CMakeFiles/Project4.dir/main_R.cpp.o.provides.build
-.PHONY : CMakeFiles/Project4.dir/main_R.cpp.o.provides
+CMakeFiles/Project4.dir/main2.cpp.o.provides: CMakeFiles/Project4.dir/main2.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Project4.dir/build.make CMakeFiles/Project4.dir/main2.cpp.o.provides.build
+.PHONY : CMakeFiles/Project4.dir/main2.cpp.o.provides
 
-CMakeFiles/Project4.dir/main_R.cpp.o.provides.build: CMakeFiles/Project4.dir/main_R.cpp.o
+CMakeFiles/Project4.dir/main2.cpp.o.provides.build: CMakeFiles/Project4.dir/main2.cpp.o
 
 
 # Object files for target Project4
 Project4_OBJECTS = \
-"CMakeFiles/Project4.dir/main_R.cpp.o"
+"CMakeFiles/Project4.dir/main2.cpp.o"
 
 # External object files for target Project4
 Project4_EXTERNAL_OBJECTS =
 
-Project4: CMakeFiles/Project4.dir/main_R.cpp.o
+Project4: CMakeFiles/Project4.dir/main2.cpp.o
 Project4: CMakeFiles/Project4.dir/build.make
 Project4: CMakeFiles/Project4.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/peter/Desktop/Peter/JI/VE281/Project4/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Project4"
@@ -99,7 +99,7 @@ CMakeFiles/Project4.dir/build: Project4
 
 .PHONY : CMakeFiles/Project4.dir/build
 
-CMakeFiles/Project4.dir/requires: CMakeFiles/Project4.dir/main_R.cpp.o.requires
+CMakeFiles/Project4.dir/requires: CMakeFiles/Project4.dir/main2.cpp.o.requires
 
 .PHONY : CMakeFiles/Project4.dir/requires
 
