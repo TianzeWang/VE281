@@ -6,21 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/Users/peter/Desktop/Peter/JI/VE281/Project4/main2.cpp
-queue
--
-unordered_map
--
-unordered_set
--
-map
--
-set
--
+/Users/peter/Desktop/Peter/JI/VE281/Project4/main_R.cpp
 iostream
+-
+queue
 -
 getopt.h
 -
-string
+sstream
+-
+set
+-
+map
 -
 
