@@ -414,7 +414,8 @@ int main(int argc, char *argv[]) {
                                 // Output numbers
                                 Number_of_share += quantity;
                                 Money_Transferred += SellIt->PRICE * quantity;
-                                Commission_Earnings += 2 * SellIt->PRICE * quantity / 100;
+                                Commission_Earnings += SellIt->PRICE * quantity / 100;
+                                Commission_Earnings += SellIt->PRICE * quantity / 100;
                                 Number_of_Completed_Trades += 1;
                                 // Verbose Output
                                 if (verbose) {
@@ -472,7 +473,8 @@ int main(int argc, char *argv[]) {
                                 // Output numbers
                                 Number_of_share += SellIt->QUANTITY;
                                 Money_Transferred += SellIt->PRICE * SellIt->QUANTITY;
-                                Commission_Earnings += 2 * SellIt->PRICE * SellIt->QUANTITY / 100;
+                                Commission_Earnings += SellIt->PRICE * SellIt->QUANTITY / 100;
+                                Commission_Earnings += SellIt->PRICE * SellIt->QUANTITY / 100;
                                 Number_of_Completed_Trades += 1;
                                 if (verbose) {
                                     cout << client_name << " purchased " << SellIt->QUANTITY << " shares of "
@@ -551,13 +553,15 @@ int main(int argc, char *argv[]) {
                                 BuyOrderPtr->QUANTITY -= Read_temp.QUANTITY;
                                 // Output numbers
                                 Number_of_share += quantity;
-                                Money_Transferred += Read_temp.PRICE * quantity;
-                                Commission_Earnings += 2 * Read_temp.PRICE * quantity / 100;
+                                Money_Transferred += BuyIt->PRICE * quantity;
+                                Commission_Earnings += BuyIt->PRICE * quantity / 100;
+                                Commission_Earnings += BuyIt->PRICE * quantity / 100;
                                 Number_of_Completed_Trades += 1;
 
                                 // Verbose Output, what if one purchase is separated into 2 parts?
                                 if (verbose) {
-                                    cout << BuyIt->CLIENT_NAME << " purchased " << quantity << " shares of " << equity_symbol;
+                                    cout << BuyIt->CLIENT_NAME << " purchased " << quantity << " shares of "
+                                         << equity_symbol;
                                     cout << " from " << client_name << " for $" << BuyIt->PRICE << "/share"
                                          << endl;
                                 }
@@ -615,8 +619,9 @@ int main(int argc, char *argv[]) {
                                 Read_temp.QUANTITY -= BuyIt->QUANTITY;
                                 // Output numbers
                                 Number_of_share += BuyIt->QUANTITY;
-                                Money_Transferred += Read_temp.PRICE * BuyIt->QUANTITY;
-                                Commission_Earnings += 2 * Read_temp.PRICE * BuyIt->QUANTITY / 100;
+                                Money_Transferred += BuyIt->PRICE * BuyIt->QUANTITY;
+                                Commission_Earnings += BuyIt->PRICE * BuyIt->QUANTITY / 100;
+                                Commission_Earnings += BuyIt->PRICE * BuyIt->QUANTITY / 100;
                                 Number_of_Completed_Trades += 1;
                                 if (verbose) {
                                     cout << BuyIt->CLIENT_NAME << " purchased " << BuyIt->QUANTITY << " shares of "
