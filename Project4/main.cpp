@@ -54,6 +54,25 @@ struct compare_sell_order {
     }
 };
 
+struct time_traveler_order {
+    string equity_name;
+    int buy_price = 0;
+    int sell_price = 0;
+    int buy_time = -1;
+    int sell_time = -1;
+    int ttt_id = 0;
+};
+
+struct compare_ttt {
+    bool operator()(time_traveler_order &a, time_traveler_order &b) const {
+        return a.ttt_id < b.ttt_id;
+    }
+
+    bool operator()(const time_traveler_order &a, const time_traveler_order &b) const {
+        return a.ttt_id < b.ttt_id;
+    }
+};
+
 struct Client {
     string client_name = "";
     int stock_buy = 0;
@@ -100,7 +119,11 @@ struct compare_big_order {
 
 int main(int argc, char *argv[]) {
     bool verbose = false, median = false, midpoint = false, transfers = false, ttt = false;
-
+    set<time_traveler_order, compare_ttt> ttt_set;
+    set<time_traveler_order, compare_ttt>::iterator ttt_setit;
+    time_traveler_order *ttt_Ptr;
+    time_traveler_order ttt_temp;
+    int tttid = 0;
     while (1) {
         static struct option long_option[] = {{"median",    no_argument,       NULL, 'm'},
                                               {"verbose",   no_argument,       NULL, 'v'},
@@ -124,6 +147,10 @@ int main(int argc, char *argv[]) {
         }
         else if (c == 'g') {
             ttt = true;
+            ttt_temp.ttt_id = tttid;
+            ttt_temp.equity_name = optarg;
+            ttt_set.insert(ttt_temp);
+            tttid++;
         }
     }
     int current_timestamp = 0, id = 0;
@@ -151,7 +178,7 @@ int main(int argc, char *argv[]) {
     set<int>::iterator Medianitr;
     set<Client, compare_Client> BigClient;
     set<Client, compare_Client>::iterator BigClientit;
-    Client * ClientPtr;
+    Client *ClientPtr;
     order *SellOrderPtr;
     order *BuyOrderPtr;
     char c;
@@ -168,7 +195,7 @@ int main(int argc, char *argv[]) {
         Read_temp.id = id;
         Read_temp.TIMESTAMP = timestamp;
         Read_temp.CLIENT_NAME = client_name;
-        Read_temp.DURATION = duration;
+        Read_temp.PRICE = price;
         Read_temp.EQUITY_SYMBOL = equity_symbol;
         Read_temp.QUANTITY = quantity;
         Read_temp.DURATION = duration;
@@ -206,7 +233,22 @@ int main(int argc, char *argv[]) {
 //            }
         }
 
-        // Sell and Buy and match
+        // ttt tag
+        for (ttt_setit = ttt_set.begin(); ttt_setit != ttt_set.end(); ttt_setit++) {
+            if (ttt_setit->equity_name == Read_temp.EQUITY_SYMBOL) {
+                ttt_Ptr = const_cast<time_traveler_order *> (&(*ttt_setit));
+                if (Read_temp.buy_or_sell == BUY || ttt_Ptr->buy_time == -1 || Read_temp.PRICE < ttt_Ptr->buy_price) {
+                    ttt_Ptr->buy_price = Read_temp.PRICE;
+                    ttt_Ptr->buy_time = Read_temp.TIMESTAMP;
+
+                }
+                else if (Read_temp.buy_or_sell == SELL || ttt_Ptr->sell_time == -1 ||
+                         Read_temp.PRICE > ttt_Ptr->sell_price) {
+                    ttt_Ptr->sell_time = Read_temp.TIMESTAMP;
+                    ttt_Ptr->sell_price = Read_temp.PRICE;
+                }
+            }
+        }
 
         //Output Median and Midpoint
         if (timestamp != current_timestamp) {
@@ -221,9 +263,12 @@ int main(int argc, char *argv[]) {
                         median_num = ((*Medianitr) + (*(--Medianitr))) / 2;
                     }
                     else {
+                        for (int i = 0; i < (it->Price_dealt).size() % 2; i++) {
+                            ++Medianitr;
+                        }
                         median_num = *Medianitr;
                     }
-                    cout << "Median match price of " << it->EQUITY_SYMBOL << " at time " << current_timestamp << " is "
+                    cout << "Median match price of " << it->EQUITY_SYMBOL << " at time " << current_timestamp << " is $"
                          << median_num << endl;
                 }
 
@@ -238,7 +283,7 @@ int main(int argc, char *argv[]) {
                     }
                     else {
                         midpoint_num = ((*(it->Buy).begin()).PRICE + (*(it->Sell).begin()).PRICE) / 2;
-                        cout << "Midpoint of " << it->EQUITY_SYMBOL << " at time " << current_timestamp << " is "
+                        cout << "Midpoint of " << it->EQUITY_SYMBOL << " at time " << current_timestamp << " is $"
                              << midpoint_num << endl;
                     }
                 }
@@ -334,7 +379,7 @@ int main(int argc, char *argv[]) {
                                         break;
                                     }
                                 }
-                                if (!Clientfound){
+                                if (!Clientfound) {
                                     Client temp_client;
                                     temp_client.client_name = Read_temp.CLIENT_NAME;
                                     temp_client.stock_buy += quantity;
@@ -353,7 +398,7 @@ int main(int argc, char *argv[]) {
                                         break;
                                     }
                                 }
-                                if (!Clientfound){
+                                if (!Clientfound) {
                                     Client temp_client;
                                     temp_client.client_name = SellOrderPtr->CLIENT_NAME;
                                     temp_client.stock_sell += quantity;
@@ -370,13 +415,13 @@ int main(int argc, char *argv[]) {
                                 }
                                 // Output numbers
                                 Number_of_share += quantity;
-                                Money_Transferred += Read_temp.PRICE * quantity;
-                                Commission_Earnings += 2 * Read_temp.PRICE * quantity / 100;
+                                Money_Transferred += SellIt->PRICE * quantity;
+                                Commission_Earnings += 2 * SellIt->PRICE * quantity / 100;
                                 Number_of_Completed_Trades += 1;
                                 // Verbose Output
                                 if (verbose) {
                                     cout << client_name << " purchased " << quantity << " shares of " << equity_symbol;
-                                    cout << " from " << SellIt->CLIENT_NAME << " for " << price << "/share";
+                                    cout << " from " << SellIt->CLIENT_NAME << " for $" << price << "/share";
                                 }
                                 Read_temp.QUANTITY = 0;
                                 Read_temp.isdone = true;
@@ -396,7 +441,7 @@ int main(int argc, char *argv[]) {
                                         break;
                                     }
                                 }
-                                if (!Clientfound){
+                                if (!Clientfound) {
                                     Client temp_client;
                                     temp_client.client_name = Read_temp.CLIENT_NAME;
                                     temp_client.stock_buy += SellIt->QUANTITY;
@@ -415,7 +460,7 @@ int main(int argc, char *argv[]) {
                                         break;
                                     }
                                 }
-                                if (!Clientfound){
+                                if (!Clientfound) {
                                     Client temp_client;
                                     temp_client.client_name = SellOrderPtr->CLIENT_NAME;
                                     temp_client.stock_sell += SellIt->QUANTITY;
@@ -433,7 +478,7 @@ int main(int argc, char *argv[]) {
                                 if (verbose) {
                                     cout << client_name << " purchased " << SellIt->QUANTITY << " shares of "
                                          << equity_symbol;
-                                    cout << " from " << SellIt->CLIENT_NAME << " for " << price << "/share";
+                                    cout << " from " << SellIt->CLIENT_NAME << " for $" << price << "/share";
                                 }
                                 quantity -= SellIt->QUANTITY;
                                 Read_temp.QUANTITY -= SellIt->QUANTITY;
@@ -472,30 +517,30 @@ int main(int argc, char *argv[]) {
                                         break;
                                     }
                                 }
-                                if (!Clientfound){
+                                if (!Clientfound) {
                                     Client temp_client;
                                     temp_client.client_name = Read_temp.CLIENT_NAME;
-                                    ClientPtr->amount_traded += quantity * BuyIt->PRICE;
-                                    ClientPtr->stock_sell += quantity;
+                                    temp_client.amount_traded += quantity * BuyIt->PRICE;
+                                    temp_client.stock_sell += quantity;
                                     BigClient.insert(temp_client);
                                 }
 
-                                // 2. The existing seller
+                                // 2. The existing Buyer
                                 Clientfound = false;
                                 for (BigClientit = BigClient.begin(); BigClientit != BigClient.end(); BigClientit++) {
                                     ClientPtr = const_cast<Client *> (&(*BigClientit));
-                                    if (BigClientit->client_name == SellOrderPtr->CLIENT_NAME) {
+                                    if (BigClientit->client_name == BuyOrderPtr->CLIENT_NAME) {
                                         Clientfound = true;
-                                        ClientPtr->amount_traded += SellIt->QUANTITY * SellIt->PRICE;
-                                        ClientPtr->stock_sell += SellIt->QUANTITY;
+                                        ClientPtr->amount_traded -= quantity * BuyIt->PRICE;
+                                        ClientPtr->stock_buy += quantity;
                                         break;
                                     }
                                 }
-                                if (!Clientfound){
+                                if (!Clientfound) {
                                     Client temp_client;
-                                    temp_client.client_name = SellOrderPtr->CLIENT_NAME;
-                                    temp_client.stock_sell += SellIt->QUANTITY;
-                                    temp_client.amount_traded += SellIt->QUANTITY * SellIt->PRICE;
+                                    temp_client.client_name = BuyOrderPtr->CLIENT_NAME;
+                                    temp_client.stock_buy += quantity;
+                                    temp_client.amount_traded -= quantity * BuyIt->PRICE;
                                     BigClient.insert(temp_client);
                                 }
 
@@ -509,7 +554,7 @@ int main(int argc, char *argv[]) {
                                 // Verbose Output, what if one purchase is separated into 2 parts?
                                 if (verbose) {
                                     cout << client_name << " purchased " << quantity << " shares of " << equity_symbol;
-                                    cout << " from " << BuyIt->CLIENT_NAME << " for " << price << "/share";
+                                    cout << " from " << BuyIt->CLIENT_NAME << " for $" << price << "/share";
                                 }
                                 Read_temp.QUANTITY = 0;
                                 Read_temp.isdone = true;
@@ -521,6 +566,47 @@ int main(int argc, char *argv[]) {
                             }
                             // Case B.2
                             if (BuyIt->QUANTITY < Read_temp.QUANTITY && Read_temp.PRICE < BuyIt->PRICE) {
+
+                                // Store information about clients
+                                // 1. The coming Seller
+                                bool Clientfound = false;
+                                for (BigClientit = BigClient.begin(); BigClientit != BigClient.end(); BigClientit++) {
+                                    ClientPtr = const_cast<Client *> (&(*BigClientit));
+                                    if (BigClientit->client_name == Read_temp.CLIENT_NAME) {
+                                        Clientfound = true;
+                                        ClientPtr->amount_traded += BuyIt->QUANTITY * BuyIt->PRICE;
+                                        ClientPtr->stock_sell += BuyIt->QUANTITY;
+                                        break;
+                                    }
+                                }
+                                if (!Clientfound) {
+                                    Client temp_client;
+                                    temp_client.client_name = Read_temp.CLIENT_NAME;
+                                    temp_client.stock_sell += BuyIt->QUANTITY;
+                                    temp_client.amount_traded += BuyIt->QUANTITY * BuyIt->PRICE;
+                                    BigClient.insert(temp_client);
+                                }
+
+                                // 2. The existing Buyer
+                                Clientfound = false;
+                                for (BigClientit = BigClient.begin(); BigClientit != BigClient.end(); BigClientit++) {
+                                    ClientPtr = const_cast<Client *> (&(*BigClientit));
+                                    if (BigClientit->client_name == BuyOrderPtr->CLIENT_NAME) {
+                                        Clientfound = true;
+                                        ClientPtr->amount_traded += BuyIt->QUANTITY * BuyIt->PRICE;
+                                        ClientPtr->stock_buy -= BuyIt->QUANTITY;
+                                        break;
+                                    }
+                                }
+                                if (!Clientfound) {
+                                    Client temp_client;
+                                    temp_client.client_name = BuyOrderPtr->CLIENT_NAME;
+                                    temp_client.stock_buy += BuyIt->QUANTITY;
+                                    temp_client.amount_traded -= BuyIt->QUANTITY * BuyIt->PRICE;
+                                    BigClient.insert(temp_client);
+                                }
+
+
                                 Read_temp.QUANTITY -= BuyIt->QUANTITY;
                                 // Output numbers
                                 Number_of_share += BuyIt->QUANTITY;
@@ -529,7 +615,7 @@ int main(int argc, char *argv[]) {
                                 if (verbose) {
                                     cout << client_name << " purchased " << BuyIt->QUANTITY << " shares of "
                                          << equity_symbol;
-                                    cout << " from " << BuyIt->CLIENT_NAME << " for " << price << "/share";
+                                    cout << " from " << BuyIt->CLIENT_NAME << " for $" << price << "/share";
                                 }
                                 quantity -= BuyIt->QUANTITY;
                                 Read_temp.QUANTITY -= BuyIt->QUANTITY;
@@ -574,12 +660,66 @@ int main(int argc, char *argv[]) {
         }
     }
 
+
+    if (median) {
+        int median_num;
+        for (it = OrderAll.begin(); it != OrderAll.end(); it++) {
+            Medianitr = it->Price_dealt.begin();
+            if ((it->Price_dealt).size() % 2 == 0) {
+                for (int i = 0; i < (it->Price_dealt).size() % 2; i++) {
+                    ++Medianitr;
+                }
+                median_num = ((*Medianitr) + (*(--Medianitr))) / 2;
+            }
+            else {
+                for (int i = 0; i < (it->Price_dealt).size() % 2; i++) {
+                    ++Medianitr;
+                }
+                median_num = *Medianitr;
+            }
+            cout << "Median match price of " << it->EQUITY_SYMBOL << " at time " << current_timestamp << " is $"
+                 << median_num << endl;
+        }
+
+    }
+
+    if (midpoint) {
+        int midpoint_num;
+        for (it = OrderAll.begin(); it != OrderAll.end(); it++) {
+            if (it->Buy.empty() || it->Sell.empty()) {
+                cout << "Midpoint of " << it->EQUITY_SYMBOL << " at time " << current_timestamp << " is undefined"
+                     << endl;
+            }
+            else {
+                midpoint_num = ((*(it->Buy).begin()).PRICE + (*(it->Sell).begin()).PRICE) / 2;
+                cout << "Midpoint of " << it->EQUITY_SYMBOL << " at time " << current_timestamp << " is $"
+                     << midpoint_num << endl;
+            }
+        }
+    }
+
+
+
     // At the end of day, output
     cout << "---End of Day---" << endl;
-    cout << "Commission Earnings: " << Commission_Earnings << endl;
-    cout << "Total Amount of Money Transferred: " << Money_Transferred << endl;
+    cout << "Commission Earnings: $" << Commission_Earnings << endl;
+    cout << "Total Amount of Money Transferred: $" << Money_Transferred << endl;
     cout << "Number of Completed Trades: " << Number_of_Completed_Trades << endl;
     cout << "Number of Shares Traded: " << Number_of_share << endl;
+
+    if (transfers) {
+        for (BigClientit = BigClient.begin(); BigClientit != BigClient.end(); BigClientit++) {
+            cout << BigClientit->client_name << " bought " << BigClientit->stock_buy << " and sold "
+                 << BigClientit->stock_sell << " for a net transfer of $" << BigClientit->amount_traded << endl;
+        }
+    }
+
+    if (ttt) {
+        for (ttt_setit = ttt_set.begin(); ttt_setit != ttt_set.end(); ttt_setit++) {
+            cout << "Time travelers would buy " << ttt_setit->equity_name << " at time: " << ttt_setit->buy_time
+                 << " and sell it at time: " << ttt_setit->sell_time << endl;
+        }
+    }
 }
 
 //void Add_to_Sell (order Temp, )
