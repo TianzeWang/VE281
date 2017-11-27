@@ -55,10 +55,20 @@ struct compare_sell_order {
 };
 
 struct Client {
-    string client_name;
-    int stock_buy;
-    int stock_sell;
-    int amount_traded;
+    string client_name = "";
+    int stock_buy = 0;
+    int stock_sell = 0;
+    int amount_traded = 0;
+};
+
+struct compare_Client {
+    bool operator()(Client &a, Client &b) const {
+        return a.client_name < b.client_name;
+    }
+
+    bool operator()(const Client &a, const Client &b) const {
+        return a.client_name < b.client_name;
+    }
 };
 
 struct Equity {
@@ -139,6 +149,9 @@ int main(int argc, char *argv[]) {
     set<order, compare_buy_order> *BuyPtr;
     set<order, compare_sell_order> *SellPtr;
     set<int>::iterator Medianitr;
+    set<Client, compare_Client> BigClient;
+    set<Client, compare_Client>::iterator BigClientit;
+    Client * ClientPtr;
     order *SellOrderPtr;
     order *BuyOrderPtr;
     char c;
@@ -266,7 +279,6 @@ int main(int argc, char *argv[]) {
                 else {
                     ++SellIt;
                 }
-
             }
             for (BuyIt = BuyPtr->begin(); BuyIt != BuyPtr->end();) {
                 if (BuyIt->DURATION != -1 && BuyIt->DURATION + BuyIt->TIMESTAMP <= current_timestamp) {
@@ -291,7 +303,7 @@ int main(int argc, char *argv[]) {
             SellPtr = const_cast<set<order, compare_sell_order> *> (&(it->Sell));
             BuyPtr = const_cast<set<order, compare_buy_order> *> (&(it->Buy));
             if (it->EQUITY_SYMBOL == equity_symbol) { // Match and Dealt
-                fonud_equity = 1;
+                fonud_equity = true;
                 // Match and Dealt the order. already excluded the expired items deletion before.
 
                 // Case A: Buy order comes
@@ -308,10 +320,54 @@ int main(int argc, char *argv[]) {
                             // Case A.1, Sell's QUAN >= Buy's QUAN, which is always the final case.
                             if (SellIt->QUANTITY >= Read_temp.QUANTITY && Read_temp.PRICE > SellIt->PRICE) {
                                 SellOrderPtr->QUANTITY -= Read_temp.QUANTITY;
+                                AllPtr->Price_dealt.insert(SellIt->PRICE);
+
+                                // Store information about clients
+                                // 1. The coming Buyer
+                                bool Clientfound = false;
+                                for (BigClientit = BigClient.begin(); BigClientit != BigClient.end(); BigClientit++) {
+                                    ClientPtr = const_cast<Client *> (&(*BigClientit));
+                                    if (BigClientit->client_name == Read_temp.CLIENT_NAME) {
+                                        Clientfound = true;
+                                        ClientPtr->amount_traded -= quantity * SellIt->PRICE;
+                                        ClientPtr->stock_buy += quantity;
+                                        break;
+                                    }
+                                }
+                                if (!Clientfound){
+                                    Client temp_client;
+                                    temp_client.client_name = Read_temp.CLIENT_NAME;
+                                    temp_client.stock_buy += quantity;
+                                    temp_client.amount_traded -= quantity * SellIt->PRICE;
+                                    BigClient.insert(temp_client);
+                                }
+
+                                // 2. The existing seller
+                                Clientfound = false;
+                                for (BigClientit = BigClient.begin(); BigClientit != BigClient.end(); BigClientit++) {
+                                    ClientPtr = const_cast<Client *> (&(*BigClientit));
+                                    if (BigClientit->client_name == SellOrderPtr->CLIENT_NAME) {
+                                        Clientfound = true;
+                                        ClientPtr->amount_traded += quantity * SellIt->PRICE;
+                                        ClientPtr->stock_sell += quantity;
+                                        break;
+                                    }
+                                }
+                                if (!Clientfound){
+                                    Client temp_client;
+                                    temp_client.client_name = SellOrderPtr->CLIENT_NAME;
+                                    temp_client.stock_sell += quantity;
+                                    temp_client.amount_traded += quantity * SellIt->PRICE;
+                                    BigClient.insert(temp_client);
+                                }
+
+
+                                // Remove the done Sell order
                                 if (SellIt->QUANTITY == 0) {
                                     SellOrderPtr->isdone = true;
+                                    // Erase from data structure
+                                    AllPtr->Sell.erase(SellIt);
                                 }
-                                AllPtr->Price_dealt.insert(Read_temp.PRICE);
                                 // Output numbers
                                 Number_of_share += quantity;
                                 Money_Transferred += Read_temp.PRICE * quantity;
@@ -325,22 +381,70 @@ int main(int argc, char *argv[]) {
                                 Read_temp.QUANTITY = 0;
                                 Read_temp.isdone = true;
                             }
-                            // Case A.2, Sell's QUAN < Buy's QUAN, will recursive to Case A.1 or to Case A.3
-                            if (SellIt->QUANTITY < Read_temp.QUANTITY && Read_temp.PRICE > SellIt->PRICE) {
-                                SellOrderPtr->QUANTITY = 0;
-                                SellOrderPtr->isdone = 1;
+                                // Case A.2, Sell's QUAN < Buy's QUAN, will recursive to Case A.1 or to Case A.3
+                            else if (SellIt->QUANTITY < Read_temp.QUANTITY && Read_temp.PRICE > SellIt->PRICE) {
+
+                                // Store information about clients
+                                // 1. The coming Buyer
+                                bool Clientfound = false;
+                                for (BigClientit = BigClient.begin(); BigClientit != BigClient.end(); BigClientit++) {
+                                    ClientPtr = const_cast<Client *> (&(*BigClientit));
+                                    if (BigClientit->client_name == Read_temp.CLIENT_NAME) {
+                                        Clientfound = true;
+                                        ClientPtr->amount_traded -= SellIt->QUANTITY * SellIt->PRICE;
+                                        ClientPtr->stock_buy += SellIt->QUANTITY;
+                                        break;
+                                    }
+                                }
+                                if (!Clientfound){
+                                    Client temp_client;
+                                    temp_client.client_name = Read_temp.CLIENT_NAME;
+                                    temp_client.stock_buy += SellIt->QUANTITY;
+                                    temp_client.amount_traded -= SellIt->QUANTITY * SellIt->PRICE;
+                                    BigClient.insert(temp_client);
+                                }
+
+                                // 2. The existing seller
+                                Clientfound = false;
+                                for (BigClientit = BigClient.begin(); BigClientit != BigClient.end(); BigClientit++) {
+                                    ClientPtr = const_cast<Client *> (&(*BigClientit));
+                                    if (BigClientit->client_name == SellOrderPtr->CLIENT_NAME) {
+                                        Clientfound = true;
+                                        ClientPtr->amount_traded += SellIt->QUANTITY * SellIt->PRICE;
+                                        ClientPtr->stock_sell += SellIt->QUANTITY;
+                                        break;
+                                    }
+                                }
+                                if (!Clientfound){
+                                    Client temp_client;
+                                    temp_client.client_name = SellOrderPtr->CLIENT_NAME;
+                                    temp_client.stock_sell += SellIt->QUANTITY;
+                                    temp_client.amount_traded += SellIt->QUANTITY * SellIt->PRICE;
+                                    BigClient.insert(temp_client);
+                                }
+
+
                                 Read_temp.QUANTITY -= SellIt->QUANTITY;
                                 // Output numbers
                                 Number_of_share += SellIt->QUANTITY;
                                 Money_Transferred += Read_temp.PRICE * SellIt->QUANTITY;
                                 Commission_Earnings += 2 * Read_temp.PRICE * SellIt->QUANTITY / 100;
+                                Number_of_Completed_Trades += 1;
                                 if (verbose) {
                                     cout << client_name << " purchased " << SellIt->QUANTITY << " shares of "
                                          << equity_symbol;
                                     cout << " from " << SellIt->CLIENT_NAME << " for " << price << "/share";
                                 }
                                 quantity -= SellIt->QUANTITY;
+                                Read_temp.QUANTITY -= SellIt->QUANTITY;
+                                SellOrderPtr->QUANTITY = 0;
+                                SellOrderPtr->isdone = true;
+                                AllPtr->Sell.erase(SellIt);
                             }
+//                            else if (SellIt->QUANTITY == Read_temp.QUANTITY && Read_temp.PRICE > SellIt->PRICE) {
+//                                SellOrderPtr->QUANTITY = 0;
+//
+//                            }
                         }
                     }
                     // Case A.3
@@ -355,6 +459,46 @@ int main(int argc, char *argv[]) {
                         if (Read_temp.isdone) break;
                         else if (!BuyIt->isdone) {
                             if (BuyIt->QUANTITY >= Read_temp.QUANTITY && Read_temp.PRICE < BuyIt->PRICE) {
+
+                                // Store information about clients
+                                // 1. The coming Seller
+                                bool Clientfound = false;
+                                for (BigClientit = BigClient.begin(); BigClientit != BigClient.end(); BigClientit++) {
+                                    ClientPtr = const_cast<Client *> (&(*BigClientit));
+                                    if (BigClientit->client_name == Read_temp.CLIENT_NAME) {
+                                        Clientfound = true;
+                                        ClientPtr->amount_traded += quantity * BuyIt->PRICE;
+                                        ClientPtr->stock_sell += quantity;
+                                        break;
+                                    }
+                                }
+                                if (!Clientfound){
+                                    Client temp_client;
+                                    temp_client.client_name = Read_temp.CLIENT_NAME;
+                                    ClientPtr->amount_traded += quantity * BuyIt->PRICE;
+                                    ClientPtr->stock_sell += quantity;
+                                    BigClient.insert(temp_client);
+                                }
+
+                                // 2. The existing seller
+                                Clientfound = false;
+                                for (BigClientit = BigClient.begin(); BigClientit != BigClient.end(); BigClientit++) {
+                                    ClientPtr = const_cast<Client *> (&(*BigClientit));
+                                    if (BigClientit->client_name == SellOrderPtr->CLIENT_NAME) {
+                                        Clientfound = true;
+                                        ClientPtr->amount_traded += SellIt->QUANTITY * SellIt->PRICE;
+                                        ClientPtr->stock_sell += SellIt->QUANTITY;
+                                        break;
+                                    }
+                                }
+                                if (!Clientfound){
+                                    Client temp_client;
+                                    temp_client.client_name = SellOrderPtr->CLIENT_NAME;
+                                    temp_client.stock_sell += SellIt->QUANTITY;
+                                    temp_client.amount_traded += SellIt->QUANTITY * SellIt->PRICE;
+                                    BigClient.insert(temp_client);
+                                }
+
                                 BuyOrderPtr->QUANTITY -= Read_temp.QUANTITY;
                                 // Output numbers
                                 Number_of_share += quantity;
@@ -369,15 +513,14 @@ int main(int argc, char *argv[]) {
                                 }
                                 Read_temp.QUANTITY = 0;
                                 Read_temp.isdone = true;
+                                AllPtr->Price_dealt.insert(BuyIt->PRICE);
                                 if (BuyIt->QUANTITY == 0) {
-                                    BuyOrderPtr->isdone = 1;
+                                    BuyOrderPtr->isdone = true;
+                                    AllPtr->Buy.erase(BuyIt);
                                 }
-                                AllPtr->Price_dealt.insert(Read_temp.PRICE);
                             }
                             // Case B.2
                             if (BuyIt->QUANTITY < Read_temp.QUANTITY && Read_temp.PRICE < BuyIt->PRICE) {
-                                BuyOrderPtr->QUANTITY = 0;
-                                BuyOrderPtr->isdone = 0;
                                 Read_temp.QUANTITY -= BuyIt->QUANTITY;
                                 // Output numbers
                                 Number_of_share += BuyIt->QUANTITY;
@@ -389,6 +532,10 @@ int main(int argc, char *argv[]) {
                                     cout << " from " << BuyIt->CLIENT_NAME << " for " << price << "/share";
                                 }
                                 quantity -= BuyIt->QUANTITY;
+                                Read_temp.QUANTITY -= BuyIt->QUANTITY;
+                                BuyOrderPtr->QUANTITY = 0;
+                                BuyOrderPtr->isdone = 1;
+                                AllPtr->Buy.erase(BuyIt);
                             }
                         }
                     }
@@ -425,7 +572,6 @@ int main(int argc, char *argv[]) {
             bigorderTemp.EQUITY_SYMBOL = Read_temp.EQUITY_SYMBOL;
             OrderAll.insert(bigorderTemp);
         }
-
     }
 
     // At the end of day, output
