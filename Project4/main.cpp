@@ -617,6 +617,7 @@ int main(int argc, char *argv[]) {
                                 Number_of_share += BuyIt->QUANTITY;
                                 Money_Transferred += Read_temp.PRICE * BuyIt->QUANTITY;
                                 Commission_Earnings += 2 * Read_temp.PRICE * BuyIt->QUANTITY / 100;
+                                Number_of_Completed_Trades += 1;
                                 if (verbose) {
                                     cout << BuyIt->CLIENT_NAME << " purchased " << BuyIt->QUANTITY << " shares of "
                                          << equity_symbol;
