@@ -472,13 +472,13 @@ int main(int argc, char *argv[]) {
                                 Read_temp.QUANTITY -= SellIt->QUANTITY;
                                 // Output numbers
                                 Number_of_share += SellIt->QUANTITY;
-                                Money_Transferred += Read_temp.PRICE * SellIt->QUANTITY;
-                                Commission_Earnings += 2 * Read_temp.PRICE * SellIt->QUANTITY / 100;
+                                Money_Transferred += SellIt->PRICE * SellIt->QUANTITY;
+                                Commission_Earnings += 2 * SellIt->PRICE * SellIt->QUANTITY / 100;
                                 Number_of_Completed_Trades += 1;
                                 if (verbose) {
                                     cout << client_name << " purchased " << SellIt->QUANTITY << " shares of "
                                          << equity_symbol;
-                                    cout << " from " << SellIt->CLIENT_NAME << " for $" << price << "/share";
+                                    cout << " from " << SellIt->CLIENT_NAME << " for $" << SellIt->PRICE << "/share";
                                 }
                                 quantity -= SellIt->QUANTITY;
                                 Read_temp.QUANTITY -= SellIt->QUANTITY;
@@ -554,7 +554,7 @@ int main(int argc, char *argv[]) {
                                 // Verbose Output, what if one purchase is separated into 2 parts?
                                 if (verbose) {
                                     cout << client_name << " purchased " << quantity << " shares of " << equity_symbol;
-                                    cout << " from " << BuyIt->CLIENT_NAME << " for $" << price << "/share";
+                                    cout << " from " << BuyIt->CLIENT_NAME << " for $" << BuyIt->PRICE << "/share";
                                 }
                                 Read_temp.QUANTITY = 0;
                                 Read_temp.isdone = true;
@@ -615,7 +615,7 @@ int main(int argc, char *argv[]) {
                                 if (verbose) {
                                     cout << client_name << " purchased " << BuyIt->QUANTITY << " shares of "
                                          << equity_symbol;
-                                    cout << " from " << BuyIt->CLIENT_NAME << " for $" << price << "/share";
+                                    cout << " from " << BuyIt->CLIENT_NAME << " for $" << BuyIt->PRICE << "/share";
                                 }
                                 quantity -= BuyIt->QUANTITY;
                                 Read_temp.QUANTITY -= BuyIt->QUANTITY;
