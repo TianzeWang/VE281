@@ -422,7 +422,7 @@ int main(int argc, char *argv[]) {
                                 // Verbose Output
                                 if (verbose) {
                                     cout << client_name << " purchased " << quantity << " shares of " << equity_symbol;
-                                    cout << " from " << SellIt->CLIENT_NAME << " for $" << price << "/share" << endl;
+                                    cout << " from " << SellIt->CLIENT_NAME << " for $" << SellIt->PRICE << "/share" << endl;
                                 }
                                 Read_temp.QUANTITY = 0;
                                 Read_temp.isdone = true;
@@ -470,7 +470,6 @@ int main(int argc, char *argv[]) {
                                 }
 
 
-                                Read_temp.QUANTITY -= SellIt->QUANTITY;
                                 // Output numbers
                                 Number_of_share += SellIt->QUANTITY;
                                 Money_Transferred += SellIt->PRICE * SellIt->QUANTITY;

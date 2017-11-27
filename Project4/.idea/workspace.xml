@@ -49,21 +49,11 @@
       <file leaf-file-name="main_R.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main_R.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="201" column="36" lean-forward="true" selection-start-line="201" selection-start-column="36" selection-end-line="201" selection-end-column="36" />
+            <state relative-caret-position="314">
+              <caret line="493" column="8" lean-forward="false" selection-start-line="493" selection-start-column="8" selection-end-line="493" selection-end-column="8" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__tree" pinned="false" current-in-tab="false">
-        <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/__tree">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="146" column="1" lean-forward="true" selection-start-line="146" selection-start-column="1" selection-end-line="146" selection-end-column="1" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -72,7 +62,7 @@
         <entry file="file://$PROJECT_DIR$/test.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="15" column="46" lean-forward="true" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
+              <caret line="15" column="46" lean-forward="false" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
               <folding>
                 <element signature="e#39#53#0" expanded="true" />
               </folding>
@@ -94,7 +84,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>SellIt</find>
       <find>tempItrSellOrderBook</find>
       <find>big</find>
       <find>EquityBook</find>
@@ -111,7 +100,6 @@
       <find>currentTimeStamp</find>
       <find>insert</find>
       <find>client`</find>
-      <find>quantity</find>
       <find>client</find>
       <find>Sell</find>
       <find>UniqueID</find>
@@ -124,6 +112,8 @@
       <find>erase</find>
       <find>buyit</find>
       <find>verbose</find>
+      <find>purchased</find>
+      <find>quantity</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -205,7 +195,9 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.deploy.options" />
+    <property name="js.buildTools.grunt.grunt-cli.package" value="" />
+    <property name="settings.editor.splitter.proportion" value="0.23819445" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -224,6 +216,10 @@
       <envs />
     </configuration>
     <configuration name="Project4" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-v" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project4" TARGET_NAME="Project4" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Project4" RUN_TARGET_NAME="Project4">
+      <envs />
+    </configuration>
+    <configuration default="true" type="js.build_tools.grunt" factoryName="Grunt.js">
+      <node-interpreter value="project" />
       <envs />
     </configuration>
     <list size="2">
@@ -246,12 +242,12 @@
       <updated>1510807838101</updated>
       <workItem from="1510807841646" duration="16335000" />
       <workItem from="1511520000493" duration="313000" />
-      <workItem from="1511597555355" duration="40633000" />
+      <workItem from="1511597555355" duration="43403000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57281000" />
+    <option name="totallyTimeSpent" value="60051000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -264,20 +260,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26964933" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32769045" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32769045" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22974607" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22460657" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24304716" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41233373" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -297,33 +292,51 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.cpp</url>
           <line>191</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.cpp</url>
           <line>236</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.cpp</url>
           <line>253</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.cpp</url>
           <line>315</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
+        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main_R.cpp</url>
+          <line>344</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main_R.cpp</url>
+          <line>358</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main_R.cpp</url>
+          <line>430</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main_R.cpp</url>
-          <line>487</line>
-          <option name="timeStamp" value="13" />
+          <line>483</line>
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="14" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="33" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -428,39 +441,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="40" lean-forward="false" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="369" column="48" lean-forward="false" selection-start-line="369" selection-start-column="48" selection-end-line="369" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/__tree">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="146" column="1" lean-forward="true" selection-start-line="146" selection-start-column="1" selection-end-line="146" selection-end-column="1" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="46" lean-forward="true" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
-          <folding>
-            <element signature="e#39#53#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -474,10 +459,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="369" column="48" lean-forward="false" selection-start-line="369" selection-start-column="48" selection-end-line="369" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="46" lean-forward="false" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
+          <folding>
+            <element signature="e#39#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="40" lean-forward="false" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main_R.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="201" column="36" lean-forward="true" selection-start-line="201" selection-start-column="36" selection-end-line="201" selection-end-column="36" />
+        <state relative-caret-position="314">
+          <caret line="493" column="8" lean-forward="false" selection-start-line="493" selection-start-column="8" selection-end-line="493" selection-end-column="8" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
