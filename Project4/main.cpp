@@ -294,7 +294,7 @@ int main(int argc, char *argv[]) {
 
     // At the end of day, output
     cout << "---End of Day---" << endl;
-    cout << "Commission Earnings: " << endl;
+    cout << "Commission Earnings: " << endl`;
     cout << "Total Amount of Money Transferred: " << endl;
 }
 
