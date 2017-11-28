@@ -1,0 +1,80 @@
+\documentclass[a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[margin=0in]{geometry}
+\usepackage{tikz}
+\usepackage{listings}
+
+\lstset{
+language=C,
+basicstyle=\small\sffamily,
+numbers=left,
+numberstyle=\tiny,
+frame=tb,
+columns=fullflexible,
+showstringspaces=false
+}
+
+
+\begin{document}
+\pagestyle{empty}
+  \noindent   \begin{tikzpicture}[x=1cm,y=1cm]
+\foreach \x in {0,10.5,21}
+  {
+    \draw (\x ,0) -- (\x ,29.65);
+  };
+\foreach \y in {0,7.41,14.83,22.24,29.65}
+  {
+    \draw (0, \y) -- (21, \y);
+  };
+
+ \foreach \x in {0,10.5}
+  {
+ \foreach \y in {0,7.41,14.83,22.24}
+  {  
+\draw(0.5+\x,3.75+\y) node [right,text width=9.5cm] {
+{\bf  BTS SIO 1\`ere ann\'ee}\ \newline
+{\bf  Correction pour le tri de trois nombres}\ \ 
+
+\begin{lstlisting}
+#include <iostream>
+
+using namespace std;
+
+int main(int argc, const char * argv[])
+{
+
+    // insert code here...
+    int a,b,c,ancien;
+    cout << "Entrez le premier nombre\n";
+    cin >> a;
+    cout << "Entrez le second nombre\n";
+    cin >> b;
+    cout << "Entrez le troisième nombre\n";
+    cin >> c;
+    if (b<a) {
+        ancien=a;
+        a=b;
+        b=ancien;
+    }
+    if (c<b) {
+        ancien=b;
+        b=c;
+        c=ancien;
+    }
+    if (b<a) {
+        ancien=a;
+        a=b;
+        b=ancien;
+    }
+    cout << "Voici les nombres dans l'ordre croissant : \n" << a << "," << b << "," << c << "\n";
+    return 0;
+}
+\end{lstlisting}
+
+
+};
+};
+
+\end{tikzpicture}
+\end{document}

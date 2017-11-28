@@ -1,10 +1,9 @@
-
 #include <queue>
 #include <unordered_map>
 #include <unordered_set>
 #include <map>
 #include <set>
-
+#include <sstream>
 #include <iostream> // for cin, cout and cerr
 #include <getopt.h> // required for getopt_long
 #include <string>   // for strings
@@ -25,14 +24,15 @@ struct compare_tttEquity {
     // for binary queue "less than" comparision
 
     // non-const version
-    bool operator()(tttEquity & a, tttEquity & b) const {
+    bool operator()(tttEquity &a, tttEquity &b) const {
         if (a.priority < b.priority)
             return true;
         else
             return false;
     }
+
     // const version
-    bool operator()(const tttEquity & a, const tttEquity & b) const {
+    bool operator()(const tttEquity &a, const tttEquity &b) const {
         if (a.priority < b.priority)
             return true;
         else
@@ -52,30 +52,37 @@ struct compare_sellOrder {
     // for priority queue "less than" comparision
 
     // non-const version
-    bool operator()(Order & a, Order & b) const {
+    bool operator()(Order &a, Order &b) const {
         if (a.price < b.price) {
             return true;
-        } else if (a.price == b.price) {
+        }
+        else if (a.price == b.price) {
             if (a.uniqueID < b.uniqueID) {
                 return true;
-            } else {
+            }
+            else {
                 return false;
             }
-        } else {
+        }
+        else {
             return false;
         }
     }
+
     // const version
-    bool operator()(const Order & a, const Order & b) const {
+    bool operator()(const Order &a, const Order &b) const {
         if (a.price < b.price) {
             return true;
-        } else if (a.price == b.price) {
+        }
+        else if (a.price == b.price) {
             if (a.uniqueID < b.uniqueID) {
                 return true;
-            } else {
+            }
+            else {
                 return false;
             }
-        } else {
+        }
+        else {
             return false;
         }
     }
@@ -85,30 +92,37 @@ struct compare_buyOrder {
     // for priority queue "less than" comparision
 
     // non-const version
-    bool operator()(Order & a, Order & b) const {
+    bool operator()(Order &a, Order &b) const {
         if (a.price > b.price) {
             return true;
-        } else if (a.price == b.price) {
+        }
+        else if (a.price == b.price) {
             if (a.uniqueID < b.uniqueID) {
                 return true;
-            } else {
+            }
+            else {
                 return false;
             }
-        } else { // a.price > b.price
+        }
+        else { // a.price > b.price
             return false;
         }
     }
+
     // const version
-    bool operator()(const Order & a, const Order & b) const {
+    bool operator()(const Order &a, const Order &b) const {
         if (a.price > b.price) {
             return true;
-        } else if (a.price == b.price) {
+        }
+        else if (a.price == b.price) {
             if (a.uniqueID < b.uniqueID) {
                 return true;
-            } else {
+            }
+            else {
                 return false;
             }
-        } else { // a.price > b.price
+        }
+        else { // a.price > b.price
             return false;
         }
     }
@@ -125,18 +139,21 @@ struct compare_equityBook {
     // for BST "less than" comparision in lexicographic order
 
     // non-const version
-    bool operator()(EquityBook & a, EquityBook & b) const {
+    bool operator()(EquityBook &a, EquityBook &b) const {
         if (a.equitySymbol < b.equitySymbol) {
             return true;
-        } else {
+        }
+        else {
             return false;
         }
     }
+
     // const version
-    bool operator()(const EquityBook & a, const EquityBook & b) const {
+    bool operator()(const EquityBook &a, const EquityBook &b) const {
         if (a.equitySymbol < b.equitySymbol) {
             return true;
-        } else {
+        }
+        else {
             return false;
         }
     }
@@ -153,24 +170,27 @@ struct compare_clientProfile {
     // for BST "less than" comparision in lexicographic order
 
     // non-const version
-    bool operator()(clientProfile & a, clientProfile & b) const {
+    bool operator()(clientProfile &a, clientProfile &b) const {
         if (a.clientName < b.clientName) {
             return true;
-        } else {
+        }
+        else {
             return false;
         }
     }
+
     // const version
-    bool operator()(const clientProfile & a, const clientProfile & b) const {
+    bool operator()(const clientProfile &a, const clientProfile &b) const {
         if (a.clientName < b.clientName) {
             return true;
-        } else {
+        }
+        else {
             return false;
         }
     }
 };
 
-int main(int argc, char ** argv) {
+int main(int argc, char **argv) {
     // Used to generate running time info for the report.
     // comment out for submission
 //        clock_t timer;
@@ -187,18 +207,16 @@ int main(int argc, char ** argv) {
     int priority = 0;
     multiset<tttEquity, compare_tttEquity> tttEquityBST;
     multiset<tttEquity, compare_tttEquity>::iterator itrtttEquityBST;
-    tttEquity * ptrTTTEquity;
+    tttEquity *ptrTTTEquity;
     tttEquity tempEquity;
 
     while (1) {
-        static struct option long_options[] = {
-                {"verbose", no_argument, 0, 'v'},
-                {"median", no_argument, 0, 'm'},
-                {"midpoint", no_argument, 0, 'p'},
-                {"transfers", no_argument, 0, 't'},
-                {"ttt", required_argument, 0, 'g'},
-                {0, 0, 0, 0}
-        };
+        static struct option long_options[] = {{"verbose",   no_argument,       0, 'v'},
+                                               {"median",    no_argument,       0, 'm'},
+                                               {"midpoint",  no_argument,       0, 'p'},
+                                               {"transfers", no_argument,       0, 't'},
+                                               {"ttt",       required_argument, 0, 'g'},
+                                               {0, 0,                           0, 0}};
 
         int option_index = 0;
         feedbackGetOpt = getopt_long(argc, argv, "vmptg:", long_options, &option_index);
@@ -260,7 +278,7 @@ int main(int argc, char ** argv) {
     int DURATION = 0;
     char temp = '0';
 
-    // trading statistics
+    // trading statisticsx
     int matchPrice = 0;
     int singleSideComission = 0;
     int aggregateCommission = 0;
@@ -270,10 +288,10 @@ int main(int argc, char ** argv) {
 
     multiset<EquityBook, compare_equityBook> orderBook;
     multiset<EquityBook, compare_equityBook>::iterator itrOrderBook;
-    EquityBook * ptrEquityBook;
-    multiset<Order, compare_sellOrder> * ptrSellOrderBook;
-    multiset<Order, compare_buyOrder> * ptrbuyOrderBook;
-    Order * ptrOrder;
+    EquityBook *ptrEquityBook;
+    multiset<Order, compare_sellOrder> *ptrSellOrderBook;
+    multiset<Order, compare_buyOrder> *ptrbuyOrderBook;
+    Order *ptrOrder;
     EquityBook tempEquityBook;
     Order tempOrder;
     multiset<Order, compare_sellOrder>::iterator itrSellOrderBook;
@@ -285,7 +303,7 @@ int main(int argc, char ** argv) {
     multiset<clientProfile, compare_clientProfile> clientList;
     multiset<clientProfile, compare_clientProfile>::iterator itrClientList;
     clientProfile tempClientProfile;
-    clientProfile * ptrClientProfile;
+    clientProfile *ptrClientProfile;
     bool buyerFound = false;
     bool sellerFound = false;
 
@@ -299,20 +317,26 @@ int main(int argc, char ** argv) {
     int midPoint = 0;
     int highestBuy = 0;
     int lowestSell = 0;
-
+    stringstream ss;
     // DEBUG output
     // cout << "I am right beofre while (cin >> TIMESTAMP)" << endl;
 
     // 4. repeat until the end of the day
-    while (cin >> TIMESTAMP) {
+    while (!cin.eof()){
+        string str;
+        getline(cin,str);
+        if (str.empty()) break;
+        ss.clear();
+        ss.str(str);
         // 1. read the next order from input
-        cin >> CLIENT_NAME >> BUY_OR_SELL >> EQUITY_SYMBOL
-            >> temp >> PRICE >> temp >> QUANTITY >> DURATION;
+        ss >> TIMESTAMP >>  CLIENT_NAME >> BUY_OR_SELL >> EQUITY_SYMBOL >> temp >> PRICE >> temp >> QUANTITY >> DURATION;
         if (BUY_OR_SELL == "BUY") {
             isBuy = true;
-        } else if (BUY_OR_SELL == "SELL") {
+        }
+        else if (BUY_OR_SELL == "SELL") {
             isBuy = false;
-        } else {
+        }
+        else {
             cerr << "Invalid BUY/SELL input. Exiting program.." << endl;
             return -1;
         }
@@ -328,39 +352,21 @@ int main(int argc, char ** argv) {
         // Time-Traveller Trading
         for (itrtttEquityBST = tttEquityBST.begin(); itrtttEquityBST != tttEquityBST.end(); itrtttEquityBST++) {
             if (itrtttEquityBST->symbol == EQUITY_SYMBOL) {
-                ptrTTTEquity = const_cast<tttEquity *>(&(* itrtttEquityBST));
-                if (!isBuy) { // this is a sell order, time-travelled can buy
-                    // if we have nothing yet OR if we can buy at a lower price
+                ptrTTTEquity = const_cast<tttEquity *>(&(*itrtttEquityBST));
+                if (!isBuy) {
                     if ((ptrTTTEquity->buyTimeStamp == -1) || (ptrTTTEquity->buyPrice > PRICE)) {
                         ptrTTTEquity->buyTimeStamp = TIMESTAMP;
                         ptrTTTEquity->buyPrice = PRICE;
-                        // DEBUG output
-//                        cout << "Buy timestamp changed to " << ptrTTTEquity->buyTimeStamp
-//                            << " and buy price changed to " <<  ptrTTTEquity->buyPrice << endl;
-                        if (ptrTTTEquity->sellTimeStamp != -1) {
-                            // DEBUG output
-//                            cout << "Margin now is " << ptrTTTEquity->maxMargin << endl;
-                        }
                     }
-                } else { // this is a buy order, time-traverlled can sell
+                }
+                else { // this is a buy order, time-traverlled can sell
                     if (ptrTTTEquity->buyTimeStamp == -1) {
-                        // we do not have anything to sell
-                        // DEBUG output
-//                        cout << "Buy order from " << CLIENT_NAME
-//                        << " ignored as ttt does not own shares." << endl;
-
                         break; // wait for next order
                     }
                     // if we do not have any offer yet OR if we can sell at a higher price
                     if ((ptrTTTEquity->sellTimeStamp == -1) || (ptrTTTEquity->sellPrice < PRICE)) {
                         ptrTTTEquity->sellTimeStamp = TIMESTAMP;
                         ptrTTTEquity->sellPrice = PRICE;
-                        // down here we are sure there exists a buy order
-
-                        // DEBUG output
-//                        cout << "Sell timestamp changed to " << ptrTTTEquity->sellTimeStamp
-//                            << " and sell price changed to " <<  ptrTTTEquity->sellPrice << endl
-//                            << "Margin now is " << ptrTTTEquity->maxMargin << endl;
                     }
                 }
             }
@@ -372,13 +378,14 @@ int main(int argc, char ** argv) {
             // 2.1 print --median if specified in command line
             if (isMedian) {
                 for (itrOrderBook = orderBook.begin(); itrOrderBook != orderBook.end(); itrOrderBook++) {
-                    sizeInInt = (int)itrOrderBook->matchedPriceHistory.size();
+                    sizeInInt = (int) itrOrderBook->matchedPriceHistory.size();
                     if (sizeInInt == 0) {
                         continue;
                     }
                     if (sizeInInt % 2 == 0) {
                         isEven = true;
-                    } else {
+                    }
+                    else {
                         isEven = false;
                     }
                     sizeInInt = sizeInInt / 2;
@@ -388,15 +395,12 @@ int main(int argc, char ** argv) {
                         medianPrice = *itrMedianMatchedPrice;       // the middle
                         medianPrice += *(--itrMedianMatchedPrice);  // + the one before that
                         medianPrice = medianPrice / 2;
-                    } else { // size is odd
+                    }
+                    else { // size is odd
                         medianPrice = *itrMedianMatchedPrice;
                     }
-                    cout << "Median match price of "
-                         << itrOrderBook->equitySymbol
-                         << " at time "
-                         << currentTimeStamp
-                         << " is $"
-                         << medianPrice << endl;
+                    cout << "Median match price of " << itrOrderBook->equitySymbol << " at time " << currentTimeStamp
+                         << " is $" << medianPrice << endl;
                 }
             }
 
@@ -404,24 +408,15 @@ int main(int argc, char ** argv) {
             if (isMidPoint) {
                 for (itrOrderBook = orderBook.begin(); itrOrderBook != orderBook.end(); itrOrderBook++) {
                     if (itrOrderBook->sellOrderBook.empty() || itrOrderBook->buyOrderBook.empty()) {
-                        cout << "Midpoint of "
-                             << itrOrderBook->equitySymbol
-                             << " at time "
-                             << currentTimeStamp
-                             << " is undefined"
-                             << endl;
+                        cout << "Midpoint of " << itrOrderBook->equitySymbol << " at time " << currentTimeStamp
+                             << " is undefined" << endl;
                         continue;
                     }
-                    highestBuy = (* itrOrderBook->buyOrderBook.begin()).price;
-                    lowestSell = (* itrOrderBook->sellOrderBook.begin()).price;
+                    highestBuy = (*itrOrderBook->buyOrderBook.begin()).price;
+                    lowestSell = (*itrOrderBook->sellOrderBook.begin()).price;
                     midPoint = (highestBuy + lowestSell) / 2;
-                    cout << "Midpoint of "
-                         << itrOrderBook->equitySymbol
-                         << " at time "
-                         << currentTimeStamp
-                         << " is $"
-                         << midPoint
-                         << endl;
+                    cout << "Midpoint of " << itrOrderBook->equitySymbol << " at time " << currentTimeStamp << " is $"
+                         << midPoint << endl;
                 }
             }
 
@@ -431,10 +426,11 @@ int main(int argc, char ** argv) {
             for (itrOrderBook = orderBook.begin(); itrOrderBook != orderBook.end(); itrOrderBook++) {
                 // now we are at individual equity book level. Each describes a specific equity.
                 // first remove constant-ness
-                ptrSellOrderBook = const_cast<multiset<Order, compare_sellOrder>* >(&(itrOrderBook->sellOrderBook));
-                ptrbuyOrderBook = const_cast<multiset<Order, compare_buyOrder>* >(&(itrOrderBook->buyOrderBook));
+                ptrSellOrderBook = const_cast<multiset<Order, compare_sellOrder> * >(&(itrOrderBook->sellOrderBook));
+                ptrbuyOrderBook = const_cast<multiset<Order, compare_buyOrder> * >(&(itrOrderBook->buyOrderBook));
                 // then examine sell order
-                for (itrSellOrderBook = ptrSellOrderBook->begin(); itrSellOrderBook != ptrSellOrderBook->end(); itrSellOrderBook++) {
+                for (itrSellOrderBook = ptrSellOrderBook->begin();
+                     itrSellOrderBook != ptrSellOrderBook->end(); itrSellOrderBook++) {
                     // now we are at individual orders
                     if ((itrSellOrderBook->expireAt != -1) && (currentTimeStamp >= itrSellOrderBook->expireAt)) {
                         tempItrSellOrderBook = itrSellOrderBook;
@@ -442,7 +438,8 @@ int main(int argc, char ** argv) {
                     }
                 }
                 // finally, examin buy order
-                for (itrBuyOrderBook = ptrbuyOrderBook->begin(); itrBuyOrderBook != ptrbuyOrderBook->end(); itrBuyOrderBook++) {
+                for (itrBuyOrderBook = ptrbuyOrderBook->begin();
+                     itrBuyOrderBook != ptrbuyOrderBook->end(); itrBuyOrderBook++) {
                     // now we are at individual orders
                     if ((itrBuyOrderBook->expireAt != -1) && (currentTimeStamp >= itrBuyOrderBook->expireAt)) {
                         tempItrBuyOrderBook = itrBuyOrderBook;
@@ -461,16 +458,17 @@ int main(int argc, char ** argv) {
                 // equity found
                 if (isBuy) { // isBuy is true
                     // then check seller BST, first remove constant-ness
-                    ptrSellOrderBook = const_cast<multiset<Order, compare_sellOrder>* >(&(itrOrderBook->sellOrderBook));
+                    ptrSellOrderBook = const_cast<multiset<Order, compare_sellOrder> * >(&(itrOrderBook->sellOrderBook));
                     while ((QUANTITY > 0) && (!ptrSellOrderBook->empty())) {
-                        if ((* ptrSellOrderBook->begin()).price <= PRICE ) {
+                        if ((*ptrSellOrderBook->begin()).price <= PRICE) {
                             // fist remove constant-ness
-                            ptrOrder = const_cast<Order *>(&(* ptrSellOrderBook->begin()));
+                            ptrOrder = const_cast<Order *>(&(*ptrSellOrderBook->begin()));
 
                             // calculate match price & record for median output
                             if (ptrOrder->uniqueID < nextUniqueID) {
                                 matchPrice = ptrOrder->price;
-                            } else {
+                            }
+                            else {
                                 matchPrice = PRICE;
                             }
                             ptrEquityBook = const_cast<EquityBook *>(&(*itrOrderBook));
@@ -480,7 +478,8 @@ int main(int argc, char ** argv) {
                                 // scenario 1. supply > demand
                                 // OUTPUT something
                                 if (isTransfers) {
-                                    for (itrClientList = clientList.begin(); itrClientList != clientList.end(); itrClientList++) {
+                                    for (itrClientList = clientList.begin();
+                                         itrClientList != clientList.end(); itrClientList++) {
                                         if (itrClientList->clientName == CLIENT_NAME) {
                                             // buyer found, update value
                                             buyerFound = true;
@@ -502,7 +501,8 @@ int main(int argc, char ** argv) {
                                         tempClientProfile.netValueTraded = -1 * QUANTITY * matchPrice;
                                         clientList.insert(tempClientProfile);
                                     }
-                                    for (itrClientList = clientList.begin(); itrClientList != clientList.end(); itrClientList++) {
+                                    for (itrClientList = clientList.begin();
+                                         itrClientList != clientList.end(); itrClientList++) {
                                         if (itrClientList->clientName == ptrOrder->clientName) {
                                             // seller found, update value
                                             sellerFound = true;
@@ -528,14 +528,10 @@ int main(int argc, char ** argv) {
                                 }
                                 if (isVerbose) {
                                     cout << CLIENT_NAME // BUYER_NAME
-                                         << " purchased "
-                                         << QUANTITY // NUMBER_OF_SHARES
-                                         << " shares of "
-                                         << EQUITY_SYMBOL // EQUITY_SYMBOL
-                                         << " from "
-                                         << ptrOrder->clientName // SELLER_NAME
-                                         << " for $"
-                                         << matchPrice // PRICE
+                                         << " purchased " << QUANTITY // NUMBER_OF_SHARES
+                                         << " shares of " << EQUITY_SYMBOL // EQUITY_SYMBOL
+                                         << " from " << ptrOrder->clientName // SELLER_NAME
+                                         << " for $" << matchPrice // PRICE
                                          << "/share" << endl;
                                 }
                                 countSharesTraded += QUANTITY;
@@ -545,11 +541,13 @@ int main(int argc, char ** argv) {
                                 aggregateCommission += singleSideComission * 2;
                                 ptrOrder->amount = ptrOrder->amount - QUANTITY;
                                 QUANTITY = 0;
-                            } else if (ptrOrder->amount == QUANTITY) {
+                            }
+                            else if (ptrOrder->amount == QUANTITY) {
                                 // scenario 2. supply == demand
                                 // OUTPUT something
                                 if (isTransfers) {
-                                    for (itrClientList = clientList.begin(); itrClientList != clientList.end(); itrClientList++) {
+                                    for (itrClientList = clientList.begin();
+                                         itrClientList != clientList.end(); itrClientList++) {
                                         if (itrClientList->clientName == CLIENT_NAME) {
                                             // buyer found, update value
                                             buyerFound = true;
@@ -571,7 +569,8 @@ int main(int argc, char ** argv) {
                                         tempClientProfile.netValueTraded = -1 * QUANTITY * matchPrice;
                                         clientList.insert(tempClientProfile);
                                     }
-                                    for (itrClientList = clientList.begin(); itrClientList != clientList.end(); itrClientList++) {
+                                    for (itrClientList = clientList.begin();
+                                         itrClientList != clientList.end(); itrClientList++) {
                                         if (itrClientList->clientName == ptrOrder->clientName) {
                                             // seller found, update value
                                             sellerFound = true;
@@ -597,14 +596,10 @@ int main(int argc, char ** argv) {
                                 }
                                 if (isVerbose) {
                                     cout << CLIENT_NAME // BUYER_NAME
-                                         << " purchased "
-                                         << QUANTITY // NUMBER_OF_SHARES
-                                         << " shares of "
-                                         << EQUITY_SYMBOL // EQUITY_SYMBOL
-                                         << " from "
-                                         << ptrOrder->clientName // SELLER_NAME
-                                         << " for $"
-                                         << matchPrice // PRICE
+                                         << " purchased " << QUANTITY // NUMBER_OF_SHARES
+                                         << " shares of " << EQUITY_SYMBOL // EQUITY_SYMBOL
+                                         << " from " << ptrOrder->clientName // SELLER_NAME
+                                         << " for $" << matchPrice // PRICE
                                          << "/share" << endl;
                                 }
                                 countSharesTraded += QUANTITY;
@@ -614,11 +609,13 @@ int main(int argc, char ** argv) {
                                 aggregateCommission += singleSideComission * 2;
                                 QUANTITY = 0;
                                 ptrSellOrderBook->erase(ptrSellOrderBook->begin());
-                            } else {
+                            }
+                            else {
                                 // scenario 3. supply < demand
                                 // OUTPUT something
                                 if (isTransfers) {
-                                    for (itrClientList = clientList.begin(); itrClientList != clientList.end(); itrClientList++) {
+                                    for (itrClientList = clientList.begin();
+                                         itrClientList != clientList.end(); itrClientList++) {
                                         if (itrClientList->clientName == CLIENT_NAME) {
                                             // buyer found, update value
                                             buyerFound = true;
@@ -640,7 +637,8 @@ int main(int argc, char ** argv) {
                                         tempClientProfile.netValueTraded = -1 * ptrOrder->amount * matchPrice;
                                         clientList.insert(tempClientProfile);
                                     }
-                                    for (itrClientList = clientList.begin(); itrClientList != clientList.end(); itrClientList++) {
+                                    for (itrClientList = clientList.begin();
+                                         itrClientList != clientList.end(); itrClientList++) {
                                         if (itrClientList->clientName == ptrOrder->clientName) {
                                             // seller found, update value
                                             sellerFound = true;
@@ -665,14 +663,10 @@ int main(int argc, char ** argv) {
                                 }
                                 if (isVerbose) {
                                     cout << CLIENT_NAME // BUYER_NAME
-                                         << " purchased "
-                                         << ptrOrder->amount // NUMBER_OF_SHARES
-                                         << " shares of "
-                                         << EQUITY_SYMBOL // EQUITY_SYMBOL
-                                         << " from "
-                                         << ptrOrder->clientName // SELLER_NAME
-                                         << " for $"
-                                         << matchPrice // PRICE
+                                         << " purchased " << ptrOrder->amount // NUMBER_OF_SHARES
+                                         << " shares of " << EQUITY_SYMBOL // EQUITY_SYMBOL
+                                         << " from " << ptrOrder->clientName // SELLER_NAME
+                                         << " for $" << matchPrice // PRICE
                                          << "/share" << endl;
                                 }
                                 countSharesTraded += ptrOrder->amount;
@@ -683,23 +677,26 @@ int main(int argc, char ** argv) {
                                 QUANTITY = QUANTITY - ptrOrder->amount;
                                 ptrSellOrderBook->erase(ptrSellOrderBook->begin());
                             }
-                        } else {
+                        }
+                        else {
                             // lowest selling price is still too high
                             break;
                         }
                     } // end of while loop
-                } else { // isBuy is false, we have a selling customer
+                }
+                else { // isBuy is false, we have a selling customer
                     // then check buyer BST, first remove constant-ness
-                    ptrbuyOrderBook = const_cast<multiset<Order, compare_buyOrder>* >(&(itrOrderBook->buyOrderBook));
+                    ptrbuyOrderBook = const_cast<multiset<Order, compare_buyOrder> * >(&(itrOrderBook->buyOrderBook));
                     while ((QUANTITY > 0) && (!ptrbuyOrderBook->empty())) {
-                        if ((* ptrbuyOrderBook->begin()).price >= PRICE ) {
+                        if ((*ptrbuyOrderBook->begin()).price >= PRICE) {
                             // fist remove constant-ness
-                            ptrOrder = const_cast<Order *>(&(* ptrbuyOrderBook->begin()));
+                            ptrOrder = const_cast<Order *>(&(*ptrbuyOrderBook->begin()));
 
                             // calculate match price & record for median output
                             if (ptrOrder->uniqueID < nextUniqueID) {
                                 matchPrice = ptrOrder->price;
-                            } else {
+                            }
+                            else {
                                 matchPrice = PRICE;
                             }
                             ptrEquityBook = const_cast<EquityBook *>(&(*itrOrderBook));
@@ -709,7 +706,8 @@ int main(int argc, char ** argv) {
                                 // scenario 1. demand > supply
                                 // OUTPUT something
                                 if (isTransfers) {
-                                    for (itrClientList = clientList.begin(); itrClientList != clientList.end(); itrClientList++) {
+                                    for (itrClientList = clientList.begin();
+                                         itrClientList != clientList.end(); itrClientList++) {
                                         if (itrClientList->clientName == CLIENT_NAME) {
                                             // seller found, update value
                                             sellerFound = true;
@@ -730,7 +728,8 @@ int main(int argc, char ** argv) {
                                         tempClientProfile.netValueTraded = QUANTITY * matchPrice;
                                         clientList.insert(tempClientProfile);
                                     }
-                                    for (itrClientList = clientList.begin(); itrClientList != clientList.end(); itrClientList++) {
+                                    for (itrClientList = clientList.begin();
+                                         itrClientList != clientList.end(); itrClientList++) {
                                         if (itrClientList->clientName == ptrOrder->clientName) {
                                             // buyer found, update value
                                             buyerFound = true;
@@ -755,14 +754,10 @@ int main(int argc, char ** argv) {
                                 }
                                 if (isVerbose) {
                                     cout << ptrOrder->clientName // BUYER_NAME
-                                         << " purchased "
-                                         << QUANTITY // NUMBER_OF_SHARES
-                                         << " shares of "
-                                         << EQUITY_SYMBOL // EQUITY_SYMBOL
-                                         << " from "
-                                         << CLIENT_NAME // SELLER_NAME
-                                         << " for $"
-                                         << matchPrice // PRICE
+                                         << " purchased " << QUANTITY // NUMBER_OF_SHARES
+                                         << " shares of " << EQUITY_SYMBOL // EQUITY_SYMBOL
+                                         << " from " << CLIENT_NAME // SELLER_NAME
+                                         << " for $" << matchPrice // PRICE
                                          << "/share" << endl;
                                 }
                                 countSharesTraded += QUANTITY;
@@ -772,11 +767,13 @@ int main(int argc, char ** argv) {
                                 aggregateCommission += singleSideComission * 2;
                                 ptrOrder->amount = ptrOrder->amount - QUANTITY;
                                 QUANTITY = 0;
-                            } else if (ptrOrder->amount == QUANTITY) {
+                            }
+                            else if (ptrOrder->amount == QUANTITY) {
                                 // scenario 2. demand == supply
                                 // OUTPUT something
                                 if (isTransfers) {
-                                    for (itrClientList = clientList.begin(); itrClientList != clientList.end(); itrClientList++) {
+                                    for (itrClientList = clientList.begin();
+                                         itrClientList != clientList.end(); itrClientList++) {
                                         if (itrClientList->clientName == CLIENT_NAME) {
                                             // seller found, update value
                                             sellerFound = true;
@@ -797,7 +794,8 @@ int main(int argc, char ** argv) {
                                         tempClientProfile.netValueTraded = QUANTITY * matchPrice;
                                         clientList.insert(tempClientProfile);
                                     }
-                                    for (itrClientList = clientList.begin(); itrClientList != clientList.end(); itrClientList++) {
+                                    for (itrClientList = clientList.begin();
+                                         itrClientList != clientList.end(); itrClientList++) {
                                         if (itrClientList->clientName == ptrOrder->clientName) {
                                             // buyer found, update value
                                             buyerFound = true;
@@ -823,14 +821,10 @@ int main(int argc, char ** argv) {
                                 }
                                 if (isVerbose) {
                                     cout << ptrOrder->clientName // BUYER_NAME
-                                         << " purchased "
-                                         << QUANTITY // NUMBER_OF_SHARES
-                                         << " shares of "
-                                         << EQUITY_SYMBOL // EQUITY_SYMBOL
-                                         << " from "
-                                         << CLIENT_NAME // SELLER_NAME
-                                         << " for $"
-                                         << matchPrice // PRICE
+                                         << " purchased " << QUANTITY // NUMBER_OF_SHARES
+                                         << " shares of " << EQUITY_SYMBOL // EQUITY_SYMBOL
+                                         << " from " << CLIENT_NAME // SELLER_NAME
+                                         << " for $" << matchPrice // PRICE
                                          << "/share" << endl;
                                 }
                                 countSharesTraded += QUANTITY;
@@ -840,11 +834,13 @@ int main(int argc, char ** argv) {
                                 aggregateCommission += singleSideComission * 2;
                                 QUANTITY = 0;
                                 ptrbuyOrderBook->erase(ptrbuyOrderBook->begin());
-                            } else {
+                            }
+                            else {
                                 // scenario 3. demand < supply
                                 // OUTPUT something
                                 if (isTransfers) {
-                                    for (itrClientList = clientList.begin(); itrClientList != clientList.end(); itrClientList++) {
+                                    for (itrClientList = clientList.begin();
+                                         itrClientList != clientList.end(); itrClientList++) {
                                         if (itrClientList->clientName == CLIENT_NAME) {
                                             // seller found, update value
                                             sellerFound = true;
@@ -865,7 +861,8 @@ int main(int argc, char ** argv) {
                                         tempClientProfile.netValueTraded = ptrOrder->amount * matchPrice;
                                         clientList.insert(tempClientProfile);
                                     }
-                                    for (itrClientList = clientList.begin(); itrClientList != clientList.end(); itrClientList++) {
+                                    for (itrClientList = clientList.begin();
+                                         itrClientList != clientList.end(); itrClientList++) {
                                         if (itrClientList->clientName == ptrOrder->clientName) {
                                             // buyer found, update value
                                             buyerFound = true;
@@ -890,14 +887,10 @@ int main(int argc, char ** argv) {
                                 }
                                 if (isVerbose) {
                                     cout << ptrOrder->clientName // BUYER_NAME
-                                         << " purchased "
-                                         << ptrOrder->amount // NUMBER_OF_SHARES
-                                         << " shares of "
-                                         << EQUITY_SYMBOL // EQUITY_SYMBOL
-                                         << " from "
-                                         << CLIENT_NAME // SELLER_NAME
-                                         << " for $"
-                                         << matchPrice // PRICE
+                                         << " purchased " << ptrOrder->amount // NUMBER_OF_SHARES
+                                         << " shares of " << EQUITY_SYMBOL // EQUITY_SYMBOL
+                                         << " from " << CLIENT_NAME // SELLER_NAME
+                                         << " for $" << matchPrice // PRICE
                                          << "/share" << endl;
                                 }
                                 countSharesTraded += ptrOrder->amount;
@@ -908,7 +901,8 @@ int main(int argc, char ** argv) {
                                 QUANTITY = QUANTITY - ptrOrder->amount;
                                 ptrbuyOrderBook->erase(ptrbuyOrderBook->begin());
                             }
-                        } else {
+                        }
+                        else {
                             // highest buying price is still too low
                             break;
                         }
@@ -929,7 +923,8 @@ int main(int argc, char ** argv) {
             tempOrder.clientName = CLIENT_NAME;
             if (DURATION == -1) {
                 tempOrder.expireAt = -1;
-            } else {
+            }
+            else {
                 tempOrder.expireAt = currentTimeStamp + DURATION;
             }
             tempOrder.price = PRICE;
@@ -946,7 +941,8 @@ int main(int argc, char ** argv) {
                     tempEquityBook.sellOrderBook.clear();
                     tempEquityBook.equitySymbol = EQUITY_SYMBOL;
                     orderBook.insert(tempEquityBook);
-                } else {
+                }
+                else {
                     // insert into sellOrderBook
                     tempEquityBook.sellOrderBook.clear();
                     tempEquityBook.sellOrderBook.insert(tempOrder);
@@ -954,14 +950,16 @@ int main(int argc, char ** argv) {
                     tempEquityBook.equitySymbol = EQUITY_SYMBOL;
                     orderBook.insert(tempEquityBook);
                 }
-            } else { // equity symbol found
+            }
+            else { // equity symbol found
                 if (isBuy) {
                     // insert into buyOrderBook
-                    ptrbuyOrderBook = const_cast<multiset<Order, compare_buyOrder>* >(&(itrOrderBook->buyOrderBook));
+                    ptrbuyOrderBook = const_cast<multiset<Order, compare_buyOrder> * >(&(itrOrderBook->buyOrderBook));
                     ptrbuyOrderBook->insert(tempOrder);
-                } else {
+                }
+                else {
                     // insert into sellOrderBook
-                    ptrSellOrderBook = const_cast<multiset<Order, compare_sellOrder>* >(&(itrOrderBook->sellOrderBook));
+                    ptrSellOrderBook = const_cast<multiset<Order, compare_sellOrder> * >(&(itrOrderBook->sellOrderBook));
                     ptrSellOrderBook->insert(tempOrder);
                 }
             }
@@ -974,13 +972,14 @@ int main(int argc, char ** argv) {
     // median first
     if (isMedian) {
         for (itrOrderBook = orderBook.begin(); itrOrderBook != orderBook.end(); itrOrderBook++) {
-            sizeInInt = (int)itrOrderBook->matchedPriceHistory.size();
+            sizeInInt = (int) itrOrderBook->matchedPriceHistory.size();
             if (sizeInInt == 0) {
                 continue;
             }
             if (sizeInInt % 2 == 0) {
                 isEven = true;
-            } else {
+            }
+            else {
                 isEven = false;
             }
             sizeInInt = sizeInInt / 2;
@@ -990,14 +989,11 @@ int main(int argc, char ** argv) {
                 medianPrice = *itrMedianMatchedPrice;       // the middle
                 medianPrice += *(--itrMedianMatchedPrice);  // + the one before that
                 medianPrice = medianPrice / 2;
-            } else { // size is odd
+            }
+            else { // size is odd
                 medianPrice = *itrMedianMatchedPrice;
             }
-            cout << "Median match price of "
-                 << itrOrderBook->equitySymbol
-                 << " at time "
-                 << currentTimeStamp
-                 << " is $"
+            cout << "Median match price of " << itrOrderBook->equitySymbol << " at time " << currentTimeStamp << " is $"
                  << medianPrice << endl;
         }
     }
@@ -1006,24 +1002,15 @@ int main(int argc, char ** argv) {
     if (isMidPoint) {
         for (itrOrderBook = orderBook.begin(); itrOrderBook != orderBook.end(); itrOrderBook++) {
             if (itrOrderBook->sellOrderBook.empty() || itrOrderBook->buyOrderBook.empty()) {
-                cout << "Midpoint of "
-                     << itrOrderBook->equitySymbol
-                     << " at time "
-                     << currentTimeStamp
-                     << " is undefined"
-                     << endl;
+                cout << "Midpoint of " << itrOrderBook->equitySymbol << " at time " << currentTimeStamp
+                     << " is undefined" << endl;
                 continue;
             }
-            highestBuy = (* itrOrderBook->buyOrderBook.begin()).price;
-            lowestSell = (* itrOrderBook->sellOrderBook.begin()).price;
+            highestBuy = (*itrOrderBook->buyOrderBook.begin()).price;
+            lowestSell = (*itrOrderBook->sellOrderBook.begin()).price;
             midPoint = (highestBuy + lowestSell) / 2;
-            cout << "Midpoint of "
-                 << itrOrderBook->equitySymbol
-                 << " at time "
-                 << currentTimeStamp
-                 << " is $"
-                 << midPoint
-                 << endl;
+            cout << "Midpoint of " << itrOrderBook->equitySymbol << " at time " << currentTimeStamp << " is $"
+                 << midPoint << endl;
         }
     }
 
@@ -1031,33 +1018,21 @@ int main(int argc, char ** argv) {
     // cout << "I am printing end-of-day output" << endl;
 
     // 6. print end-of-day output
-    cout << "---End of Day---" << endl
-         << "Commission Earnings: $" << aggregateCommission << endl
-         << "Total Amount of Money Transferred: $" << moneyTransferred << endl
-         << "Number of Completed Trades: " << countCompletedTrade << endl
-         << "Number of Shares Traded: " << countSharesTraded << endl;
+    cout << "---End of Day---" << endl << "Commission Earnings: $" << aggregateCommission << endl
+         << "Total Amount of Money Transferred: $" << moneyTransferred << endl << "Number of Completed Trades: "
+         << countCompletedTrade << endl << "Number of Shares Traded: " << countSharesTraded << endl;
 
     if (isTransfers) {
         for (itrClientList = clientList.begin(); itrClientList != clientList.end(); itrClientList++) {
-            cout << itrClientList->clientName
-                 << " bought "
-                 << itrClientList->countStockBought
-                 << " and sold "
-                 << itrClientList->countStockSold
-                 << " for a net transfer of $"
-                 << itrClientList->netValueTraded
+            cout << itrClientList->clientName << " bought " << itrClientList->countStockBought << " and sold "
+                 << itrClientList->countStockSold << " for a net transfer of $" << itrClientList->netValueTraded
                  << endl;
         }
     }
 
     for (itrtttEquityBST = tttEquityBST.begin(); itrtttEquityBST != tttEquityBST.end(); itrtttEquityBST++) {
-        cout << "Time travelers would buy "
-             << itrtttEquityBST->symbol
-             << " at time: "
-             << itrtttEquityBST->buyTimeStamp
-             << " and sell it at time: "
-             << itrtttEquityBST->sellTimeStamp
-             << endl;
+        cout << "Time travelers would buy " << itrtttEquityBST->symbol << " at time: " << itrtttEquityBST->buyTimeStamp
+             << " and sell it at time: " << itrtttEquityBST->sellTimeStamp << endl;
     }
 
 
