@@ -243,4 +243,67 @@ int main() {
     else {
         cout << "The graph is not a DAG" << endl;
     }
+
+    // Minimum Spanning tree
+
+    int weight_all = 0;
+    priority_queue<edge, vector<edge>, edge_cpr> PQ, FinalEdges;
+    set_node_unvisited(Big_graph);
+    auto it = Big_graph.nodes.begin();
+    auto beginner = it;
+    node *temp3 = it->second;
+    while (true) {
+        temp3->visited = true;
+        // Put all the adjacent edges in the PQ
+        for (it_vec = Big_graph.edges.begin(); it_vec != Big_graph.edges.end(); it_vec++) {
+            if (((*it_vec)->start_node == temp3 || (*it_vec)->end_node == temp3)
+                && !( (*it_vec)->start_node->visited && (*it_vec)->end_node->visited )) {
+                PQ.push(*(*it_vec));
+            }
+        }
+        // Get the minimum
+
+        if (PQ.empty()) break;
+
+        if (PQ.top().end_node->visited && PQ.top().start_node->visited) {
+            PQ.pop();
+            continue;
+        }
+
+        if (PQ.top().end_node->visited) {
+            temp3 = PQ.top().start_node;
+        }
+
+        else {
+            temp3 = PQ.top().end_node;
+        }
+
+        auto tobeerase = PQ.top();
+
+        PQ.top().end_node->visited = true;
+        PQ.top().start_node->visited = true;
+        weight_all += PQ.top().weight;
+        FinalEdges.push(PQ.top());
+        PQ.pop();
+
+    }
+
+    it = Big_graph.nodes.begin();
+    bool have_answer = true;
+    while (it != Big_graph.nodes.end()) {
+        if (!it->second->visited) {
+            have_answer = false;
+            break;
+        }
+        it++;
+    }
+
+    if (have_answer) {
+        cout << "The total weight of MST is " << weight_all << endl;
+    }
+    else {
+        cout << "No MST exists!" << endl;
+    }
+
+    return 0;
 }

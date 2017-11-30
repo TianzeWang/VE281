@@ -1,0 +1,47 @@
+Midpoint of AMD at time 0 is $110
+Midpoint of GE at time 0 is undefined
+BadWolfCorp purchased 20 shares of GE from PlanetExpress for $200/share
+Median match price of GE at time 1 is $200
+Midpoint of AMD at time 1 is undefined
+Midpoint of GE at time 1 is undefined
+Midpoint of NFLX at time 1 is undefined
+Median match price of GE at time 3 is $200
+Midpoint of AMD at time 3 is undefined
+Midpoint of AMZN at time 3 is undefined
+Midpoint of GE at time 3 is undefined
+Midpoint of NFLX at time 3 is undefined
+KrustyKrab purchased 12 shares of AMZN from BluthCorp for $50/share
+BadWolfCorp purchased 10 shares of AMZN from BluthCorp for $50/share
+Median match price of AMZN at time 4 is $50
+Median match price of GE at time 4 is $200
+Midpoint of AMD at time 4 is undefined
+Midpoint of AMZN at time 4 is $75
+Midpoint of GE at time 4 is undefined
+Midpoint of NFLX at time 4 is undefined
+BadWolfCorp purchased 5 shares of AMZN from BadWolfCorp for $50/share
+Median match price of AMZN at time 5 is $50
+Median match price of GE at time 5 is $200
+Midpoint of AMD at time 5 is undefined
+Midpoint of AMZN at time 5 is $75
+Midpoint of GE at time 5 is undefined
+Midpoint of NFLX at time 5 is undefined
+KrustyKrab purchased 10 shares of AMD from PlanetExpress for $130/share
+BluthCorp purchased 50 shares of AMD from PlanetExpress for $100/share
+BadWolfCorp purchased 10 shares of AMD from PlanetExpress for $80/share
+KrustyKrab purchased 10 shares of GE from BadWolfCorp for $50/share
+Median match price of AMD at time 6 is $100
+Median match price of AMZN at time 6 is $50
+Median match price of GE at time 6 is $125
+Midpoint of AMD at time 6 is undefined
+Midpoint of AMZN at time 6 is $75
+Midpoint of GE at time 6 is undefined
+Midpoint of NFLX at time 6 is undefined
+---End of Day---
+Commission Earnings: $258
+Total Amount of Money Transferred: $12950
+Number of Completed Trades: 8
+Number of Shares Traded: 127
+BadWolfCorp bought 45 and sold 15 for a net transfer of $-4800
+BluthCorp bought 50 and sold 22 for a net transfer of $-3900
+KrustyKrab bought 32 and sold 0 for a net transfer of $-2400
+PlanetExpress bought 0 and sold 90 for a net transfer of $11100

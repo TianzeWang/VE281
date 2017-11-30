@@ -1,3 +1,119 @@
+%!TEX program = xelatex
+\documentclass{article}
+\textwidth 156mm \textheight 220mm \oddsidemargin 5mm
+\evensidemargin 5mm \topmargin -10mm
+\usepackage{amsmath}
+\usepackage{amsfonts,amssymb}
+\usepackage{fontspec}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{multirow}
+\usepackage{blkarray}
+\usepackage{tikz}
+\usepackage{dsfont}
+\usepackage{booktabs}
+\usepackage{enumerate}
+%\usepackage{indentfirst}
+\usepackage{mathrsfs}
+\usepackage{listings}
+%\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{epsf}
+\usepackage[linesnumbered,boxed]{algorithm2e}
+\usepackage[colorlinks,linkcolor=purple]{hyperref}
+\renewcommand\thesection{\Roman{section}}%\arabic{section}}
+\renewcommand\thesubsection{\Roman{section.}\roman{subsection})}
+\renewcommand\thesubsubsection{\arabic{subsubsection}.}
+\defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+%\setmainfont{Citadel Script}
+\setmainfont{Savoye LET}
+%\setmainfont{Chalkboard}
+%\setmainfont{Optima}
+%\setmainfont{Apple Chancery}
+\setmonofont{Optima}
+\setsansfont{Optima}
+\newfontfamily\Inputmono{Consolas}
+%\renewcommand{\familydefault}{\sfdefault}
+%\renewcommand{\footnotesize}{\sfdefault}
+\setlength{\parskip}{\baselineskip}
+\setlength{\parindent}{0em}
+%%%%%%%%%%%Here is the configurations for Code%%%%%%%%%%%
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.7,0.7,0.7}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{mywhite}{rgb}{1,1,1}
+\definecolor{myblack}{rgb}{0,0,0}
+\definecolor{myblue}{RGB}{27,154,154}
+\lstset{
+ backgroundcolor=\color{white}, 
+ basicstyle = \footnotesize\Inputmono,       
+ breakatwhitespace = false,        
+ breaklines = true,                 
+ captionpos = b,                    
+ commentstyle = \color{mygray}\bfseries,
+ extendedchars = false,             
+ frame =shadowbox, 
+ framerule=0.5pt,
+ frameround=tttt,
+ keepspaces=true,
+ keywordstyle=\color{myblue}\bfseries, % keyword style
+ language = C++,                     % the language of code
+ otherkeywords={string}, 
+ numbers=left, 
+ numbersep=5pt,
+ numberstyle=\tiny\color{mymauve},
+ rulecolor=\color{black},         
+ showspaces=false,  
+ showstringspaces=false, 
+ showtabs=false,    
+ stepnumber=0,         
+ stringstyle=\color{mymauve},        % string literal style
+ tabsize=2,          
+ title=\lstname                      
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\renewcommand\arraystretch{1.5}
+
+
+\thispagestyle{empty}
+
+\begin{center}
+\begin{large}
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.7\textwidth]{Logo2.png}
+\end{figure}
+\hrule
+\vspace*{0.25cm}
+\sc{UM--SJTU Joint Institute \vspace*{0.3em}} \\ 
+VE281 Data Structure and Algorithm\\
+\end{large}
+\hrulefill
+
+\vspace*{5cm}
+
+\begin{Large}
+\sc{{Project 2 Report}} \\
+\end{Large}
+\vspace*{2em}
+\begin{large}
+\sc{{Tianze Wang, 515370910202}}
+\end{large}
+\end{center}
+\newpage
+\setmainfont{Optima}
+\tableofcontents
+\newpage
+\setcounter{page}{1}
+\section{Introduction}
+\par We've implemented different data structure to store our stock, client and order.
+
+\section{Appendix}
+Please refer to this part for detailed function.
+\begin{lstlisting}[language=C++]
 #include <iostream>
 #include <queue>
 #include <getopt.h>
@@ -892,3 +1008,7 @@ int main(int argc, char *argv[]) {
 }
 
 //void Add_to_Sell (order Temp, )
+
+\end{lstlisting}
+
+\end{document}
