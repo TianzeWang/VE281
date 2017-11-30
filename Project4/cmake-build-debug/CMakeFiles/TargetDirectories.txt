@@ -1,3 +1,3 @@
-F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project4/cmake-build-debug/CMakeFiles/Project4.dir
-F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project4/cmake-build-debug/CMakeFiles/edit_cache.dir
-F:/peter/JI/VE281/VE281_Files_Proj3/VE281/Project4/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/peter/Desktop/Peter/JI/VE281/Project4/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/peter/Desktop/Peter/JI/VE281/Project4/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/peter/Desktop/Peter/JI/VE281/Project4/cmake-build-debug/CMakeFiles/Project4.dir

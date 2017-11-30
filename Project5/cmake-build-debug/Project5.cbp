@@ -82,7 +82,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/peter/Desktop/Peter/JI/VE281/Project5/main2.cpp">
+		<Unit filename="/Users/peter/Desktop/Peter/JI/VE281/Project5/main.cpp">
 			<Option target="Project5"/>
 		</Unit>
 		<Unit filename="/Users/peter/Desktop/Peter/JI/VE281/Project5/CMakeLists.txt">

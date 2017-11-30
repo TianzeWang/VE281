@@ -1,3 +1,2 @@
-ToolSet: 5.0@E:\MinGw
 Options: 
-CMake: 3.8.2@E:\CLion 2017.1.2\bin\cmake\bin\cmake.exe
+CMake: 3.8.2@/Applications/CLion.app/Contents/bin/cmake/bin/cmake
