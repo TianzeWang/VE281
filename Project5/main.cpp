@@ -15,6 +15,7 @@ struct node {
     vector<node *> next;
     int temp_D = -1;
     bool visited = false;
+//    explicit node (int node_id): node_id(node_id);
 };
 
 
@@ -26,25 +27,25 @@ struct edge {
 
 struct edge_cpr {
     bool operator()(const edge &a, const edge &b) {
-        if (a.weight == b.weight) return a.start_node->node_id > b.start_node->node_id;
-        else return a.weight > b.weight;
+        /*if (a.weight == b.weight) return a.start_node->node_id > b.start_node->node_id;
+        else */return a.weight > b.weight;
     }
 
     bool operator()(edge &a, edge &b) {
-        if (a.weight == b.weight) return a.start_node->node_id > b.start_node->node_id;
-        else return a.weight > b.weight;
+        /*if (a.weight == b.weight) return a.start_node->node_id > b.start_node->node_id;
+        else*/ return a.weight > b.weight;
     }
 };
 
 struct node_cpr {
     bool operator()(const node *a, const node *b) {
-        if (a->temp_D == b->temp_D) return a->node_id > b->node_id;
-        else return a->temp_D > b->temp_D;
+        /*if (a->temp_D == b->temp_D) return a->node_id > b->node_id;
+        else*/ return a->temp_D > b->temp_D;
     }
 
     bool operator()(node *a, node *b) {
-        if (a->temp_D == b->temp_D) return a->node_id > b->node_id;
-        else return a->temp_D > b->temp_D;
+        /*if (a->temp_D == b->temp_D) return a->node_id > b->node_id;
+        else */return a->temp_D > b->temp_D;
     }
 };
 
@@ -54,13 +55,13 @@ struct graph {
     vector<edge *> edges;
 };
 
-void set_node_unvisited(graph &graphA) {
+inline void set_node_unvisited(graph &graphA) {
     for (auto &node : graphA.nodes) {
         (node.second)->visited = false;
     }
 }
 
-bool DAG(node *temp, vector<node *> node_in) {
+inline bool DAG(node *temp, vector<node *> node_in) {
     for (auto &it2 : node_in) {
         if (it2 == temp) return false;
     }
@@ -70,9 +71,7 @@ bool DAG(node *temp, vector<node *> node_in) {
     else {
         auto it = temp->next.begin();
         while (it != temp->next.end()) {
-            auto i2 = *it;
-            bool A = DAG(*it, node_in);
-            if (!A) return false;
+            if (!DAG(*it, node_in)) return false;
             else it++;
         }
         return true;
@@ -84,14 +83,13 @@ int main() {
     cin >> node_num;
     cin >> source_node;
     cin >> destination;
-    graph Big_graph;
+    graph Big_graph = graph();
     vector<edge *>::iterator it_vec;
 
     stringstream ss;
     int startn, endn, wei;
     while (!cin.eof()) {
-        auto temp_node_start = new node;
-        auto temp_node_end = new node;
+
         auto temp_edge = new edge;
         string str1;
         getline(cin, str1);
@@ -102,70 +100,128 @@ int main() {
 
         if (Big_graph.nodes.find(startn) == Big_graph.nodes.end() &&
             Big_graph.nodes.find(endn) == Big_graph.nodes.end()) {
+            auto temp_node_start = new node;
+            auto temp_node_end = new node;
             temp_node_start->node_id = startn;
             temp_node_end->node_id = endn;
             temp_node_start->next.push_back(temp_node_end);
             temp_node_end->pre.push_back(temp_node_start);
             Big_graph.nodes.insert(make_pair(startn, temp_node_start));
             Big_graph.nodes.insert(make_pair(endn, temp_node_end));
+            temp_edge->end_node = temp_node_end;
+            temp_edge->start_node = temp_node_start;
         }
-
         else if (Big_graph.nodes.find(startn) != Big_graph.nodes.end() &&
                  Big_graph.nodes.find(endn) == Big_graph.nodes.end()) {
-            temp_node_start = (*Big_graph.nodes.find(startn)).second;
+            auto temp_node_end = new node;
+            auto temp_node_start = (*Big_graph.nodes.find(startn)).second;
             temp_node_end->node_id = endn;
             temp_node_start->next.push_back(temp_node_end);
             temp_node_end->pre.push_back(temp_node_start);
             Big_graph.nodes.insert(make_pair(endn, temp_node_end));
+            temp_edge->end_node = temp_node_end;
+            temp_edge->start_node = temp_node_start;
         }
-
         else if (Big_graph.nodes.find(startn) != Big_graph.nodes.end() &&
                  Big_graph.nodes.find(endn) == Big_graph.nodes.end()) {
-            temp_node_end = (*Big_graph.nodes.find(endn)).second;
+            auto temp_node_start = new node;
+            auto temp_node_end = (*Big_graph.nodes.find(endn)).second;
             temp_node_start->node_id = startn;
             temp_node_start->next.push_back(temp_node_end);
             temp_node_end->pre.push_back(temp_node_start);
             Big_graph.nodes.insert(make_pair(startn, temp_node_start));
+            temp_edge->end_node = temp_node_end;
+            temp_edge->start_node = temp_node_start;
         }
-
         else {
-            temp_node_start = (*Big_graph.nodes.find(startn)).second;
-            temp_node_end = (*Big_graph.nodes.find(endn)).second;
+            auto temp_node_start = (*Big_graph.nodes.find(startn)).second;
+            auto temp_node_end = (*Big_graph.nodes.find(endn)).second;
             temp_node_start->next.push_back(temp_node_end);
             temp_node_end->pre.push_back(temp_node_start);
+            temp_edge->end_node = temp_node_end;
+            temp_edge->start_node = temp_node_start;
         }
-
         temp_edge->weight = wei;
-        temp_edge->end_node = temp_node_end;
-        temp_edge->start_node = temp_node_start;
         Big_graph.edges.push_back(temp_edge);
     }
 
 
     // Shortest Path
+    /*
     set_node_unvisited(Big_graph);
     priority_queue<node *, vector<node *>, node_cpr> Node_PQ;
-    int Pathlen = 0;
-    node *nodetemp = (*(Big_graph.nodes.find(source_node))).second;
-    nodetemp->temp_D = 0;
+    node *node_temp = (*(Big_graph.nodes.find(source_node))).second;
+    node_temp->temp_D = 0;
     while (true) {
-        nodetemp->visited = true;
-        if (nodetemp->node_id == destination) {
-            cout << "Shortest path length is " << nodetemp->temp_D << endl;
+        node_temp->visited = true;
+        if (node_temp->node_id == destination) {
+            cout << "Shortest path length is " << node_temp->temp_D << endl;
             break;
         }
         // Add all the nodes adjacent
-        for (auto it = nodetemp->next.begin(); it != nodetemp->next.end(); ++it) {
+        for (auto it = node_temp->next.begin(); it != node_temp->next.end(); ++it) {
             // Set edge unvisited and using while loop
-            for (auto it2 = Big_graph.edges.begin(); it2 != Big_graph.edges.end(); it2++) {
-                if ((*it2)->start_node == nodetemp) {
-                    if ((*it2)->end_node->temp_D == -1) {
-                        (*it2)->end_node->temp_D = nodetemp->temp_D + (*it2)->weight;
-                        Node_PQ.push((*it2)->end_node);
+            for (auto &edge : Big_graph.edges) {
+                if (edge->start_node == node_temp) {
+                    if (edge->end_node->temp_D == -1) {
+                        edge->end_node->temp_D = node_temp->temp_D + edge->weight;
+                        Node_PQ.push(edge->end_node);
                     }
                     else {
-                        if ((*it2)->end_node->temp_D > nodetemp->temp_D + (*it2)->weight) {
-                            (*it2)->end_node->temp_D = nodetemp->temp_D + (*it2)->weight;
+                        if (edge->end_node->temp_D > node_temp->temp_D + edge->weight) {
+                            edge->end_node->temp_D = node_temp->temp_D + edge->weight;
+                        }
+                    }
+                }
+            }
+//            for (auto it2 = Big_graph.edges.begin(); it2 != Big_graph.edges.end(); it2++) {
+//                if ((*it2)->start_node == node_temp) {
+//                    if ((*it2)->end_node->temp_D == -1) {
+//                        (*it2)->end_node->temp_D = node_temp->temp_D + (*it2)->weight;
+//                        Node_PQ.push((*it2)->end_node);
+//                    }
+//                    else {
+//                        if ((*it2)->end_node->temp_D > node_temp->temp_D + (*it2)->weight) {
+//                            (*it2)->end_node->temp_D = node_temp->temp_D + (*it2)->weight;
+//                        }
+//                    }
+//                }
+//            }
+        }
+
+        if (Node_PQ.empty()) {
+            cout << "No path exists!" << endl;
+            break;
+        }
+        else {
+            node_temp = Node_PQ.top();
+            Node_PQ.pop();
+        }
+    }
+    */
+
+    set_node_unvisited(Big_graph);
+    priority_queue<node *, vector<node *>, node_cpr> Node_PQ;
+    node &node_temp = *(*(Big_graph.nodes.find(source_node))).second;
+    node_temp.temp_D = 0;
+    while (true) {
+        node_temp.visited = true;
+        if (node_temp.node_id == destination) {
+            cout << "Shortest path length is " << node_temp.temp_D << endl;
+            break;
+        }
+        // Add all the nodes adjacent
+        for (auto it = node_temp.next.begin(); it != node_temp.next.end(); ++it) {
+            // Set edge unvisited and using while loop
+            for (auto &edge : Big_graph.edges) {
+                if (edge->start_node->node_id == node_temp.node_id) {
+                    if (edge->end_node->temp_D == -1) {
+                        edge->end_node->temp_D = node_temp.temp_D + edge->weight;
+                        Node_PQ.push(edge->end_node);
+                    }
+                    else {
+                        if (edge->end_node->temp_D > node_temp.temp_D + edge->weight) {
+                            edge->end_node->temp_D = node_temp.temp_D + edge->weight;
                         }
                     }
                 }
@@ -177,7 +233,7 @@ int main() {
             break;
         }
         else {
-            nodetemp = Node_PQ.top();
+            node_temp = *Node_PQ.top();
             Node_PQ.pop();
         }
     }
@@ -186,8 +242,7 @@ int main() {
     vector<node *> node_in;
     set_node_unvisited(Big_graph);
     node *temp = (*Big_graph.nodes.begin()).second;
-    bool A = DAG(temp, node_in);
-    if (A) {
+    if (DAG(temp, node_in)) {
         cout << "The graph is a DAG" << endl;
     }
     else {
@@ -197,11 +252,11 @@ int main() {
     // Minimum Spanning tree
 
     int weight_all = 0;
-    priority_queue<edge, vector<edge>, edge_cpr> PQ, FinalEdges;
+    priority_queue<edge, vector<edge>, edge_cpr> PQ;
     set_node_unvisited(Big_graph);
     auto it = Big_graph.nodes.begin();
     auto beginner = it;
-    node *temp3 = it->second;
+    auto temp3 = it->second;
     while (true) {
         temp3->visited = true;
         // Put all the adjacent edges in the PQ
@@ -227,7 +282,7 @@ int main() {
         PQ.top().end_node->visited = true;
         PQ.top().start_node->visited = true;
         weight_all += PQ.top().weight;
-        FinalEdges.push(PQ.top());
+//        FinalEdges.push(PQ.top());
         PQ.pop();
     }
 
@@ -240,7 +295,6 @@ int main() {
         }
         it++;
     }
-
     if (have_answer) {
         cout << "The total weight of MST is " << weight_all << endl;
     }
