@@ -69,7 +69,6 @@ int main() {
     stringstream ss;
     int startn, endn, wei;
     while (!cin.eof()) {
-
         auto temp_edge = new edge;
         string str1;
         getline(cin, str1);
@@ -77,7 +76,6 @@ int main() {
         ss.clear();
         ss.str(str1);
         ss >> startn >> endn >> wei;
-
         for (int i = 0; i < node_num; ++i) {
             auto temp = new node;
             temp->node_id = i;
@@ -85,14 +83,14 @@ int main() {
         }
         auto temp_node_start = (*Big_graph.nodes.find(startn)).second;
         auto temp_node_end = (*Big_graph.nodes.find(endn)).second;
-        temp_node_start->next.push_back(temp_node_end);
-        temp_node_end->pre.push_back(temp_node_start);
+        temp_node_start->next.emplace_back(temp_node_end);
+        temp_node_end->pre.emplace_back(temp_node_start);
         temp_edge->end_node = temp_node_end;
         temp_edge->start_node = temp_node_start;
         temp_node_start->neighbour_edges.emplace_back(make_pair(wei, temp_node_end));
         ++temp_node_end->degree;
         temp_edge->weight = wei;
-        Big_graph.edges.push_back(temp_edge);
+        Big_graph.edges.emplace_back(temp_edge);
     }
 
     auto graph_temp = Big_graph;
@@ -130,21 +128,14 @@ int main() {
     }
 
     Big_graph = graph_temp;
+
     // DAG or NOT
+
     vector<node *> node_in;
-//    set_node_unvisited(Big_graph);
-//    node *temp = (*Big_graph.nodes.begin()).second;
-//    if (DAG(temp, node_in)) {
-//        cout << "The graph is a DAG" << endl;
-//    }
-//    else {
-//        cout << "The graph is not a DAG" << endl;
-//    }
     vector<node *> node_no_income;
     for (auto &node : Big_graph.nodes) {
-//        cout << node.first << " " << node.second->degree <<  endl;
         if (node.second->degree == 0) {
-            node_no_income.push_back(node.second);
+            node_no_income.emplace_back(node.second);
         }
     }
     int countALL = 0;
@@ -154,7 +145,7 @@ int main() {
         ++countALL;
         for (auto &edge : temp->neighbour_edges) {
             if (edge.second->degree > 0) --edge.second->degree;
-            if (edge.second->degree == 0) node_no_income.push_back(edge.second);
+            if (edge.second->degree == 0) node_no_income.emplace_back(edge.second);
         }
     }
     if (countALL == node_num) cout << "The graph is a DAG" << endl;
@@ -208,6 +199,5 @@ int main() {
     else {
         cout << "No MST exists!" << endl;
     }
-
     return 0;
 }

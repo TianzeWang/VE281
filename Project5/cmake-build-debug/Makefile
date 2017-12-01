@@ -123,32 +123,32 @@ Project5/fast:
 	$(MAKE) -f CMakeFiles/Project5.dir/build.make CMakeFiles/Project5.dir/build
 .PHONY : Project5/fast
 
-Main_4.o: Main_4.cpp.o
+main6.o: main6.cpp.o
 
-.PHONY : Main_4.o
+.PHONY : main6.o
 
 # target to build an object file
-Main_4.cpp.o:
-	$(MAKE) -f CMakeFiles/Project5.dir/build.make CMakeFiles/Project5.dir/Main_4.cpp.o
-.PHONY : Main_4.cpp.o
+main6.cpp.o:
+	$(MAKE) -f CMakeFiles/Project5.dir/build.make CMakeFiles/Project5.dir/main6.cpp.o
+.PHONY : main6.cpp.o
 
-Main_4.i: Main_4.cpp.i
+main6.i: main6.cpp.i
 
-.PHONY : Main_4.i
+.PHONY : main6.i
 
 # target to preprocess a source file
-Main_4.cpp.i:
-	$(MAKE) -f CMakeFiles/Project5.dir/build.make CMakeFiles/Project5.dir/Main_4.cpp.i
-.PHONY : Main_4.cpp.i
+main6.cpp.i:
+	$(MAKE) -f CMakeFiles/Project5.dir/build.make CMakeFiles/Project5.dir/main6.cpp.i
+.PHONY : main6.cpp.i
 
-Main_4.s: Main_4.cpp.s
+main6.s: main6.cpp.s
 
-.PHONY : Main_4.s
+.PHONY : main6.s
 
 # target to generate assembly for a file
-Main_4.cpp.s:
-	$(MAKE) -f CMakeFiles/Project5.dir/build.make CMakeFiles/Project5.dir/Main_4.cpp.s
-.PHONY : Main_4.cpp.s
+main6.cpp.s:
+	$(MAKE) -f CMakeFiles/Project5.dir/build.make CMakeFiles/Project5.dir/main6.cpp.s
+.PHONY : main6.cpp.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Project5"
-	@echo "... Main_4.o"
-	@echo "... Main_4.i"
-	@echo "... Main_4.s"
+	@echo "... main6.o"
+	@echo "... main6.i"
+	@echo "... main6.s"
 .PHONY : help
 
 
