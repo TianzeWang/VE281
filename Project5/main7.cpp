@@ -9,6 +9,7 @@
 
 using namespace std;
 
+
 struct node {
     int node_id = 0;
     vector<node *> pre;
@@ -19,6 +20,11 @@ struct node {
     int degree = 0;
 
 //    explicit node(int nodeid) : node_id(nodeid) {};
+};
+
+struct Union_find_subset {
+    node *parent;
+    int rank;
 };
 
 struct edge {
@@ -56,6 +62,60 @@ struct graph {
     vector<node *> nodes;
     vector<edge *> edges;
 };
+
+// Kruskal's Algorithm
+inline node *find(Union_find_subset subsets[], node *i) {
+    if (subsets[i->node_id].parent != i) {
+        subsets[i->node_id].parent = find(subsets, subsets[i->node_id].parent);
+    }
+    return subsets[i->node_id].parent;
+}
+
+inline void Union(Union_find_subset subsets[], node *a, node *b) {
+    node *a_root = find(subsets, a);
+    node *b_root = find(subsets, b);
+    if (subsets[a_root->node_id].rank < subsets[b_root->node_id].rank) {
+        subsets[a_root->node_id].parent = b_root;
+    }
+    else if (subsets[a_root->node_id].rank > subsets[b_root->node_id].rank) {
+        subsets[b_root->node_id].parent = a_root;
+    }
+    else {
+        subsets[a_root->node_id].parent = b_root;
+        ++subsets[b_root->node_id].rank;
+    }
+}
+
+inline void Kruskal(graph &Graph, int N) {
+    // The edges are already sorted
+    auto V = Graph.nodes.size();
+    auto E = Graph.edges.size();
+    auto *subsets = (Union_find_subset *) malloc(V * sizeof(Union_find_subset));
+    for (auto &node : Graph.nodes) {
+        subsets[node->node_id].parent = node;
+        subsets[node->node_id].rank = 0;
+    }
+    int result = 0;
+    int count = 0;
+    int e = 0, i = 0;
+    while (e < V - 1) {
+//    for (auto Next_edge = Graph.edges.begin(); Next_edge != Graph.edges.end(); ++Next_edge) {
+        if (E == i) break;
+        auto Next_edge = Graph.edges[i++];
+        auto x = find(subsets, (Next_edge)->start_node);
+        auto y = find(subsets, (Next_edge)->end_node);
+        if (x != y) {
+            result += (Next_edge)->weight;
+//            cout << result << endl;
+//            cout << e << " " << N << endl;
+            Union(subsets, x, y);
+            ++e;
+//            if (++count == N) break;
+        }
+    }
+    if (N == e + 1 ) cout << "The total weight of MST is " << result << endl;
+    else cout << "No MST exists!" << endl;
+}
 
 inline void set_node_unvisited(graph &graphA) {
     for (auto &node : graphA.nodes) {
@@ -172,61 +232,7 @@ int main() {
 
 //    cout << "It takes me " << (clock_out-clock_in) / CLOCKS_PER_SEC << " to calculate DAG." << endl;
 
-    // Minimum Spanning tree
-
-    /*
-    double clock_in, clock_out;
-    clock_in = clock();
-    int weight_all = 0;
-    priority_queue<edge *, vector<edge *>, edge_cpr> PQ;
-    set_node_unvisited(Big_graph);
-    auto temp3 = *Big_graph.nodes.begin();
-    while (true) {
-        temp3->visited = true;
-        // Put all the adjacent edges in the PQ
-        for (it_vec = Big_graph.edges.begin(); it_vec != Big_graph.edges.end(); ++it_vec) {
-            if (((*it_vec)->start_node == temp3 || (*it_vec)->end_node == temp3)
-                && !((*it_vec)->start_node->visited && (*it_vec)->end_node->visited)) {
-                PQ.push((*it_vec));
-            }
-        }
-        // Get the minimum
-        if (PQ.empty()) break;
-        else if (PQ.top()->end_node->visited && PQ.top()->start_node->visited) {
-            PQ.pop();
-            continue;
-        }
-        else if (PQ.top()->end_node->visited) {
-            temp3 = PQ.top()->start_node;
-        }
-        else {
-            temp3 = PQ.top()->end_node;
-        }
-        PQ.top()->end_node->visited = true;
-        PQ.top()->start_node->visited = true;
-        weight_all += PQ.top()->weight;
-        PQ.pop();
-    }
-
-    auto it = Big_graph.nodes.begin();
-    bool have_answer = true;
-    while (it != Big_graph.nodes.end()) {
-        if (!(*it)->visited) {
-            have_answer = false;
-            break;
-        }
-        ++it;
-    }
-    clock_out = clock();
-    if (have_answer) {
-        cout << "The total weight of MST is " << weight_all << endl;
-    }
-    else {
-        cout << "No MST exists!" << endl;
-    }
-    cout << "It takes me " << (clock_out-clock_in) / CLOCKS_PER_SEC << " to calculate MST." << endl;
-    */
-
+    // Minimum Spanning Tree
     // Use Kruskal's Method insted
 
     struct {
@@ -241,31 +247,31 @@ int main() {
     int weight_all = 0;
     sort(Big_graph.edges.begin(), Big_graph.edges.end(), edge_cpr);
     set_node_unvisited(Big_graph);
-    for (auto &edge : Big_graph.edges) {
-        if ( (!edge->end_node->visited) || (!edge->start_node->visited)){
-            edge->start_node->visited = true;
-            edge->end_node->visited = true;
-            weight_all += edge->weight;
-            cout << edge->weight << endl;
-        }
-    }
+//    for (auto &edge : Big_graph.edges) {
+//        if ((!edge->end_node->visited) || (!edge->start_node->visited)) {
+//            edge->start_node->visited = true;
+//            edge->end_node->visited = true;
+//            weight_all += edge->weight;
+//            cout << edge->weight << endl;
+//        }
+//    }
+//
+//    auto it = Big_graph.nodes.begin();
+//    bool have_answer = true;
+//    while (it != Big_graph.nodes.end()) {
+//        if (!(*it)->visited) {
+//            have_answer = false;
+//            break;
+//        }
+//        ++it;
+//    }
+//    if (have_answer) {
+//        cout << "The total weight of MST is " << weight_all << endl;
+//    }
+//    else {
+//        cout << "No MST exists!" << endl;
+//    }
 
-    auto it = Big_graph.nodes.begin();
-    bool have_answer = true;
-    while (it != Big_graph.nodes.end()) {
-        if (!(*it)->visited) {
-            have_answer = false;
-            break;
-        }
-        ++it;
-    }
-
-    if (have_answer) {
-        cout << "The total weight of MST is " << weight_all << endl;
-    }
-    else {
-        cout << "No MST exists!" << endl;
-    }
-
+    Kruskal(Big_graph, node_num);
     return 0;
 }
