@@ -9,15 +9,22 @@
 
 using namespace std;
 
+struct sin{
+    int val;
+    int nothing =0 ;
+};
+
 int main(int argc, char * argv[]) {
-    int n = atoi(argv[1]);
-    int m = atoi(argv[2]);
-    int p = atoi(argv[3]);
-    cout << n << endl;
-    cout << m << endl;
-    cout << p << endl;
-    srand((unsigned) time(NULL));
-    for (int i=0;i<m;i++){
-        cout << mrand48() << endl;
+    int a[3] = {1,2,3};
+    struct sin *s;
+    s[0].val = 1;
+    s[1].val = 2;
+    s[2].val = 3;
+    s[3].val = 4;
+    for (int i =0; i< sizeof(s)/ sizeof(struct sin); i++){
+        cout << s[i].val << " " << endl;
+        cout << "i is " << i << endl;
+        cout << sizeof(s)/ sizeof(struct sin)<< endl;
+        cout << endl;
     }
 }

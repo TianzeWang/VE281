@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/Users/peter/Desktop/Peter/JI/VE281/Project5/main7.cpp
+/Users/peter/Desktop/Peter/JI/VE281/Project5/main_copy.cpp
 iostream
 -
 sstream
@@ -16,6 +16,8 @@ vector
 map
 -
 set
+-
+algorithm
 -
 queue
 -

@@ -3,6 +3,7 @@
 #include <vector>
 #include <map>
 #include <set>
+#include <algorithm>
 #include <queue>
 #include <ctime>
 //#include <list>
@@ -18,7 +19,6 @@ struct node {
     bool visited = false;
     vector<pair<int, node *>> neighbour_edges;
     int degree = 0;
-
 //    explicit node(int nodeid) : node_id(nodeid) {};
 };
 
@@ -90,7 +90,7 @@ inline void Kruskal(graph &Graph, int N) {
     // The edges are already sorted
     auto V = Graph.nodes.size();
     auto E = Graph.edges.size();
-    auto *subsets = (Union_find_subset *) malloc(V * sizeof(Union_find_subset));
+    auto *subsets = (Union_find_subset *) malloc (V * sizeof(Union_find_subset));
     for (auto &node : Graph.nodes) {
         subsets[node->node_id].parent = node;
         subsets[node->node_id].rank = 0;
@@ -106,8 +106,6 @@ inline void Kruskal(graph &Graph, int N) {
         auto y = find(subsets, (Next_edge)->end_node);
         if (x != y) {
             result += (Next_edge)->weight;
-//            cout << result << endl;
-//            cout << e << " " << N << endl;
             Union(subsets, x, y);
             ++e;
 //            if (++count == N) break;
@@ -163,8 +161,6 @@ int main() {
 
     auto graph_temp = Big_graph;
     // Shortest Path
-
-
     set_node_unvisited(Big_graph);
 //    priority_queue<node *, vector<node *>, node_cpr> Node_PQ;
     set<node *, node_cpr> Node_PQ;
@@ -215,8 +211,6 @@ int main() {
             node_no_income.emplace_back(node);
         }
     }
-
-
     int countALL = 0;
     while (!node_no_income.empty()) {
         auto temp = node_no_income.back();
@@ -245,7 +239,7 @@ int main() {
         }
     } edge_cpr;
     int weight_all = 0;
-    sort(Big_graph.edges.begin(), Big_graph.edges.end(), edge_cpr);
+    std::sort(Big_graph.edges.begin(), Big_graph.edges.end(), edge_cpr);
     set_node_unvisited(Big_graph);
 //    for (auto &edge : Big_graph.edges) {
 //        if ((!edge->end_node->visited) || (!edge->start_node->visited)) {

@@ -1,3 +1,0 @@
-/Users/peter/Desktop/Peter/JI/VE281/JXY/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/peter/Desktop/Peter/JI/VE281/JXY/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/peter/Desktop/Peter/JI/VE281/JXY/cmake-build-debug/CMakeFiles/JXY.dir
